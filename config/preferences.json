@@ -1,0 +1,83 @@
+{
+  "roles": {
+    "include": [
+      "Product Manager", "Product Owner", "Technical Product Manager", "Associate Product Manager",
+      "Product Operations", "Product Analyst", "Scrum Master", "QA Analyst", "QA Engineer",
+      "Software QA", "QA Tester", "Test Analyst", "Test Engineer", "QA Automation",
+      "Technical Program Manager", "Program Manager", "Delivery Manager", "Product/QA",
+      "Business Analyst", "Implementation Manager", "Customer Success Manager"
+    ],
+    "exclude_keywords": [
+      "Engineering Manager", "Software Engineer", "Backend Engineer", "Frontend Engineer",
+      "Full Stack Engineer", "Data Scientist", "Data Engineer", "DevOps", "Sales Representative",
+      "Account Executive", "Marketing Manager", "Recruiter", "Graphic Designer", "UX Designer",
+      "Customer Support Representative"
+    ],
+    "note": "include list is a soft pre-filter to avoid wasting AI calls on obviously unrelated titles; the AI matcher makes the real call, including for titles not on this list that it judges relevant."
+  },
+
+  "experience": {
+    "minimum": 0,
+    "target_min": 2,
+    "target_max": 4,
+    "soft_max": 6,
+    "hard_reject_years": 7,
+    "reject_seniority_titles": ["Senior", "Sr.", "Lead", "Principal", "Director", "VP", "Head of", "Staff"],
+    "seniority_title_exceptions": ["Senior QA", "Sr. QA", "Senior Test", "QA Lead", "Test Lead"],
+    "note": "hard_reject_years triggers automatic rejection at or above 7 years OR when a reject_seniority_title appears (unless it matches a seniority_title_exceptions pattern, e.g. 'Senior QA' is allowed through to AI judgment since QA seniority ladders differ from PM ones). 5-6 years required is NOT auto-rejected; it is passed to the AI matcher to judge whether responsibilities are realistic, and can come back as a lower-confidence SEND."
+  },
+
+  "location": {
+    "priority_order": ["A_WORLDWIDE", "B_AFRICA_EMEA", "C_UNCLEAR", "D_REJECT"],
+    "tier_a_worldwide_keywords": ["remote - worldwide", "remote - anywhere", "remote - global", "fully remote", "work from anywhere", "location independent", "remote (global)", "worldwide", "anywhere", "global"],
+    "tier_b_africa_emea_keywords": [
+      "remote - africa", "remote - emea", "africa timezone", "emea timezone",
+      "kenya", "nigeria", "south africa", "ethiopia", "ghana", "egypt", "rwanda", "uganda", "tanzania",
+      "emea", "gmt", "utc+1", "utc+2", "utc+3", "cet", "eet"
+    ],
+    "tier_d_reject_keywords": [
+      "us only", "u.s. only", "usa only", "united states only", "must be located in the united states",
+      "uk only", "united kingdom only", "eu only", "european union only", "canada only",
+      "must be located in", "must reside in", "authorized to work in the us", "us citizen",
+      "us work authorization required", "no visa sponsorship", "within the united states",
+      "within the eu", "within canada", "within the uk", "latam only", "apac only"
+    ],
+    "note": "Tier C = 'Remote' with no eligibility statement found. Wellfound's 'Hires Remotely From' field, when present, is authoritative and overrides keyword guessing."
+  },
+
+  "job_type": {
+    "accept": ["full-time", "contract", "full time"],
+    "reject": ["part-time", "internship", "unpaid", "commission-only", "commission only"]
+  },
+
+  "scoring": {
+    "min_score_to_send_digest": 70,
+    "min_score_to_send_immediate": 85,
+    "digest_range": [70, 84],
+    "auto_reject_below": 70
+  },
+
+  "discord": {
+    "send_immediate_at_or_above": 85,
+    "send_digest_between": [70, 84],
+    "digest_schedule": "batched with the evening run"
+  },
+
+  "company_quality": {
+    "reject_generic_company_names": ["confidential", "stealth", "our client", "a client", "n/a", "undisclosed"],
+    "require_apply_link": true
+  },
+
+  "sources": {
+    "enabled": ["remoteok", "remotive", "weworkremotely", "himalayas", "greenhouse", "lever"],
+    "disabled_pending_manual_setup": ["wellfound", "linkedin_discovery"],
+    "greenhouse_boards": [],
+    "lever_companies": [],
+    "note": "wellfound has no public jobs API; linkedin_discovery only builds search links, it never scrapes. Populate greenhouse_boards/lever_companies with company board tokens/slugs to pull directly from their ATS."
+  },
+
+  "schedule": {
+    "runs_local_time": ["08:00", "18:00"],
+    "timezone": "Africa/Nairobi"
+  }
+}

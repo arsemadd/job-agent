@@ -1,0 +1,145 @@
+{
+  "name": "Arsema Doji Wordofa",
+  "headline": "Product Manager & QA professional — delivery-focused, technical, AI-fluent",
+  "location": "Addis Ababa, Ethiopia (UTC+3)",
+  "email": "arsemadoji7@gmail.com",
+  "links": {
+    "portfolio": "portfolio-standalone.html (see project docs)",
+    "resume": "Arsema_Doji_Wordofa_Resume.pdf (see project docs)"
+  },
+  "years_experience_total": 3.5,
+  "summary": "Delivery-focused Product Manager and QA professional with 3+ years owning the full cycle from brief to release across ERP, CRM, eCommerce, and healthcare EHR platforms. Resolves ambiguity before it reaches engineers, runs QA end to end, gathers requirements directly from clients, and owns release schedules independently. Started as a software engineer, which shows up as technical fluency (API testing, SQL, reading React/Laravel/PHP/MySQL) most PMs don't have.",
+
+  "roles_held": [
+    {
+      "title": "Product Manager (Freelance)",
+      "company": "Bravura — Healthcare EHR & Practice Management (orthodontic)",
+      "dates": "2026 – Present",
+      "years": 0.7,
+      "mode": "Remote (via Upwork)",
+      "highlights": [
+        "Managing an orthodontic practice-management platform from scratch, no existing structure to inherit",
+        "Owns requirements, Jira ticket structure, and alignment between engineering, client, and roadmap",
+        "Took an EHR from concept + mocks to a 7-phase, dependency-sequenced delivery roadmap",
+        "Used competitive research (4-5 incumbents) not as a feature checklist but to sequence what to build first",
+        "Scope expanded from PM to full PM/QA ownership on the strength of the roadmap work"
+      ]
+    },
+    {
+      "title": "Product Manager",
+      "company": "Composity — ERP & eCommerce Platform",
+      "dates": "Mar 2024 – 2026",
+      "years": 2.0,
+      "mode": "Remote",
+      "highlights": [
+        "Owned end-to-end delivery across 5 product modules (ERP, CRM, eCommerce, invoicing, inventory) from brief through dev, QA, staging, release; founder involved only for high-level architecture",
+        "Resolved brief ambiguity before it reached developers; reviewed AC for missing edge cases and conflicts",
+        "Analyzed 200+ support tickets, identified 8 root-cause themes, drove feature adoption 40% -> 80%+ in 3 months",
+        "Designed and executed QA independently: test cases, regression cycles, API integration testing via Postman before every release",
+        "Gathered requirements directly from clients (including via translator), turning vague asks into structured specs — e.g. one-sentence expense-approval request became a full workflow with an AI layer predicting approval delays",
+        "Used Claude to stress-test acceptance criteria and surface edge cases before briefs reached developers",
+        "Used Cursor + MCP to build UI mockups pushed directly to GitHub, removing 2-3 review cycles per feature",
+        "Built and maintained centralized Jira intake: backlog grooming, sprint planning, dependency mapping, milestones",
+        "Planned and executed a full UI migration across existing clients: sequencing, communications, post-launch triage, top issues resolved within 2 weeks of go-live",
+        "Shipped 5 AI features end-to-end: predictive lead scoring, smart PO generation, AI product search, email campaign automation, OCR processing",
+        "Led a competitive teardown against Odoo, ERPNext, and SAP Business One that influenced 3 roadmap decisions",
+        "Authored a 3-phase Generative Engine Optimization (GEO) roadmap for how AI search engines discover/cite the product",
+        "Reduced onboarding friction by replacing a static setup checklist with contextual AI-assisted guidance (40%+ fewer onboarding issues)",
+        "Ran an end-to-end ecommerce storefront launch (Elimex.bg): payments (MyPOS), POS channels, order statuses, email templates, Docker CI/CD"
+      ]
+    },
+    {
+      "title": "Scrum Master / QA",
+      "company": "Ethiojobs — ATS & Job Posting Platform",
+      "dates": "Jan 2023 – Mar 2024",
+      "years": 1.2,
+      "mode": "On-site",
+      "highlights": [
+        "Built the entire delivery process from scratch for a cross-functional team of 8 (no sprint structure, escalation path, or QA handoff existed before)",
+        "Cut average blocker resolution time from 3 days to under 1 day",
+        "Led QA across the full release cycle: test cases, bug triage, fix validation; contributed to a 40% reduction in production defects over two quarters",
+        "Identified that exact-match search was failing candidates (e.g. 'Software Engineer' missed 'Backend Engineer' listings) — ATS search relevance work",
+        "Bridged engineering and business stakeholders, translating technical constraints into plain language and business requirements into developer-ready specs",
+        "Facilitated all Agile ceremonies for the team of 8"
+      ]
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "B.Sc. Software Engineering",
+      "school": "Addis Ababa University of Technology",
+      "dates": "2017 – 2022"
+    }
+  ],
+
+  "core_skills": {
+    "delivery_and_process": [
+      "End-to-end delivery ownership (brief to release, including post-launch)",
+      "Backlog grooming & sprint planning",
+      "Blocker removal & escalation",
+      "Competitive positioning translated into sequenced roadmap decisions",
+      "Process design from scratch (no existing structure to inherit)"
+    ],
+    "qa_and_quality": [
+      "Test case design & execution",
+      "Regression & acceptance testing",
+      "API integration testing (Postman)",
+      "Defect triage (real defect vs. backlog item vs. brief gap)",
+      "Exploratory testing"
+    ],
+    "technical_pm": [
+      "API & systems fluency, Swagger specs",
+      "Reads React, Laravel, PHP, MySQL well enough to write specs engineers don't have to translate",
+      "SQL / database concepts",
+      "Jira & ClickUp administration (ticket structure, dependency mapping)"
+    ],
+    "ai_product_capability": [
+      "Shipped 5 AI features end-to-end (lead scoring, product search, OCR, campaign automation, approval-delay prediction)",
+      "Designs AI evaluation criteria (accuracy, hallucination, coverage) instead of trusting a demo",
+      "Uses Claude and Cursor with MCP for spec stress-testing and mockups",
+      "Designs grounded AI features that cite sources and refuse to guess"
+    ],
+    "tools": ["Jira", "ClickUp", "Postman", "Claude", "Cursor + MCP", "Docker CI/CD", "GitHub", "SQL"]
+  },
+
+  "portfolio_evidence": [
+    {
+      "project": "Automating Lead Discovery & Outreach (Composity Growth)",
+      "demonstrates": ["product discovery", "workflow-level thinking (not point-solution)", "segmentation", "prioritization under constraints", "cross-functional coordination (Sales/Marketing + Engineering)", "AI-assisted (not AI-first) design"],
+      "outcome": "~3-4x new monthly software customers after launch"
+    },
+    {
+      "project": "Making Ecommerce Management Less Manual (Composity eCommerce)",
+      "demonstrates": ["reframing the problem instead of accepting the stated one", "AI + automation product strategy", "requirements definition", "engineering integration work", "designing for varied user sophistication (manual/AI-assisted/automated tiers)"]
+    },
+    {
+      "project": "EHR From Concept to Buildable Roadmap (Bravura)",
+      "demonstrates": ["0-to-1 product architecture", "competitive research translated into sequencing (not feature parity)", "dependency-driven roadmapping", "PRDs and SOPs authored solo", "healthcare/practice-management domain exposure"]
+    },
+    {
+      "project": "The QA Work I Wanted to Stop Repeating (independent AI prototype)",
+      "demonstrates": ["retrieval-grounded AI design (Jira + GitHub context)", "AI evaluation framework design (false negatives/positives, hallucination, human acceptance)", "technical building, not just spec-writing", "healthy skepticism about AI demos"]
+    }
+  ],
+
+  "domain_exposure": ["ERP", "CRM", "eCommerce", "invoicing/accounting", "inventory/POS", "ATS/recruiting", "healthcare EHR / practice management", "AI/ML product features", "SaaS B2B"],
+
+  "career_preferences": {
+    "target_titles": [
+      "Product Manager", "Product Owner", "Technical Product Manager", "Associate Product Manager",
+      "Product Operations", "Product Analyst", "Scrum Master", "QA Analyst", "QA Engineer",
+      "Software QA", "Test Analyst", "QA Automation", "Product/QA hybrid roles",
+      "Technical Program Manager (where background fits)"
+    ],
+    "experience_target_years": "2-4",
+    "experience_accept_below_target": true,
+    "experience_reject_years": 7,
+    "note_on_5_to_6_years": "Not an automatic reject — evaluate whether the actual responsibilities described are realistic given her experience; a strong skills/evidence match at 5-6 years required can be sent as a lower-confidence match.",
+    "seniority_titles_generally_reject": ["Senior (non-QA)", "Lead", "Principal", "Director", "VP", "Head of", "Staff (non-IC-QA)"],
+    "location_priority": ["Worldwide/Anywhere/Global remote", "Africa / EMEA remote", "Unclear eligibility", "Location-restricted (reject)"],
+    "job_type_accept": ["Full-time", "Contract"],
+    "job_type_reject_default": ["Part-time"],
+    "open_to": "Remote, international product opportunities"
+  }
+}
