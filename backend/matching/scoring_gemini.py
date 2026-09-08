@@ -37,7 +37,7 @@ logger = logging.getLogger("job_agent.scoring.gemini")
 # gemini-3.5-flash-lite has the highest free-tier daily quota among current
 # Flash models; override via GEMINI_MODEL if you prefer gemini-3.6-flash (paid
 # or higher free-tier allowance). See https://ai.google.dev/gemini-api/docs/pricing
-DEFAULT_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
+DEFAULT_MODEL = "gemini-3.5-flash-lite"
 MAX_RETRIES = 4
 
 
@@ -45,13 +45,16 @@ class GeminiScorer:
     def __init__(self, candidate_profile: dict, prefs: dict, api_key: str | None = None, model: str | None = None):
         self.candidate_context = render_candidate_context(candidate_profile)
         self.prefs = prefs
-        self.model = model or DEFAULT_MODEL
+        # Empty env vars (common when GitHub Actions maps an unset repo variable) must not win over the default.
+        self.model = (model or os.environ.get("GEMINI_MODEL") or DEFAULT_MODEL).strip()
         api_key = api_key or os.environ.get("GEMINI_API_KEY")
         if not api_key:
             raise RuntimeError(
                 "GEMINI_API_KEY is not set. Get a free key at https://aistudio.google.com/apikey "
                 "and export it or put it in .env before running the pipeline."
             )
+        if not self.model:
+            raise RuntimeError("GEMINI_MODEL resolved empty - set GEMINI_MODEL or use the default.")
         self.client = genai.Client(api_key=api_key)
 
     def score_job(self, job: Job, verdict: HardFilterVerdict) -> MatchEvaluation:

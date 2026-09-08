@@ -23,7 +23,7 @@ from backend.models import Job
 
 logger = logging.getLogger("job_agent.scoring.anthropic")
 
-DEFAULT_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-5-20250929")
+DEFAULT_MODEL = "claude-sonnet-4-5-20250929"
 MAX_RETRIES = 3
 
 TOOL_SCHEMA = {
@@ -37,12 +37,14 @@ class AnthropicScorer:
     def __init__(self, candidate_profile: dict, prefs: dict, api_key: str | None = None, model: str | None = None):
         self.candidate_context = render_candidate_context(candidate_profile)
         self.prefs = prefs
-        self.model = model or DEFAULT_MODEL
+        self.model = (model or os.environ.get("ANTHROPIC_MODEL") or DEFAULT_MODEL).strip()
         api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
         if not api_key:
             raise RuntimeError(
                 "ANTHROPIC_API_KEY is not set. Export it or put it in .env before running the pipeline."
             )
+        if not self.model:
+            raise RuntimeError("ANTHROPIC_MODEL resolved empty - set ANTHROPIC_MODEL or use the default.")
         self.client = anthropic.Anthropic(api_key=api_key)
 
     def score_job(self, job: Job, verdict: HardFilterVerdict) -> MatchEvaluation:

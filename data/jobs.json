@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-08T08:49:17.374730+00:00",
+  "updated_at": "2026-09-08T09:25:08.181788+00:00",
   "jobs": [
     {
       "source": "himalayas",
@@ -1317,26 +1317,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.817536+00:00",
       "dedup_key": "0a014b3da7a75570",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:49:17.371076+00:00",
-      "last_seen_at": "2026-09-08T08:49:17.371093+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "himalayas",
@@ -1892,26 +1889,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.756759+00:00",
       "dedup_key": "7bf1313fd562c576",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[B_AFRICA_EMEA]: Africa/EMEA-eligible (matched 'south africa')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "B_AFRICA_EMEA",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:49:13.366857+00:00",
-      "last_seen_at": "2026-09-08T08:49:13.366875+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "himalayas",
@@ -1944,26 +1938,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.756635+00:00",
       "dedup_key": "74cb3ab94b07d1fb",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[B_AFRICA_EMEA]: Africa/EMEA-eligible (matched 'south africa')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "B_AFRICA_EMEA",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:49:09.363748+00:00",
-      "last_seen_at": "2026-09-08T08:49:09.363766+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "himalayas",
@@ -3010,26 +3001,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.687188+00:00",
       "dedup_key": "b0549a13148c163e",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[B_AFRICA_EMEA]: Africa/EMEA-eligible (matched 'south africa')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "B_AFRICA_EMEA",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:49:05.357164+00:00",
-      "last_seen_at": "2026-09-08T08:49:05.357208+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "himalayas",
@@ -3218,26 +3206,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.686439+00:00",
       "dedup_key": "afcac7527ff1f1a1",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[B_AFRICA_EMEA]: Africa/EMEA-eligible (matched 'nigeria')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "B_AFRICA_EMEA",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:49:01.353855+00:00",
-      "last_seen_at": "2026-09-08T08:49:01.353872+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "himalayas",
@@ -3589,26 +3574,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.625633+00:00",
       "dedup_key": "198b617cde1a7a04",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:57.350053+00:00",
-      "last_seen_at": "2026-09-08T08:48:57.350070+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "himalayas",
@@ -3635,26 +3617,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.625546+00:00",
       "dedup_key": "d59c2e23bb259fb3",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:53.347115+00:00",
-      "last_seen_at": "2026-09-08T08:48:53.347133+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "himalayas",
@@ -4213,26 +4192,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.479712+00:00",
       "dedup_key": "7c09323132dd1a0c",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:49.341855+00:00",
-      "last_seen_at": "2026-09-08T08:48:49.341871+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "weworkremotely",
@@ -4251,26 +4227,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.479624+00:00",
       "dedup_key": "91ad1f051c15759a",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:45.338803+00:00",
-      "last_seen_at": "2026-09-08T08:48:45.338821+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "weworkremotely",
@@ -4289,26 +4262,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.479489+00:00",
       "dedup_key": "6a6dc894676db12e",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:41.335968+00:00",
-      "last_seen_at": "2026-09-08T08:48:41.335986+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "weworkremotely",
@@ -4327,26 +4297,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.479410+00:00",
       "dedup_key": "52fc80d8557be99b",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:37.332966+00:00",
-      "last_seen_at": "2026-09-08T08:48:37.332983+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "weworkremotely",
@@ -4431,26 +4398,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.477766+00:00",
       "dedup_key": "92d5c732e970c45d",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "2+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:33.328907+00:00",
-      "last_seen_at": "2026-09-08T08:48:33.328924+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "weworkremotely",
@@ -4692,26 +4656,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.475506+00:00",
       "dedup_key": "2d44e97131846594",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "3+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:29.323952+00:00",
-      "last_seen_at": "2026-09-08T08:48:29.323971+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.644638+00:00"
     },
     {
       "source": "weworkremotely",
@@ -4730,26 +4691,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.475276+00:00",
       "dedup_key": "5d2fdda158487537",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "3+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:25.321365+00:00",
-      "last_seen_at": "2026-09-08T08:48:25.321381+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.649252+00:00"
     },
     {
       "source": "weworkremotely",
@@ -4801,26 +4759,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.474768+00:00",
       "dedup_key": "3ff3fbb8a669abeb",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 5 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:21.318095+00:00",
-      "last_seen_at": "2026-09-08T08:48:21.318112+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.649252+00:00"
     },
     {
       "source": "weworkremotely",
@@ -4839,26 +4794,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.474590+00:00",
       "dedup_key": "cc58a434e64d3413",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "4+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:17.315211+00:00",
-      "last_seen_at": "2026-09-08T08:48:17.315230+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.649252+00:00"
     },
     {
       "source": "weworkremotely",
@@ -4877,26 +4829,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.474419+00:00",
       "dedup_key": "2a54a0215d75dace",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 6 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "6+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:13.312415+00:00",
-      "last_seen_at": "2026-09-08T08:48:13.312433+00:00"
+      "last_seen_at": "2026-09-08T09:24:50.649252+00:00"
     },
     {
       "source": "weworkremotely",
@@ -4958,16 +4907,25 @@
       ],
       "location_tier": "A_WORLDWIDE",
       "years_required_display": "not clearly stated",
-      "score": 0,
-      "why_matches": [],
-      "gaps": [],
-      "confidence": "medium",
-      "reasoning_summary": "Scoring failed - not sent, needs manual review.",
-      "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "score": 68,
+      "why_matches": [
+        "Matches the remote location tier (Worldwide/Anywhere remote eligibility).",
+        "Strong background in end-to-end product delivery, agile management, and stakeholder orchestration across eCommerce and CRM systems.",
+        "Proven experience shipping AI features, working with low-code/AI components, and optimizing customer support workflows (analyzing 200+ support tickets to drive feature adoption).",
+        "Technical mindset and ability to configure, test, and bridge business requirements with technical execution."
+      ],
+      "gaps": [
+        "The role specifically requires hands-on experience in the administration and configuration of Customer Service ticketing/telephony systems like Zendesk or Babelforce, which is missing from her resume/portfolio.",
+        "The primary domain focus of this position is Customer Service Operations/Tools infrastructure rather than core SaaS/ERP product development or engineering."
+      ],
+      "confidence": "high",
+      "reasoning_summary": "Arsema has fantastic product delivery, AI feature experience, and eCommerce exposure that makes her an agile product owner on paper. However, this specific role at Breuninger is heavily specialized in configuring and administering customer service tooling (like Zendesk and telephony platforms), an exact toolset and niche she lacks direct experience in, keeping this a moderate match.",
+      "decision": "DIGEST",
+      "scoring_error": null,
+      "status": "digest_sent",
       "first_seen_at": "2026-09-08T08:48:09.309004+00:00",
-      "last_seen_at": "2026-09-08T08:48:09.309022+00:00"
+      "last_seen_at": "2026-09-08T09:25:08.180243+00:00",
+      "notified_at": "2026-09-08T09:25:08.180243+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5029,16 +4987,24 @@
       ],
       "location_tier": "A_WORLDWIDE",
       "years_required_display": "3+ years (stated)",
-      "score": 0,
-      "why_matches": [],
-      "gaps": [],
-      "confidence": "medium",
-      "reasoning_summary": "Scoring failed - not sent, needs manual review.",
-      "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "score": 68,
+      "why_matches": [
+        "Meets the experience requirement with 3.5 years of total product and delivery experience (matching the job's 3+ years requirement).",
+        "Strong background in direct backlog ownership, sprint planning, and writing clear user stories and tasks (proven at Composity and Bravura).",
+        "Comfortable working in remote-first, distributed environments with direct cross-functional collaboration with engineering and design (evidenced by fully remote roles at Composity and Bravura)."
+      ],
+      "gaps": [
+        "No specific experience in the gambling, casino, or gaming industry as listed in her profile.",
+        "Lacks direct exposure to high-volume player engagement analytics or specialized gaming/sportsbook mechanics."
+      ],
+      "confidence": "high",
+      "reasoning_summary": "Arsema meets the core product ownership and remote-first collaboration requirements with 3.5 years of experience managing backlogs and engineering workflows. However, her domain background is in B2B SaaS (ERP, CRM, eCommerce, healthcare EHR) rather than gambling or gaming, making it a solid functional fit with a specific domain gap.",
+      "decision": "DIGEST",
+      "scoring_error": null,
+      "status": "digest_sent",
       "first_seen_at": "2026-09-08T08:48:05.305288+00:00",
-      "last_seen_at": "2026-09-08T08:48:05.305305+00:00"
+      "last_seen_at": "2026-09-08T09:25:08.180243+00:00",
+      "notified_at": "2026-09-08T09:25:08.180243+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5087,26 +5053,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.472683+00:00",
       "dedup_key": "702001d41aa6d9d4",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:48:01.302513+00:00",
-      "last_seen_at": "2026-09-08T08:48:01.302530+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5191,26 +5154,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.471634+00:00",
       "dedup_key": "3e578ea5a855085d",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "2+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:57.297332+00:00",
-      "last_seen_at": "2026-09-08T08:47:57.297349+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5229,26 +5189,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.470783+00:00",
       "dedup_key": "ed934e1452290743",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "4+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:53.294307+00:00",
-      "last_seen_at": "2026-09-08T08:47:53.294325+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5267,26 +5224,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.469925+00:00",
       "dedup_key": "71d9a4484be218bd",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 5 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:49.290213+00:00",
-      "last_seen_at": "2026-09-08T08:47:49.290229+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5338,26 +5292,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.468733+00:00",
       "dedup_key": "16b1b4c14464023a",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:45.282954+00:00",
-      "last_seen_at": "2026-09-08T08:47:45.282971+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5409,26 +5360,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.468032+00:00",
       "dedup_key": "bbed958934a5bb61",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "2+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:41.278969+00:00",
-      "last_seen_at": "2026-09-08T08:47:41.278988+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5540,26 +5488,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.466863+00:00",
       "dedup_key": "6e09f378d37d871b",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:37.275482+00:00",
-      "last_seen_at": "2026-09-08T08:47:37.275499+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5578,26 +5523,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.466552+00:00",
       "dedup_key": "2ede0ca8d631669c",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 5 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:33.272092+00:00",
-      "last_seen_at": "2026-09-08T08:47:33.272109+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5679,26 +5621,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.465895+00:00",
       "dedup_key": "aa5bc92e0f5c4330",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:29.268892+00:00",
-      "last_seen_at": "2026-09-08T08:47:29.268915+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -5780,26 +5719,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.464701+00:00",
       "dedup_key": "0ae0020897a68495",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:25.265749+00:00",
-      "last_seen_at": "2026-09-08T08:47:25.265766+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -6008,26 +5944,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.462487+00:00",
       "dedup_key": "e77d995dbbdc8565",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "2+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:21.260997+00:00",
-      "last_seen_at": "2026-09-08T08:47:21.261014+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -6079,26 +6012,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.461864+00:00",
       "dedup_key": "cd2df0a3be104ca4",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 5 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:17.257264+00:00",
-      "last_seen_at": "2026-09-08T08:47:17.257282+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -6183,26 +6113,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.460922+00:00",
       "dedup_key": "27215d46b2cab499",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 5 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:13.252742+00:00",
-      "last_seen_at": "2026-09-08T08:47:13.252760+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -6413,26 +6340,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.458913+00:00",
       "dedup_key": "a77a1eb62a4c5420",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:09.247710+00:00",
-      "last_seen_at": "2026-09-08T08:47:09.247727+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -6484,26 +6408,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.458482+00:00",
       "dedup_key": "c093a7d282e551a4",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 5 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:05.244014+00:00",
-      "last_seen_at": "2026-09-08T08:47:05.244031+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -6585,26 +6506,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.457660+00:00",
       "dedup_key": "4b3f62b0b39d955d",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 5 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:47:01.240851+00:00",
-      "last_seen_at": "2026-09-08T08:47:01.240867+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -6623,26 +6541,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.457454+00:00",
       "dedup_key": "07cbc9a58e71bf18",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "3+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:57.238027+00:00",
-      "last_seen_at": "2026-09-08T08:46:57.238044+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -6694,26 +6609,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.456858+00:00",
       "dedup_key": "cb81b4a9c2a6d942",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "2+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:53.235084+00:00",
-      "last_seen_at": "2026-09-08T08:46:53.235104+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -6732,26 +6644,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.456617+00:00",
       "dedup_key": "28a32f1b36747813",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:49.232108+00:00",
-      "last_seen_at": "2026-09-08T08:46:49.232127+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.633547+00:00"
     },
     {
       "source": "weworkremotely",
@@ -6803,26 +6712,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.456001+00:00",
       "dedup_key": "c23b9f946e5b2ea1",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "3+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:45.228543+00:00",
-      "last_seen_at": "2026-09-08T08:46:45.228564+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.648809+00:00"
     },
     {
       "source": "weworkremotely",
@@ -7069,26 +6975,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:12.452967+00:00",
       "dedup_key": "4ca3247bbe549070",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'anywhere')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "1+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:41.222415+00:00",
-      "last_seen_at": "2026-09-08T08:46:41.222436+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.649830+00:00"
     },
     {
       "source": "weworkremotely",
@@ -7203,26 +7106,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.746875+00:00",
       "dedup_key": "eaad988d260ca602",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'worldwide')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:37.218957+00:00",
-      "last_seen_at": "2026-09-08T08:46:37.218978+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.649830+00:00"
     },
     {
       "source": "remotive",
@@ -7259,26 +7159,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.746684+00:00",
       "dedup_key": "046afd46e9792f22",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'worldwide')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:33.215818+00:00",
-      "last_seen_at": "2026-09-08T08:46:33.215839+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.649830+00:00"
     },
     {
       "source": "remotive",
@@ -7297,26 +7194,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.746607+00:00",
       "dedup_key": "d7c2cb6cf6995176",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:29.212680+00:00",
-      "last_seen_at": "2026-09-08T08:46:29.212701+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.649830+00:00"
     },
     {
       "source": "remotive",
@@ -7664,26 +7558,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.744747+00:00",
       "dedup_key": "d9f540a93b7b0d4a",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:25.208566+00:00",
-      "last_seen_at": "2026-09-08T08:46:25.208587+00:00"
+      "last_seen_at": "2026-09-08T09:24:57.649830+00:00"
     },
     {
       "source": "remotive",
@@ -7838,16 +7729,22 @@
       ],
       "location_tier": "C_UNCLEAR",
       "years_required_display": "3+ years (stated)",
-      "score": 0,
-      "why_matches": [],
-      "gaps": [],
-      "confidence": "medium",
-      "reasoning_summary": "Scoring failed - not sent, needs manual review.",
+      "score": 30,
+      "why_matches": [
+        "Candidate has around 3.5 years of total professional experience, meeting the basic 3+ years experience threshold.",
+        "Candidate has professional experience with manual testing and QA methodologies from her roles at Ethiojobs and Composity."
+      ],
+      "gaps": [
+        "The role is for a Senior QA Engineer requiring 3+ years of dedicated automation testing experience and heavy tool use like Cypress or Selenium, which is outside the candidate's core product management and manual QA profile.",
+        "Lemon.io is a talent marketplace matching contractors with clients, and the job explicitly targets senior individual contributor engineers rather than product managers or hybrid QA/PM professionals."
+      ],
+      "confidence": "high",
+      "reasoning_summary": "Although the candidate has manual QA experience, this Lemon.io posting is strictly for a Senior QA Engineer specializing in test automation (Cypress/Selenium). The candidate's background is primarily in Product Management with some manual QA and API testing, making this a poor fit for a senior automation engineering role.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:21.205475+00:00",
-      "last_seen_at": "2026-09-08T08:46:21.205496+00:00"
+      "last_seen_at": "2026-09-08T09:24:59.489733+00:00"
     },
     {
       "source": "remotive",
@@ -7953,26 +7850,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.744104+00:00",
       "dedup_key": "31e5a76017c2cd9e",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'worldwide')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "2+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:17.202454+00:00",
-      "last_seen_at": "2026-09-08T08:46:17.202473+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remotive",
@@ -7991,26 +7885,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.744028+00:00",
       "dedup_key": "3b96c2b17371a239",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[A_WORLDWIDE]: worldwide-eligible (matched 'worldwide')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "A_WORLDWIDE",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:13.199581+00:00",
-      "last_seen_at": "2026-09-08T08:46:13.199597+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remotive",
@@ -8041,26 +7932,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.743836+00:00",
       "dedup_key": "aa41eadf3d203224",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[B_AFRICA_EMEA]: Africa/EMEA-eligible (matched 'emea')",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "B_AFRICA_EMEA",
+      "location_tier": "N/A",
       "years_required_display": "2+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:09.196889+00:00",
-      "last_seen_at": "2026-09-08T08:46:09.196906+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remotive",
@@ -8084,26 +7972,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.743424+00:00",
       "dedup_key": "f864138b7eaaa5d9",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "1+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:05.194219+00:00",
-      "last_seen_at": "2026-09-08T08:46:05.194238+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remoteok",
@@ -8120,26 +8005,23 @@
       "tags": [],
       "fetched_at": "2026-09-08T08:40:11.597295+00:00",
       "dedup_key": "2f0780549cbaba4f",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:46:01.191344+00:00",
-      "last_seen_at": "2026-09-08T08:46:01.191362+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remoteok",
@@ -8254,26 +8136,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.596830+00:00",
       "dedup_key": "fd3a414f95d07af0",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:57.188068+00:00",
-      "last_seen_at": "2026-09-08T08:45:57.188085+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remoteok",
@@ -8303,26 +8182,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.596675+00:00",
       "dedup_key": "b8ec14881e7c52be",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "1+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:53.185023+00:00",
-      "last_seen_at": "2026-09-08T08:45:53.185040+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remoteok",
@@ -8347,26 +8223,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.596488+00:00",
       "dedup_key": "1e74b0b27e93943c",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:49.182216+00:00",
-      "last_seen_at": "2026-09-08T08:45:49.182232+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remoteok",
@@ -8386,26 +8259,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.596453+00:00",
       "dedup_key": "ebaf26779a73c30f",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:45.179095+00:00",
-      "last_seen_at": "2026-09-08T08:45:45.179112+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remoteok",
@@ -8468,26 +8338,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.596251+00:00",
       "dedup_key": "f636d1ae9a11cb3e",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:41.176350+00:00",
-      "last_seen_at": "2026-09-08T08:45:41.176368+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remoteok",
@@ -8508,26 +8375,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.596229+00:00",
       "dedup_key": "9267520db4c5563c",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:37.173152+00:00",
-      "last_seen_at": "2026-09-08T08:45:37.173170+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.691510+00:00"
     },
     {
       "source": "remoteok",
@@ -8594,26 +8458,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.596015+00:00",
       "dedup_key": "4e80b4bbc6c16a6b",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:33.170100+00:00",
-      "last_seen_at": "2026-09-08T08:45:33.170116+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -8641,26 +8502,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.595901+00:00",
       "dedup_key": "fe088b6b8d08acd7",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "4+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:29.167367+00:00",
-      "last_seen_at": "2026-09-08T08:45:29.167384+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -8691,26 +8549,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.595786+00:00",
       "dedup_key": "cf3179074086d61e",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:25.164352+00:00",
-      "last_seen_at": "2026-09-08T08:45:25.164370+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -8774,26 +8629,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.595523+00:00",
       "dedup_key": "474133934557310f",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:21.161219+00:00",
-      "last_seen_at": "2026-09-08T08:45:21.161242+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -8816,26 +8668,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.595435+00:00",
       "dedup_key": "8c735996cf34bf87",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:17.158321+00:00",
-      "last_seen_at": "2026-09-08T08:45:17.158338+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -8855,26 +8704,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.595413+00:00",
       "dedup_key": "7e86bb550794529f",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:13.155516+00:00",
-      "last_seen_at": "2026-09-08T08:45:13.155533+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -8899,26 +8745,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.595313+00:00",
       "dedup_key": "16e2177fe22258e3",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:09.152947+00:00",
-      "last_seen_at": "2026-09-08T08:45:09.152964+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -8953,26 +8796,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.595080+00:00",
       "dedup_key": "2626c549789b827b",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:05.150135+00:00",
-      "last_seen_at": "2026-09-08T08:45:05.150156+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -8994,26 +8834,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.594989+00:00",
       "dedup_key": "103061001a5ccfb4",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:45:01.146974+00:00",
-      "last_seen_at": "2026-09-08T08:45:01.146991+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -9033,26 +8870,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.594881+00:00",
       "dedup_key": "04de79da949733d6",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:57.144238+00:00",
-      "last_seen_at": "2026-09-08T08:44:57.144256+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -9074,26 +8908,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.594842+00:00",
       "dedup_key": "f891a70e6535715e",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:53.141402+00:00",
-      "last_seen_at": "2026-09-08T08:44:53.141419+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -9117,26 +8948,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.594703+00:00",
       "dedup_key": "b813b18a6e1472bc",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:49.138156+00:00",
-      "last_seen_at": "2026-09-08T08:44:49.138203+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.693519+00:00"
     },
     {
       "source": "remoteok",
@@ -9164,26 +8992,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.594499+00:00",
       "dedup_key": "4b3b103ec3dcc174",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:45.135042+00:00",
-      "last_seen_at": "2026-09-08T08:44:45.135059+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9215,26 +9040,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.594456+00:00",
       "dedup_key": "37ecb63ad2e074ea",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:41.131807+00:00",
-      "last_seen_at": "2026-09-08T08:44:41.131825+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9259,26 +9081,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.594420+00:00",
       "dedup_key": "88f414a8a7519778",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:37.128959+00:00",
-      "last_seen_at": "2026-09-08T08:44:37.128976+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9305,26 +9124,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.594274+00:00",
       "dedup_key": "d9b562c2859716fb",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 5 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:33.126340+00:00",
-      "last_seen_at": "2026-09-08T08:44:33.126357+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9341,26 +9157,23 @@
       "tags": [],
       "fetched_at": "2026-09-08T08:40:11.594170+00:00",
       "dedup_key": "1c13e3ee4f449805",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:29.123436+00:00",
-      "last_seen_at": "2026-09-08T08:44:29.123453+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9380,26 +9193,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.594094+00:00",
       "dedup_key": "0f4b3e699fdd9b0e",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:25.120546+00:00",
-      "last_seen_at": "2026-09-08T08:44:25.120563+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9416,26 +9226,23 @@
       "tags": [],
       "fetched_at": "2026-09-08T08:40:11.593999+00:00",
       "dedup_key": "ce94873f17d63f75",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:21.117678+00:00",
-      "last_seen_at": "2026-09-08T08:44:21.117696+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9452,26 +9259,23 @@
       "tags": [],
       "fetched_at": "2026-09-08T08:40:11.593900+00:00",
       "dedup_key": "6ebf500c4e30e89c",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:17.114740+00:00",
-      "last_seen_at": "2026-09-08T08:44:17.114757+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9488,26 +9292,23 @@
       "tags": [],
       "fetched_at": "2026-09-08T08:40:11.593795+00:00",
       "dedup_key": "a8a259e69f48efbb",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:13.111866+00:00",
-      "last_seen_at": "2026-09-08T08:44:13.111883+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9530,26 +9331,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.593656+00:00",
       "dedup_key": "8844515c3a3ec741",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:09.108939+00:00",
-      "last_seen_at": "2026-09-08T08:44:09.108957+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9569,26 +9367,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.593628+00:00",
       "dedup_key": "bd154512bf9e4050",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:05.105944+00:00",
-      "last_seen_at": "2026-09-08T08:44:05.105961+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9626,26 +9421,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.593425+00:00",
       "dedup_key": "ac6afe6bbf0e861d",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:44:01.103305+00:00",
-      "last_seen_at": "2026-09-08T08:44:01.103323+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9673,26 +9465,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.593315+00:00",
       "dedup_key": "cec8cc3f2e897983",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:57.099752+00:00",
-      "last_seen_at": "2026-09-08T08:43:57.099769+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9720,26 +9509,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.593164+00:00",
       "dedup_key": "f1b487cb51540a68",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:53.096920+00:00",
-      "last_seen_at": "2026-09-08T08:43:53.096936+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9765,26 +9551,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.593008+00:00",
       "dedup_key": "29b1af019edd2e2f",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:49.093951+00:00",
-      "last_seen_at": "2026-09-08T08:43:49.093968+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9808,26 +9591,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.592894+00:00",
       "dedup_key": "ed24c2da0e820ee8",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:45.090985+00:00",
-      "last_seen_at": "2026-09-08T08:43:45.091002+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.695524+00:00"
     },
     {
       "source": "remoteok",
@@ -9854,26 +9634,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.592806+00:00",
       "dedup_key": "1b903c0536ea0e51",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:41.088229+00:00",
-      "last_seen_at": "2026-09-08T08:43:41.088246+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.697527+00:00"
     },
     {
       "source": "remoteok",
@@ -9976,26 +9753,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.592630+00:00",
       "dedup_key": "89409f76bb10cd5d",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:37.084968+00:00",
-      "last_seen_at": "2026-09-08T08:43:37.084985+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.697527+00:00"
     },
     {
       "source": "remoteok",
@@ -10095,26 +9869,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.592442+00:00",
       "dedup_key": "570a81232030d3f8",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:33.081763+00:00",
-      "last_seen_at": "2026-09-08T08:43:33.081779+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.697527+00:00"
     },
     {
       "source": "remoteok",
@@ -10133,26 +9904,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.592356+00:00",
       "dedup_key": "50363eb66de25aaa",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:29.079028+00:00",
-      "last_seen_at": "2026-09-08T08:43:29.079045+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.697527+00:00"
     },
     {
       "source": "remoteok",
@@ -10214,26 +9982,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.592110+00:00",
       "dedup_key": "a5969e960137578a",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:25.075753+00:00",
-      "last_seen_at": "2026-09-08T08:43:25.075770+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.697527+00:00"
     },
     {
       "source": "remoteok",
@@ -10259,26 +10024,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.592083+00:00",
       "dedup_key": "a727a1f8a28525b8",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:21.072819+00:00",
-      "last_seen_at": "2026-09-08T08:43:21.072837+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.697527+00:00"
     },
     {
       "source": "remoteok",
@@ -10340,26 +10102,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.591944+00:00",
       "dedup_key": "15938966f2b50bad",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "3+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:17.069936+00:00",
-      "last_seen_at": "2026-09-08T08:43:17.069953+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.697527+00:00"
     },
     {
       "source": "remoteok",
@@ -10378,26 +10137,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.591918+00:00",
       "dedup_key": "a7547224de242d99",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:13.067223+00:00",
-      "last_seen_at": "2026-09-08T08:43:13.067241+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.697527+00:00"
     },
     {
       "source": "remoteok",
@@ -10414,26 +10170,23 @@
       "tags": [],
       "fetched_at": "2026-09-08T08:40:11.591893+00:00",
       "dedup_key": "28d531eca5e099ed",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:09.064546+00:00",
-      "last_seen_at": "2026-09-08T08:43:09.064562+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.697527+00:00"
     },
     {
       "source": "remoteok",
@@ -10450,26 +10203,23 @@
       "tags": [],
       "fetched_at": "2026-09-08T08:40:11.591830+00:00",
       "dedup_key": "61ace1ad2d47c5f1",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "2+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:05.061878+00:00",
-      "last_seen_at": "2026-09-08T08:43:05.061895+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.697527+00:00"
     },
     {
       "source": "remoteok",
@@ -10500,26 +10250,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.591694+00:00",
       "dedup_key": "5b35a558be8df3cf",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:43:01.059223+00:00",
-      "last_seen_at": "2026-09-08T08:43:01.059240+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.698527+00:00"
     },
     {
       "source": "remoteok",
@@ -10544,26 +10291,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.591440+00:00",
       "dedup_key": "2742ac9099af5cf9",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:57.056163+00:00",
-      "last_seen_at": "2026-09-08T08:42:57.056214+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.698527+00:00"
     },
     {
       "source": "remoteok",
@@ -10595,26 +10339,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.591332+00:00",
       "dedup_key": "eb044408ff59e703",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "3+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:53.052773+00:00",
-      "last_seen_at": "2026-09-08T08:42:53.052790+00:00"
+      "last_seen_at": "2026-09-08T09:25:00.699221+00:00"
     },
     {
       "source": "remoteok",
@@ -10653,16 +10394,24 @@
       ],
       "location_tier": "C_UNCLEAR",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
-      "why_matches": [],
-      "gaps": [],
-      "confidence": "medium",
-      "reasoning_summary": "Scoring failed - not sent, needs manual review.",
+      "score": 45,
+      "why_matches": [
+        "Candidate has a B.Sc. in Software Engineering, aligning with the job's educational preference.",
+        "Experience gathering requirements, writing technical specifications, constructing workflows, and bridging business needs with engineering.",
+        "Strong organizational skills and ability to work independently demonstrated across full product life cycles."
+      ],
+      "gaps": [
+        "The role requires at least 5 years of experience in corporate systems analysis and design; candidate has ~3.5 years of total experience.",
+        "The position is focused on enterprise IT support, internal systems administration, and end-user training within a traditional manufacturing corporation, whereas the candidate's background is primarily in commercial SaaS product management and QA.",
+        "No evidence of direct enterprise IT system maintenance or end-user training in corporate operations as described in the day-to-day duties."
+      ],
+      "confidence": "high",
+      "reasoning_summary": "While the candidate has strong requirements-gathering and technical specification writing skills, this IT Business Analyst role at a traditional manufacturing corporation asks for 5 years of experience specifically in corporate systems analysis, along with internal IT support and end-user training duties that do not closely match her commercial SaaS product and QA background. She falls short of the stated experience band, making this a weaker match despite some overlapping skill sets.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:49.049782+00:00",
-      "last_seen_at": "2026-09-08T08:42:49.049804+00:00"
+      "last_seen_at": "2026-09-08T09:25:02.806586+00:00"
     },
     {
       "source": "remoteok",
@@ -10681,26 +10430,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.591147+00:00",
       "dedup_key": "ab5cb65b1c03a17a",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:45.046652+00:00",
-      "last_seen_at": "2026-09-08T08:42:45.046668+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -10726,26 +10472,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.591007+00:00",
       "dedup_key": "547a444f7b27fa59",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "2+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:41.043772+00:00",
-      "last_seen_at": "2026-09-08T08:42:41.043791+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -10771,26 +10514,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.590822+00:00",
       "dedup_key": "14cde7c1e662a1a0",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:37.040823+00:00",
-      "last_seen_at": "2026-09-08T08:42:37.040840+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -10816,26 +10556,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.590554+00:00",
       "dedup_key": "979f67e53008ec7b",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:33.037419+00:00",
-      "last_seen_at": "2026-09-08T08:42:33.037437+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -10856,26 +10593,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.590501+00:00",
       "dedup_key": "301db86e70dfb490",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:29.033658+00:00",
-      "last_seen_at": "2026-09-08T08:42:29.033675+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -10933,26 +10667,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.590304+00:00",
       "dedup_key": "a854b1076007498e",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:25.030017+00:00",
-      "last_seen_at": "2026-09-08T08:42:25.030034+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -10977,26 +10708,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.590188+00:00",
       "dedup_key": "fa91df0502af085d",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:21.027135+00:00",
-      "last_seen_at": "2026-09-08T08:42:21.027153+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -11028,26 +10756,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.589996+00:00",
       "dedup_key": "c78091b80b556c5f",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "1+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:17.024042+00:00",
-      "last_seen_at": "2026-09-08T08:42:17.024059+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -11073,26 +10798,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.589814+00:00",
       "dedup_key": "201498027748b4ac",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:13.020525+00:00",
-      "last_seen_at": "2026-09-08T08:42:13.020543+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -11118,26 +10840,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.589682+00:00",
       "dedup_key": "c4d21ad5c02a0615",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:09.017127+00:00",
-      "last_seen_at": "2026-09-08T08:42:09.017145+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -11168,26 +10887,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.589328+00:00",
       "dedup_key": "c496beb7f6d98f65",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:05.013849+00:00",
-      "last_seen_at": "2026-09-08T08:42:05.013867+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -11211,26 +10927,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.589244+00:00",
       "dedup_key": "fe294d849bfe3f9b",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:42:01.009995+00:00",
-      "last_seen_at": "2026-09-08T08:42:01.010019+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -11252,26 +10965,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.589171+00:00",
       "dedup_key": "e184c0d92bcf41a8",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:57.007046+00:00",
-      "last_seen_at": "2026-09-08T08:41:57.007063+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -11295,26 +11005,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.589108+00:00",
       "dedup_key": "420c6b9ad5be3106",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:53.004254+00:00",
-      "last_seen_at": "2026-09-08T08:41:53.004271+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -11346,26 +11053,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.588986+00:00",
       "dedup_key": "22c68b6947758cdb",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:49.001152+00:00",
-      "last_seen_at": "2026-09-08T08:41:49.001169+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -11392,26 +11096,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.588817+00:00",
       "dedup_key": "39cfa5dfd6d5fa87",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:44.997824+00:00",
-      "last_seen_at": "2026-09-08T08:41:44.997842+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.008324+00:00"
     },
     {
       "source": "remoteok",
@@ -11441,26 +11142,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.588709+00:00",
       "dedup_key": "e5be12781111f274",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:40.994518+00:00",
-      "last_seen_at": "2026-09-08T08:41:40.994536+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.015150+00:00"
     },
     {
       "source": "remoteok",
@@ -11481,26 +11179,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.588684+00:00",
       "dedup_key": "89e49a5150d17149",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:36.991351+00:00",
-      "last_seen_at": "2026-09-08T08:41:36.991368+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.015150+00:00"
     },
     {
       "source": "remoteok",
@@ -11522,26 +11217,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.588480+00:00",
       "dedup_key": "efecea552441a348",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:32.988489+00:00",
-      "last_seen_at": "2026-09-08T08:41:32.988507+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -11563,26 +11255,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.588345+00:00",
       "dedup_key": "c74110560a3b5a35",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "2+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:28.984990+00:00",
-      "last_seen_at": "2026-09-08T08:41:28.985010+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -11607,26 +11296,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.588259+00:00",
       "dedup_key": "5a26e9d714304e91",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:24.981721+00:00",
-      "last_seen_at": "2026-09-08T08:41:24.981739+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -11652,26 +11338,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.588127+00:00",
       "dedup_key": "d7e2af5f99dcd960",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:20.978629+00:00",
-      "last_seen_at": "2026-09-08T08:41:20.978647+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -11690,26 +11373,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.588107+00:00",
       "dedup_key": "ab488e47a68181c6",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:16.975455+00:00",
-      "last_seen_at": "2026-09-08T08:41:16.975471+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -11733,26 +11413,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.587955+00:00",
       "dedup_key": "7efa2393b113454f",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:12.972657+00:00",
-      "last_seen_at": "2026-09-08T08:41:12.972675+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -11771,26 +11448,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.587861+00:00",
       "dedup_key": "778a98709031d33f",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "3+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:08.969075+00:00",
-      "last_seen_at": "2026-09-08T08:41:08.969092+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -11850,26 +11524,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.587560+00:00",
       "dedup_key": "018375437b7cb637",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 6 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "6+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:04.966153+00:00",
-      "last_seen_at": "2026-09-08T08:41:04.966171+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -11888,26 +11559,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.587537+00:00",
       "dedup_key": "8fd99c41c04f0601",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:41:00.963117+00:00",
-      "last_seen_at": "2026-09-08T08:41:00.963138+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -11932,26 +11600,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.587413+00:00",
       "dedup_key": "078f0d903323cc69",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:56.960321+00:00",
-      "last_seen_at": "2026-09-08T08:40:56.960339+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -11973,26 +11638,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.587153+00:00",
       "dedup_key": "50eb8a2102184ffe",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:52.957230+00:00",
-      "last_seen_at": "2026-09-08T08:40:52.957248+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -12014,26 +11676,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.587081+00:00",
       "dedup_key": "c6ba35c6ae92d396",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:48.953808+00:00",
-      "last_seen_at": "2026-09-08T08:40:48.953826+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -12053,26 +11712,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.586958+00:00",
       "dedup_key": "646b07e1153a39c1",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:44.950836+00:00",
-      "last_seen_at": "2026-09-08T08:40:44.950854+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -12098,26 +11754,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.586820+00:00",
       "dedup_key": "06774a100d957f49",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 5 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:40.947817+00:00",
-      "last_seen_at": "2026-09-08T08:40:40.947834+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -12144,26 +11797,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.586686+00:00",
       "dedup_key": "7209e92c8ffba68c",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: requires 5 years - not an auto-reject, flagged for AI to judge realism"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "5+ years (stated)",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:36.944652+00:00",
-      "last_seen_at": "2026-09-08T08:40:36.944670+00:00"
+      "last_seen_at": "2026-09-08T09:25:04.016623+00:00"
     },
     {
       "source": "remoteok",
@@ -12200,16 +11850,23 @@
       ],
       "location_tier": "C_UNCLEAR",
       "years_required_display": "4+ years (stated)",
-      "score": 0,
-      "why_matches": [],
-      "gaps": [],
-      "confidence": "medium",
-      "reasoning_summary": "Scoring failed - not sent, needs manual review.",
+      "score": 45,
+      "why_matches": [
+        "Has a B.Sc. in Software Engineering and foundational technical skills including SQL, Postman for API testing, and GitHub.",
+        "Brings direct QA experience from Ethiojobs and Composity, including test case design, regression testing, and defect triage."
+      ],
+      "gaps": [
+        "The role requires 4+ years of dedicated QA experience, whereas the candidate has ~3.5 years of total experience across PM, Scrum Master, and QA roles.",
+        "The posting specifically demands hands-on test automation experience using Playwright and/or Cypress, which is not evidenced in her resume or portfolio.",
+        "The core responsibility of this role is deep data pipeline, database, and cloud testing as a Databricks partner, whereas her data/SQL exposure has been for product decisions and ad-hoc checks rather than heavy data engineering pipeline validation."
+      ],
+      "confidence": "high",
+      "reasoning_summary": "While Arsema has strong general technical fluency and background in manual/API QA as part of her PM/QA hybrid roles, this is a specialized Data QA Engineer position requiring 4+ years of hands-on test automation with Playwright/Cypress and heavy data pipeline validation. Her profile is a mismatch for this specific technical scope.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:32.941403+00:00",
-      "last_seen_at": "2026-09-08T08:40:32.941420+00:00"
+      "last_seen_at": "2026-09-08T09:25:05.949489+00:00"
     },
     {
       "source": "remoteok",
@@ -12229,26 +11886,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.586450+00:00",
       "dedup_key": "9317308abb9c6204",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:28.938336+00:00",
-      "last_seen_at": "2026-09-08T08:40:28.938353+00:00"
+      "last_seen_at": "2026-09-08T09:25:07.150660+00:00"
     },
     {
       "source": "remoteok",
@@ -12267,26 +11921,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.586356+00:00",
       "dedup_key": "942b4e627de8009a",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:24.935304+00:00",
-      "last_seen_at": "2026-09-08T08:40:24.935322+00:00"
+      "last_seen_at": "2026-09-08T09:25:07.150660+00:00"
     },
     {
       "source": "remoteok",
@@ -12317,26 +11968,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.586251+00:00",
       "dedup_key": "aa224f493f99637b",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:20.932244+00:00",
-      "last_seen_at": "2026-09-08T08:40:20.932266+00:00"
+      "last_seen_at": "2026-09-08T09:25:07.150660+00:00"
     },
     {
       "source": "remoteok",
@@ -12357,26 +12005,23 @@
       ],
       "fetched_at": "2026-09-08T08:40:11.585803+00:00",
       "dedup_key": "053dc940fd3644a3",
-      "hard_filter_passed": true,
+      "hard_filter_passed": false,
       "hard_filter_reasons": [
         "company_quality: company/posting looks legitimate",
-        "role: title not on include list, but not excluded - deferring to AI judgment",
-        "location[C_UNCLEAR]: no explicit eligibility statement found",
-        "job_type: job type acceptable or unstated",
-        "experience: experience requirement within target range or unstated"
+        "role: title not on include list"
       ],
-      "location_tier": "C_UNCLEAR",
+      "location_tier": "N/A",
       "years_required_display": "not clearly stated",
-      "score": 0,
+      "score": null,
       "why_matches": [],
       "gaps": [],
       "confidence": "medium",
       "reasoning_summary": "Scoring failed - not sent, needs manual review.",
       "decision": "REJECT",
-      "scoring_error": "model is required.",
-      "status": "scoring_error",
+      "scoring_error": null,
+      "status": "rejected",
       "first_seen_at": "2026-09-08T08:40:16.929155+00:00",
-      "last_seen_at": "2026-09-08T08:40:16.929206+00:00"
+      "last_seen_at": "2026-09-08T09:25:07.150660+00:00"
     }
   ]
 }
