@@ -10,11 +10,11 @@ The model returns a 0–100 score. SEND / DIGEST / REJECT is derived from that s
 
 ## Features
 
-- Sources: RemoteOK, Remotive, We Work Remotely, Himalayas, Greenhouse, Lever
+- Sources: RemoteOK, Remotive, We Work Remotely, Himalayas, Mind the Product, Arbeitnow, Jobicy, Greenhouse, Lever, Ashby
 - Hard filters (role, location, experience, job type, company quality) before any AI call
 - Swappable scorers: Gemini (default, free tier) or Anthropic Claude
 - Discord: immediate alerts for strong matches (85+), digest for mid-band matches (65–84)
-- FastAPI dashboard over `data/jobs.json`
+- FastAPI dashboard over `data/jobs.json`, plus LinkedIn / board discovery links
 - GitHub Actions hourly schedule; job store committed back to the repo
 
 ## Stack
@@ -77,10 +77,14 @@ Hourly from **09:00 through 23:00 Africa/Nairobi** (`cron: 0 6-20 * * *` UTC). G
 | Remotive | Public API | Category queries |
 | We Work Remotely | RSS | Uses `<region>` when present |
 | Himalayas | Public API | Uses `locationRestrictions` when present |
+| Mind the Product | Public JSON list | Product-focused board (`/api/jobs/list`) |
+| Arbeitnow | Public API | Tag-hinted PM/QA subset |
+| Jobicy | Public API | Product / QA / business remote queries |
 | Greenhouse | Per-company board API | Tokens in `sources.greenhouse_boards` |
 | Lever | Per-company API | Slugs in `sources.lever_companies` |
+| Ashby | Per-company API | Slugs in `sources.ashby_companies` |
 | Wellfound | Manual import | `data/wellfound_manual.json` if present (no scraping) |
-| LinkedIn | Discovery links only | Search URLs, never scraped |
+| LinkedIn | Discovery links only | Dashboard `/api/discovery` — search URLs, never scraped |
 
 ## Project layout
 
@@ -108,7 +112,7 @@ Edit `config/preferences.json`:
 - `experience.hard_reject_years`, seniority title rules
 - `location` tier keyword lists
 - `scoring.min_score_to_send_immediate` (default 85) / `min_score_to_send_digest` (default 65)
-- `sources.greenhouse_boards` / `sources.lever_companies`
+- `sources.greenhouse_boards` / `sources.lever_companies` / `sources.ashby_companies`
 
 Keep `config/candidate_profile.json` in sync with the resume and portfolio so match rationale stays accurate.
 

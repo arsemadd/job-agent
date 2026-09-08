@@ -105,6 +105,71 @@ def test_lever_collector_noop_when_no_companies_configured():
 
 
 @responses.activate
+def test_mindtheproduct_parses_list_api():
+    from backend.collectors.mindtheproduct import MindTheProductCollector, API_URL
+
+    responses.add(
+        responses.GET, API_URL,
+        json={
+            "jobs": [{
+                "id": "abc",
+                "slug": "product-manager-xyz",
+                "title": "Product Manager",
+                "company": "Acme",
+                "applicationUrl": "https://acme.example/jobs/1",
+                "description": "Build products",
+                "location": "Worldwide",
+                "remote": True,
+                "type": "full-time",
+                "publishedAt": "2026-09-01T00:00:00Z",
+                "salary": "$100k",
+                "tags": [],
+                "seniority": "mid",
+            }],
+            "total": 1,
+            "page": 1,
+            "pageSize": 50,
+            "hasMore": False,
+        },
+        status=200,
+    )
+    jobs = MindTheProductCollector().fetch()
+    assert len(jobs) == 1
+    assert jobs[0].title == "Product Manager"
+    assert jobs[0].source == "mindtheproduct"
+    assert "Remote" in jobs[0].location_raw
+
+
+@responses.activate
+def test_ashby_collector_skips_unlisted():
+    from backend.collectors.ashby import AshbyCollector
+
+    responses.add(
+        responses.GET, "https://api.ashbyhq.com/posting-api/job-board/acme",
+        json={"jobs": [
+            {"id": "1", "title": "Product Manager", "companyName": "Acme",
+             "jobUrl": "https://jobs.ashbyhq.com/acme/1", "location": "Remote",
+             "isRemote": True, "isListed": True, "publishedAt": "2026-09-01"},
+            {"id": "2", "title": "Hidden", "jobUrl": "https://x", "isListed": False},
+        ]},
+        status=200,
+    )
+    jobs = AshbyCollector(["acme"]).fetch()
+    assert len(jobs) == 1
+    assert jobs[0].source == "ashby:acme"
+
+
+def test_linkedin_discovery_builds_remote_urls():
+    from backend.collectors.linkedin_discovery import build_discovery
+
+    data = build_discovery(["Product Manager", "QA Analyst"])
+    assert len(data["linkedin"]) == 2
+    assert "linkedin.com/jobs/search" in data["linkedin"][0]["url"]
+    assert "f_WT=2" in data["linkedin"][0]["url"]
+    assert any(b["name"] == "Mind the Product" for b in data["boards"])
+
+
+@responses.activate
 def test_safe_fetch_swallows_collector_exceptions():
     responses.add(responses.GET, REMOTEOK_URL, status=500)
     jobs = RemoteOKCollector().safe_fetch()

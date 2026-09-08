@@ -70,11 +70,39 @@
   },
 
   "sources": {
-    "enabled": ["remoteok", "remotive", "weworkremotely", "himalayas", "greenhouse", "lever"],
-    "disabled_pending_manual_setup": ["wellfound", "linkedin_discovery"],
-    "greenhouse_boards": [],
-    "lever_companies": [],
-    "note": "wellfound has no public jobs API; linkedin_discovery only builds search links, it never scrapes. Populate greenhouse_boards/lever_companies with company board tokens/slugs to pull directly from their ATS."
+    "enabled": [
+      "remoteok",
+      "remotive",
+      "weworkremotely",
+      "himalayas",
+      "mindtheproduct",
+      "arbeitnow",
+      "jobicy",
+      "greenhouse",
+      "lever",
+      "ashby"
+    ],
+    "disabled_pending_manual_setup": ["wellfound"],
+    "greenhouse_boards": [
+      "intercom",
+      "miro",
+      "duolingo",
+      "calendly",
+      "gitlab",
+      "hashicorp"
+    ],
+    "lever_companies": [
+      "netflix",
+      "spotify",
+      "shopify"
+    ],
+    "ashby_companies": [
+      "notion",
+      "linear",
+      "ramp",
+      "vercel"
+    ],
+    "note": "wellfound has no public jobs API (manual import only). LinkedIn is discovery-only via /api/discovery — never scraped. Add more greenhouse_boards / lever_companies / ashby_companies slugs to pull company ATS boards directly."
   },
 
   "schedule": {

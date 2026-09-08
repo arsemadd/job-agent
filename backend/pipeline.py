@@ -18,10 +18,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+from backend.collectors.arbeitnow import ArbeitnowCollector
+from backend.collectors.ashby import AshbyCollector
 from backend.collectors.base import Collector
 from backend.collectors.greenhouse import GreenhouseCollector
 from backend.collectors.himalayas import HimalayasCollector
+from backend.collectors.jobicy import JobicyCollector
 from backend.collectors.lever import LeverCollector
+from backend.collectors.mindtheproduct import MindTheProductCollector
 from backend.collectors.remoteok import RemoteOKCollector
 from backend.collectors.remotive import RemotiveCollector
 from backend.collectors.wellfound import WellfoundCollector
@@ -51,14 +55,19 @@ def build_collectors(prefs: dict) -> list[Collector]:
     enabled = set(prefs.get("sources", {}).get("enabled", []))
     boards = prefs.get("sources", {}).get("greenhouse_boards", [])
     companies = prefs.get("sources", {}).get("lever_companies", [])
+    ashby_companies = prefs.get("sources", {}).get("ashby_companies", [])
 
     all_collectors: list[Collector] = [
         RemoteOKCollector(),
         RemotiveCollector(),
         WeWorkRemotelyCollector(),
         HimalayasCollector(),
+        MindTheProductCollector(),
+        ArbeitnowCollector(),
+        JobicyCollector(),
         GreenhouseCollector(boards),
         LeverCollector(companies),
+        AshbyCollector(ashby_companies),
         WellfoundCollector(),
     ]
     return [c for c in all_collectors if c.name in enabled or c.name == "wellfound"]
