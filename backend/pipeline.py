@@ -14,6 +14,10 @@ import os
 import sys
 from datetime import datetime, timezone
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from backend.collectors.base import Collector
 from backend.collectors.greenhouse import GreenhouseCollector
 from backend.collectors.himalayas import HimalayasCollector
@@ -122,6 +126,12 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
 
         if dry_run:
             record.update({"status": "dry_run_not_scored", "decision": None, "score": None})
+            store.upsert(key, record)
+            continue
+
+        max_score = int(os.environ.get("MAX_SCORE_PER_RUN", "0") or "0")
+        if max_score and scored_count >= max_score:
+            record.update({"status": "queued_for_scoring", "decision": None, "score": None})
             store.upsert(key, record)
             continue
 

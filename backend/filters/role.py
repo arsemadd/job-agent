@@ -30,7 +30,9 @@ def check_role(title: str, prefs: dict) -> FilterResult:
     if any(inc in t for inc in include):
         return FilterResult(True, "title matches an included role keyword")
 
-    # Not an obvious match either way - don't hard-reject on title alone.
-    # Let it through so the AI can judge titles the keyword list didn't anticipate
-    # (the brief explicitly wants "related titles the AI identifies as relevant").
-    return FilterResult(True, "title not on include list, but not excluded - deferring to AI judgment")
+    # Default is defer (brief wants AI to judge unexpected adjacent titles).
+    # Set roles.defer_unknown_titles=false when AI quota is tight (e.g. Gemini free tier).
+    if role_prefs.get("defer_unknown_titles", True):
+        return FilterResult(True, "title not on include list, but not excluded - deferring to AI judgment")
+
+    return FilterResult(False, "title not on include list")

@@ -123,10 +123,17 @@ def test_role_excluded_keyword_rejected(prefs):
 
 
 def test_role_ambiguous_title_deferred_to_ai(prefs):
-    # not on the include list, not excluded either - the brief wants these to
-    # reach the AI rather than being silently dropped by a keyword list.
+    # not on the include list, not excluded either - when defer_unknown_titles
+    # is true these reach the AI; when false they hard-reject (free-tier mode).
+    prefs = {**prefs, "roles": {**prefs["roles"], "defer_unknown_titles": True}}
     res = check_role("Head of Client Delivery", prefs)
     assert res.passed is True
+
+
+def test_role_unknown_title_rejected_when_strict(prefs):
+    prefs = {**prefs, "roles": {**prefs["roles"], "defer_unknown_titles": False}}
+    res = check_role("Head of Client Delivery", prefs)
+    assert res.passed is False
 
 
 # ---------- full hard-filter pipeline: false-positive / false-negative style cases ----------

@@ -13,6 +13,7 @@ needed for one-way notifications, per the brief). Two message shapes:
 from __future__ import annotations
 
 import logging
+import os
 import time
 from datetime import datetime, timezone
 
@@ -112,7 +113,17 @@ def format_digest_embed(record: dict) -> dict:
     }
 
 
-def _post(webhook_url: str, payload: dict, max_retries: int = 3) -> bool:
+def _forum_fields(thread_name: str | None = None) -> dict:
+    """Forum-channel webhooks require thread_id or thread_name (Discord error 220001)."""
+    thread_id = os.environ.get("DISCORD_THREAD_ID", "").strip()
+    if thread_id:
+        return {"thread_id": thread_id}
+    name = (thread_name or os.environ.get("DISCORD_THREAD_NAME") or "Job Matcher").strip()
+    return {"thread_name": name[:100]}
+
+
+def _post(webhook_url: str, payload: dict, max_retries: int = 3, thread_name: str | None = None) -> bool:
+    payload = {**payload, **_forum_fields(thread_name)}
     for attempt in range(1, max_retries + 1):
         try:
             resp = requests.post(webhook_url, json=payload, timeout=15)
@@ -130,18 +141,23 @@ def _post(webhook_url: str, payload: dict, max_retries: int = 3) -> bool:
 
 def send_immediate(record: dict, webhook_url: str) -> bool:
     content = format_immediate_message(record)
-    return _post(webhook_url, {"content": content})
+    score = int(record.get("score") or 0)
+    title = (record.get("title") or "Match")[:60]
+    thread_name = f"{score}% — {title}"
+    return _post(webhook_url, {"content": content}, thread_name=thread_name)
 
 
 def send_digest(records: list[dict], webhook_url: str) -> bool:
     if not records:
         return True
     records = sorted(records, key=lambda r: r.get("score", 0), reverse=True)
+    day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     ok = True
     for i in range(0, len(records), MAX_EMBEDS_PER_MESSAGE):
         chunk = records[i : i + MAX_EMBEDS_PER_MESSAGE]
         payload = {"embeds": [format_digest_embed(r) for r in chunk]}
         if i == 0:
-            payload["content"] = f"📋 **Daily digest — {len(records)} possible matches (70-84% range)**"
-        ok = _post(webhook_url, payload) and ok
+            payload["content"] = f"📋 **Digest — {len(records)} possible matches (65–84% range)**"
+        thread_name = f"Digest {day}" if i == 0 else f"Digest {day} ({i // MAX_EMBEDS_PER_MESSAGE + 1})"
+        ok = _post(webhook_url, payload, thread_name=thread_name) and ok
     return ok

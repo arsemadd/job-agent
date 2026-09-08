@@ -34,10 +34,10 @@ from backend.models import Job
 
 logger = logging.getLogger("job_agent.scoring.gemini")
 
-# gemini-2.5-flash is free-tier eligible as of this writing - check
-# https://ai.google.dev/gemini-api/docs/pricing for the current free-tier
-# model list and override via GEMINI_MODEL if it's changed since.
-DEFAULT_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+# gemini-3.5-flash-lite has the highest free-tier daily quota among current
+# Flash models; override via GEMINI_MODEL if you prefer gemini-3.6-flash (paid
+# or higher free-tier allowance). See https://ai.google.dev/gemini-api/docs/pricing
+DEFAULT_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 MAX_RETRIES = 4
 
 
