@@ -51,7 +51,15 @@ class JobStore:
         tmp_path = self.path + ".tmp"
         with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(payload, f, indent=2, ensure_ascii=False)
-        os.replace(tmp_path, self.path)
+        try:
+            os.replace(tmp_path, self.path)
+        except PermissionError:
+            # Windows occasionally locks the destination (antivirus / editor).
+            shutil.copyfile(tmp_path, self.path)
+            try:
+                os.remove(tmp_path)
+            except OSError:
+                pass
 
     def seen(self, dedup_key: str) -> bool:
         return dedup_key in self._records
@@ -84,8 +92,14 @@ class JobStore:
         strong = len([r for r in records if r.get("decision") == "SEND"])
         digest = len([r for r in records if r.get("decision") == "DIGEST"])
         sent_to_discord = len([r for r in records if r.get("status") in ("sent", "digest_sent")])
+        notify_failed = len([r for r in records if r.get("status") == "notify_failed"])
         scored = [r.get("score") for r in records if isinstance(r.get("score"), (int, float)) and r.get("hard_filter_passed")]
         avg_score = round(sum(scored) / len(scored), 1) if scored else None
+
+        by_source: dict[str, int] = {}
+        for r in records:
+            src = (r.get("source") or "unknown").split(":")[0]
+            by_source[src] = by_source.get(src, 0) + 1
 
         return {
             "jobs_found": found,
@@ -93,5 +107,8 @@ class JobStore:
             "strong_matches": strong,
             "digest_matches": digest,
             "sent_to_discord": sent_to_discord,
+            "notify_failed": notify_failed,
             "average_match": avg_score,
+            "updated_at": max((r.get("last_seen_at") or "" for r in records), default=None) or None,
+            "by_source": dict(sorted(by_source.items(), key=lambda kv: -kv[1])),
         }

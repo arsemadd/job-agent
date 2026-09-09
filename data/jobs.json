@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-09T10:55:29.026819+00:00",
+  "updated_at": "2026-09-09T12:41:56.472896+00:00",
   "jobs": [
     {
       "source": "ashby:ramp",
@@ -25707,10 +25707,10 @@
       "reasoning_summary": "Arsema is a strong technical product manager with deep experience in internal tooling, workflow automation, and API-adjacent platforms. While she lacks direct consumer-scale customer service platform experience, her technical background and execution capabilities make her a solid, partial fit for shaping foundational tooling.",
       "decision": "DIGEST",
       "scoring_error": null,
-      "status": "notify_failed",
+      "status": "digest_sent",
       "first_seen_at": "2026-09-08T14:17:09.369536+00:00",
-      "last_seen_at": "2026-09-09T10:55:28.756651+00:00",
-      "notified_at": "2026-09-08T14:18:14.098625+00:00"
+      "last_seen_at": "2026-09-09T12:41:56.471510+00:00",
+      "notified_at": "2026-09-09T12:41:56.471510+00:00"
     },
     {
       "source": "lever:spotify",
@@ -41413,10 +41413,10 @@
       "reasoning_summary": "Arsema has exceptional 0-to-1 product, technical, and AI-shipping background that strongly aligns with the product execution aspects of this role. However, the geographic location (Addis Ababa) versus the US-based scope, combined with the senior Founding PM scope for a $150M enterprise initiative, makes this a challenging fit despite the strong skill overlap.",
       "decision": "DIGEST",
       "scoring_error": null,
-      "status": "notify_failed",
+      "status": "digest_sent",
       "first_seen_at": "2026-09-08T14:16:16.396418+00:00",
-      "last_seen_at": "2026-09-08T21:39:49.575906+00:00",
-      "notified_at": "2026-09-08T14:18:14.098619+00:00"
+      "last_seen_at": "2026-09-09T12:41:56.471510+00:00",
+      "notified_at": "2026-09-09T12:41:56.471510+00:00"
     },
     {
       "source": "jobicy",
@@ -41872,10 +41872,10 @@
       "reasoning_summary": "Arsema has solid operational, process, and PDLC experience that aligns well with the core responsibilities of an Associate Product Operations Manager. However, the job location is explicitly set to the USA while she is based in Ethiopia, presenting a significant logistical barrier unless the role permits global remote work.",
       "decision": "DIGEST",
       "scoring_error": null,
-      "status": "notify_failed",
+      "status": "digest_sent",
       "first_seen_at": "2026-09-08T14:16:12.516108+00:00",
-      "last_seen_at": "2026-09-09T10:55:28.753706+00:00",
-      "notified_at": "2026-09-08T14:18:14.098616+00:00"
+      "last_seen_at": "2026-09-09T12:41:56.472237+00:00",
+      "notified_at": "2026-09-09T12:41:56.472237+00:00"
     },
     {
       "source": "jobicy",
@@ -42782,10 +42782,10 @@
       "reasoning_summary": "Arsema is an exceptionally strong product and execution match for this role, given her 3.5 years of experience writing clear specs, managing backlogs, conducting hands-on QA, and shipping AI features end-to-end. The primary friction points are location-based, as the role is designated as hybrid in France, whereas she is based in Ethiopia.",
       "decision": "DIGEST",
       "scoring_error": null,
-      "status": "notify_failed",
+      "status": "digest_sent",
       "first_seen_at": "2026-09-08T14:16:03.407269+00:00",
-      "last_seen_at": "2026-09-09T10:55:28.753549+00:00",
-      "notified_at": "2026-09-08T14:18:14.098613+00:00"
+      "last_seen_at": "2026-09-09T12:41:56.472237+00:00",
+      "notified_at": "2026-09-09T12:41:56.472237+00:00"
     },
     {
       "source": "jobicy",
@@ -45688,10 +45688,10 @@
       "reasoning_summary": "Arsema is a strong technical product manager with relevant B2B SaaS, AI-feature implementation, and end-to-end delivery experience that aligns well with the core responsibilities. However, she falls slightly short of the requested 4+ years of PM experience, lacks domain background in fintech/spend management, and the role specifies bilingual French/English proficiency which is unconfirmed in her profile.",
       "decision": "DIGEST",
       "scoring_error": null,
-      "status": "notify_failed",
+      "status": "digest_sent",
       "first_seen_at": "2026-09-08T14:14:45.573107+00:00",
-      "last_seen_at": "2026-09-09T10:55:26.928138+00:00",
-      "notified_at": "2026-09-08T14:18:14.098611+00:00"
+      "last_seen_at": "2026-09-09T12:41:56.472237+00:00",
+      "notified_at": "2026-09-09T12:41:56.472237+00:00"
     },
     {
       "source": "arbeitnow",
@@ -46223,10 +46223,10 @@
       "reasoning_summary": "Arsema possesses strong product owner skills, technical AI product execution, and relevant healthcare domain exposure that match the core product duties. However, the role is heavily tied to regulated medical devices (MDR) in Munich, presenting a potential location and regulatory-compliance mismatch.",
       "decision": "DIGEST",
       "scoring_error": null,
-      "status": "notify_failed",
+      "status": "digest_sent",
       "first_seen_at": "2026-09-08T14:14:20.998221+00:00",
-      "last_seen_at": "2026-09-08T21:39:46.355381+00:00",
-      "notified_at": "2026-09-08T14:18:14.098608+00:00"
+      "last_seen_at": "2026-09-09T12:41:56.472237+00:00",
+      "notified_at": "2026-09-09T12:41:56.472237+00:00"
     },
     {
       "source": "arbeitnow",
@@ -47088,10 +47088,10 @@
       "reasoning_summary": "Arsema is a strong technical product manager whose API fluency, end-to-end delivery capability, and hands-on AI tool usage (including MCP) align well with MailerLite's technical requirements. The primary gap is the slightly higher years-of-experience requirement (4+ requested vs. ~3.5 actual) and the platform/developer-tooling focus, but her technical depth makes this a solid, viable application.",
       "decision": "DIGEST",
       "scoring_error": null,
-      "status": "notify_failed",
+      "status": "digest_sent",
       "first_seen_at": "2026-09-08T14:14:08.471736+00:00",
-      "last_seen_at": "2026-09-09T10:55:19.287287+00:00",
-      "notified_at": "2026-09-08T14:18:14.098603+00:00"
+      "last_seen_at": "2026-09-09T12:41:56.472237+00:00",
+      "notified_at": "2026-09-09T12:41:56.472237+00:00"
     },
     {
       "source": "mindtheproduct",
@@ -47242,10 +47242,10 @@
       "reasoning_summary": "Arsema's core competencies in end-to-end product delivery, workflow platforms (invoicing/payments/schedules), and turning ambiguity into structured roadmaps make her a strong functional fit for launching 'Ola'. However, her ~3.5 years of experience is slightly junior compared to the autonomous commercial leadership and pricing-test ownership implied by the posting, making it a solid mid-tier match.",
       "decision": "DIGEST",
       "scoring_error": null,
-      "status": "notify_failed",
+      "status": "digest_sent",
       "first_seen_at": "2026-09-08T14:14:03.176989+00:00",
-      "last_seen_at": "2026-09-09T10:55:19.287265+00:00",
-      "notified_at": "2026-09-08T14:18:14.098574+00:00"
+      "last_seen_at": "2026-09-09T12:41:56.472237+00:00",
+      "notified_at": "2026-09-09T12:41:56.472237+00:00"
     },
     {
       "source": "mindtheproduct",

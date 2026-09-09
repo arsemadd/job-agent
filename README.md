@@ -44,9 +44,11 @@ The model returns a 0–100 score. SEND / DIGEST / REJECT is derived from that s
 | `GEMINI_MODEL` | no | defaults to `gemini-3.5-flash-lite` |
 | `ANTHROPIC_API_KEY` | if using Claude | |
 | `ANTHROPIC_MODEL` | no | override default Claude model ID |
-| `DISCORD_WEBHOOK_URL` | for notifications | channel webhook (forum channels supported) |
+| `DISCORD_WEBHOOK_URL` | for notifications | channel webhook |
+| `DISCORD_FORUM` | no | set `1` only if the webhook targets a forum channel |
 | `DISCORD_THREAD_ID` | no | post into an existing forum thread |
-| `DISCORD_THREAD_NAME` | no | forum post name when `DISCORD_THREAD_ID` is unset |
+| `DISCORD_THREAD_NAME` | no | forum post name when forum mode is on |
+| `DISCORD_NOTIFY_EMPTY_RUNS` | no | `1` (default) posts a short run heartbeat |
 
 GitHub Actions uses the same keys via repository **Secrets** / **Variables**.
 

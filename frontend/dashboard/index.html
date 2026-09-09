@@ -16,7 +16,7 @@
         colors: {
           ink: { DEFAULT: '#0f2744', soft: '#3b5573', mute: '#6b829e' },
           mist: { DEFAULT: '#f4f8fc', card: '#ffffff', line: '#d7e3f0' },
-          sky: { DEFAULT: '#2f6fed', soft: '#5b8ff0', wash: '#e8f1fc' },
+          sky: { DEFAULT: '#2f6fed', soft: '#5b8ff0', wash: '#e8f1fc', deep: '#1e4fbf' },
         },
         boxShadow: {
           soft: '0 10px 40px -18px rgba(47, 111, 237, 0.28)',
@@ -44,165 +44,193 @@
     min-height: 100vh;
   }
   .glass {
-    background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(215, 227, 240, 0.9);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(215, 227, 240, 0.95);
   }
   .score-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 3.25rem;
-    padding: 0.2rem 0.55rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 0.01em;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 3.25rem; padding: 0.2rem 0.55rem; border-radius: 9999px;
+    font-weight: 600; font-size: 0.8rem;
   }
-  tr.job-row { cursor: pointer; transition: background 160ms ease; }
-  tr.job-row:hover { background: rgba(232, 241, 252, 0.85); }
+  tr.job-row { cursor: pointer; transition: background 160ms ease, transform 160ms ease; }
+  tr.job-row:hover { background: rgba(232, 241, 252, 0.9); }
   tr.job-row:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .job-card {
+    cursor: pointer; transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+  .job-card:hover, .job-card:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px -18px rgba(47, 111, 237, 0.35);
+    border-color: #5b8ff0;
+    outline: none;
+  }
   #detail-panel {
     transform: translateX(100%);
-    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   #detail-overlay.open #detail-panel { transform: translateX(0); }
-  #detail-overlay {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 200ms ease;
-  }
-  #detail-overlay.open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .fade-up {
-    animation: fadeUp 420ms ease both;
-  }
+  #detail-overlay { opacity: 0; pointer-events: none; transition: opacity 200ms ease; }
+  #detail-overlay.open { opacity: 1; pointer-events: auto; }
+  .fade-up { animation: fadeUp 420ms ease both; }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    border-radius: 9999px;
-    border: 1px solid #d7e3f0;
-    background: #fff;
-    padding: 0.35rem 0.75rem;
-    font-size: 0.8rem;
-    color: #3b5573;
-    transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+  .chip, .tab {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    border-radius: 9999px; border: 1px solid #d7e3f0; background: #fff;
+    padding: 0.4rem 0.85rem; font-size: 0.8rem; color: #3b5573;
+    transition: border-color 150ms ease, background 150ms ease, color 150ms ease, box-shadow 150ms ease;
   }
-  .chip:hover, .chip:focus-visible {
-    border-color: #5b8ff0;
-    background: #e8f1fc;
-    color: #0f2744;
-    outline: none;
+  .chip:hover, .chip:focus-visible, .tab:hover, .tab:focus-visible {
+    border-color: #5b8ff0; background: #e8f1fc; color: #0f2744; outline: none;
+  }
+  .tab.active {
+    background: linear-gradient(135deg, #2f6fed, #5b8ff0);
+    border-color: transparent; color: #fff; box-shadow: 0 8px 20px -12px rgba(47,111,237,.7);
   }
   .field {
-    border: 1px solid #d7e3f0;
-    background: #fff;
-    border-radius: 0.65rem;
-    padding: 0.45rem 0.7rem;
-    font-size: 0.875rem;
-    color: #0f2744;
+    border: 1px solid #d7e3f0; background: #fff; border-radius: 0.75rem;
+    padding: 0.55rem 0.8rem; font-size: 0.875rem; color: #0f2744; width: 100%;
   }
   .field:focus {
-    outline: none;
-    border-color: #5b8ff0;
-    box-shadow: 0 0 0 3px var(--accent-soft);
+    outline: none; border-color: #5b8ff0; box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+    border-radius: 0.85rem; padding: 0.55rem 0.95rem; font-size: 0.85rem; font-weight: 600;
+    transition: transform 140ms ease, background 140ms ease, box-shadow 140ms ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary {
+    background: linear-gradient(135deg, #2f6fed, #5b8ff0); color: #fff;
+    box-shadow: 0 10px 24px -14px rgba(47,111,237,.8);
+  }
+  .btn-primary:hover { filter: brightness(1.05); }
+  .btn-ghost {
+    background: #fff; border: 1px solid #d7e3f0; color: #0f2744;
+  }
+  .btn-ghost:hover { background: #e8f1fc; border-color: #5b8ff0; }
+  #toast {
+    position: fixed; bottom: 1.25rem; right: 1.25rem; z-index: 50;
+    transform: translateY(120%); opacity: 0; transition: all 220ms ease;
+  }
+  #toast.show { transform: translateY(0); opacity: 1; }
+  .star { color: #c5d4e6; }
+  .star.on { color: #2f6fed; }
+  .source-bar {
+    height: 0.45rem; border-radius: 9999px; background: #e8f1fc; overflow: hidden;
+  }
+  .source-bar > span {
+    display: block; height: 100%; border-radius: inherit;
+    background: linear-gradient(90deg, #2f6fed, #7aa7f5);
   }
 </style>
 </head>
 <body>
 
 <header class="sticky top-0 z-20 border-b border-mist-line/80 glass">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
+  <div class="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-4 md:flex-row md:items-center md:justify-between md:px-8">
     <div class="fade-up">
       <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-sky">Job Matcher</p>
       <h1 class="mt-0.5 text-xl font-semibold tracking-tight text-ink md:text-2xl">Matched roles, ready to review</h1>
-      <p class="mt-1 max-w-xl text-sm text-ink-mute">Remote PM / QA matches scored against your profile — Discord for alerts, this board for detail.</p>
+      <p id="updated-label" class="mt-1 text-sm text-ink-mute">Loading store…</p>
     </div>
-    <button
-      id="refresh-btn"
-      type="button"
-      aria-label="Refresh jobs and stats"
-      class="shrink-0 rounded-xl bg-sky px-4 py-2 text-sm font-semibold text-white shadow-soft transition hover:bg-sky-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
-    >
-      Refresh
-    </button>
+    <div class="flex flex-wrap items-center gap-2">
+      <button type="button" id="test-discord-btn" class="btn btn-ghost" aria-label="Send Discord test">Test Discord</button>
+      <button type="button" id="retry-discord-btn" class="btn btn-ghost" aria-label="Retry failed Discord alerts">Retry alerts</button>
+      <button type="button" id="refresh-btn" class="btn btn-primary" aria-label="Refresh jobs and stats">Refresh</button>
+    </div>
   </div>
 </header>
 
 <main class="mx-auto max-w-6xl px-5 py-7 md:px-8 md:py-10">
 
-  <section id="stats" class="mb-8 grid grid-cols-2 gap-3 md:grid-cols-5 md:gap-4" aria-label="Pipeline stats"></section>
+  <section id="stats" class="mb-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6" aria-label="Pipeline stats"></section>
 
-  <section class="mb-8 fade-up" aria-labelledby="discovery-heading">
-    <div class="mb-3 flex items-end justify-between gap-3">
-      <div>
-        <h2 id="discovery-heading" class="text-sm font-semibold uppercase tracking-[0.14em] text-ink-mute">Discovery</h2>
-        <p class="mt-1 text-sm text-ink-soft">LinkedIn search links and public boards — open manually; LinkedIn is never scraped.</p>
+  <section class="mb-6 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+    <div class="glass rounded-2xl p-4 shadow-soft md:p-5 fade-up">
+      <div class="mb-3 flex items-center justify-between gap-3">
+        <div>
+          <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-ink-mute">Discovery</h2>
+          <p class="mt-1 text-sm text-ink-soft">LinkedIn searches + public boards (never scraped).</p>
+        </div>
+        <button type="button" id="toggle-discovery" class="btn btn-ghost text-xs" aria-expanded="true">Hide</button>
+      </div>
+      <div id="discovery-body">
+        <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-mute">LinkedIn</p>
+        <div id="linkedin-links" class="mb-4 flex flex-wrap gap-2"></div>
+        <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-mute">Job boards</p>
+        <div id="board-links" class="flex flex-wrap gap-2"></div>
       </div>
     </div>
-    <div class="glass rounded-2xl p-4 shadow-soft md:p-5">
-      <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-mute">LinkedIn</p>
-      <div id="linkedin-links" class="mb-5 flex flex-wrap gap-2"></div>
-      <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-mute">Job boards</p>
-      <div id="board-links" class="flex flex-wrap gap-2"></div>
+    <div class="glass rounded-2xl p-4 shadow-soft md:p-5 fade-up">
+      <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-ink-mute">Sources in store</h2>
+      <div id="source-breakdown" class="mt-3 space-y-3"></div>
     </div>
   </section>
 
-  <section class="mb-4 flex flex-wrap items-center gap-3" aria-label="Filters">
-    <label class="text-sm text-ink-soft" for="filter-status">Status</label>
-    <select id="filter-status" class="field">
-      <option value="">All</option>
-      <option value="sent">Sent (strong match)</option>
-      <option value="digest_sent">Digest</option>
-      <option value="digest_pending">Digest (pending)</option>
-      <option value="rejected">Rejected</option>
-      <option value="notify_failed">Notify failed</option>
-      <option value="scoring_error">Scoring error</option>
-    </select>
-    <label class="ml-2 text-sm text-ink-soft" for="filter-score">Min score</label>
-    <input id="filter-score" class="field w-20" type="number" min="0" max="100" placeholder="0" aria-label="Minimum match score" />
+  <section class="mb-4 space-y-3" aria-label="Filters">
+    <div class="flex flex-wrap gap-2" id="quick-tabs" role="tablist" aria-label="Quick status filters">
+      <button type="button" class="tab active" data-tab="all" role="tab" aria-selected="true">All</button>
+      <button type="button" class="tab" data-tab="matches" role="tab" aria-selected="false">Matches</button>
+      <button type="button" class="tab" data-tab="digest" role="tab" aria-selected="false">Digest</button>
+      <button type="button" class="tab" data-tab="failed" role="tab" aria-selected="false">Failed alerts</button>
+      <button type="button" class="tab" data-tab="saved" role="tab" aria-selected="false">Saved</button>
+      <button type="button" class="tab" data-tab="rejected" role="tab" aria-selected="false">Rejected</button>
+    </div>
+    <div class="grid gap-3 md:grid-cols-[1.4fr_repeat(4,minmax(0,1fr))]">
+      <input id="filter-q" class="field" type="search" placeholder="Search title, company, source…" aria-label="Search jobs" />
+      <select id="filter-source" class="field" aria-label="Filter by source"><option value="">All sources</option></select>
+      <select id="filter-sort" class="field" aria-label="Sort jobs">
+        <option value="score">Sort: score</option>
+        <option value="newest">Sort: newest</option>
+        <option value="company">Sort: company</option>
+      </select>
+      <input id="filter-score" class="field" type="number" min="0" max="100" placeholder="Min score" aria-label="Minimum match score" />
+      <div class="flex gap-2">
+        <button type="button" id="view-table" class="btn btn-ghost flex-1" aria-pressed="true">Table</button>
+        <button type="button" id="view-cards" class="btn btn-ghost flex-1" aria-pressed="false">Cards</button>
+      </div>
+    </div>
   </section>
 
   <section class="glass overflow-hidden rounded-2xl shadow-soft fade-up" aria-label="Matched jobs">
-    <div class="overflow-x-auto">
-      <table class="w-full min-w-[720px] text-left text-sm">
+    <div id="table-wrap" class="overflow-x-auto">
+      <table class="w-full min-w-[760px] text-left text-sm">
         <thead>
           <tr class="border-b border-mist-line bg-sky-wash/60 text-ink-mute">
-            <th class="px-4 py-3 font-semibold">Score</th>
-            <th class="px-4 py-3 font-semibold">Role</th>
-            <th class="px-4 py-3 font-semibold">Company</th>
-            <th class="px-4 py-3 font-semibold">Location</th>
-            <th class="px-4 py-3 font-semibold">Experience</th>
-            <th class="px-4 py-3 font-semibold">Status</th>
+            <th class="px-3 py-3 font-semibold w-10"></th>
+            <th class="px-3 py-3 font-semibold">Score</th>
+            <th class="px-3 py-3 font-semibold">Role</th>
+            <th class="px-3 py-3 font-semibold">Company</th>
+            <th class="px-3 py-3 font-semibold">Source</th>
+            <th class="px-3 py-3 font-semibold">Status</th>
           </tr>
         </thead>
         <tbody id="jobs-body"></tbody>
       </table>
     </div>
-    <p id="empty-state" class="hidden px-6 py-14 text-center text-ink-mute">No jobs match these filters yet. Run the pipeline to collect and score roles.</p>
+    <div id="cards-wrap" class="hidden grid gap-3 p-4 sm:grid-cols-2"></div>
+    <p id="empty-state" class="hidden px-6 py-14 text-center text-ink-mute">No jobs match these filters yet.</p>
+    <div class="flex items-center justify-between border-t border-mist-line px-4 py-3 text-xs text-ink-mute">
+      <span id="result-count">0 results</span>
+      <label class="inline-flex items-center gap-2">
+        <input id="auto-refresh" type="checkbox" class="rounded border-mist-line text-sky focus:ring-sky" />
+        Auto-refresh every 60s
+      </label>
+    </div>
   </section>
 </main>
 
 <div id="detail-overlay" class="fixed inset-0 z-30 bg-ink/25" onclick="handleOverlayClick(event)" role="presentation">
-  <aside
-    id="detail-panel"
-    class="absolute right-0 top-0 h-full w-full max-w-lg overflow-y-auto bg-white p-6 shadow-panel md:p-8"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Job detail"
-    tabindex="-1"
-    onclick="event.stopPropagation()"
-  >
+  <aside id="detail-panel" class="absolute right-0 top-0 h-full w-full max-w-lg overflow-y-auto bg-white p-6 shadow-panel md:p-8" role="dialog" aria-modal="true" aria-label="Job detail" tabindex="-1" onclick="event.stopPropagation()">
     <div id="detail-content"></div>
   </aside>
 </div>
+
+<div id="toast" class="glass rounded-xl px-4 py-3 text-sm font-medium text-ink shadow-panel" role="status" aria-live="polite"></div>
 
 <script>
 const statusLabels = {
@@ -213,6 +241,16 @@ const statusLabels = {
   notify_failed: "Notify failed",
   scoring_error: "Scoring error",
   dry_run_not_scored: "Dry run",
+  pending_immediate: "Pending send",
+}
+
+const SAVED_KEY = "jobMatcher.savedKeys"
+const state = {
+  allJobs: [],
+  tab: "all",
+  view: "table",
+  saved: new Set(JSON.parse(localStorage.getItem(SAVED_KEY) || "[]")),
+  refreshTimer: null,
 }
 
 const esc = (s) => {
@@ -221,11 +259,42 @@ const esc = (s) => {
   return d.innerHTML
 }
 
+const toast = (msg) => {
+  const el = document.getElementById("toast")
+  el.textContent = msg
+  el.classList.add("show")
+  clearTimeout(toast._t)
+  toast._t = setTimeout(() => el.classList.remove("show"), 2800)
+}
+
 const scoreColor = (score) => {
-  if (score === null || score === undefined) return "bg-slate-100 text-ink-mute"
+  if (score == null) return "bg-slate-100 text-ink-mute"
   if (score >= 85) return "bg-emerald-50 text-emerald-700"
   if (score >= 65) return "bg-sky-wash text-sky"
   return "bg-amber-50 text-amber-700"
+}
+
+const relative = (iso) => {
+  if (!iso) return "unknown"
+  const t = Date.parse(iso)
+  if (Number.isNaN(t)) return iso
+  const mins = Math.round((Date.now() - t) / 60000)
+  if (mins < 1) return "just now"
+  if (mins < 60) return `${mins}m ago`
+  const hrs = Math.round(mins / 60)
+  if (hrs < 48) return `${hrs}h ago`
+  return `${Math.round(hrs / 24)}d ago`
+}
+
+const persistSaved = () => localStorage.setItem(SAVED_KEY, JSON.stringify([...state.saved]))
+
+const toggleSaved = (key, event) => {
+  if (event) event.stopPropagation()
+  if (state.saved.has(key)) state.saved.delete(key)
+  else state.saved.add(key)
+  persistSaved()
+  renderJobs()
+  toast(state.saved.has(key) ? "Saved for later" : "Removed from saved")
 }
 
 const loadStats = async () => {
@@ -235,50 +304,136 @@ const loadStats = async () => {
     ["Jobs found", s.jobs_found ?? 0],
     ["Passed filters", s.passed_filters ?? 0],
     ["Strong matches", s.strong_matches ?? 0],
+    ["Digest matches", s.digest_matches ?? 0],
     ["Sent to Discord", s.sent_to_discord ?? 0],
-    ["Average match", s.average_match != null ? `${s.average_match}%` : "—"],
+    ["Failed alerts", s.notify_failed ?? 0],
   ]
   document.getElementById("stats").innerHTML = cards.map(([label, value], i) => `
-    <div class="glass rounded-2xl p-4 shadow-soft fade-up" style="animation-delay:${i * 40}ms">
+    <button type="button" class="glass rounded-2xl p-4 text-left shadow-soft fade-up hover:border-sky-soft" style="animation-delay:${i * 30}ms" onclick="quickJump('${esc(label)}')" aria-label="Filter by ${esc(label)}">
       <div class="text-2xl font-semibold tracking-tight text-ink">${esc(String(value))}</div>
-      <div class="mt-1 text-xs font-medium uppercase tracking-wider text-ink-mute">${esc(label)}</div>
-    </div>
+      <div class="mt-1 text-[0.7rem] font-medium uppercase tracking-wider text-ink-mute">${esc(label)}</div>
+    </button>
   `).join("")
+
+  const updated = s.store_updated_at || s.updated_at
+  document.getElementById("updated-label").textContent = updated
+    ? `Store updated ${relative(updated)} · avg match ${s.average_match != null ? s.average_match + "%" : "—"}`
+    : "Store ready"
+
+  const sources = s.by_source || {}
+  const max = Math.max(...Object.values(sources), 1)
+  const select = document.getElementById("filter-source")
+  const current = select.value
+  select.innerHTML = `<option value="">All sources</option>` + Object.keys(sources).map((name) =>
+    `<option value="${esc(name)}" ${current === name ? "selected" : ""}>${esc(name)} (${sources[name]})</option>`
+  ).join("")
+  document.getElementById("source-breakdown").innerHTML = Object.entries(sources).slice(0, 8).map(([name, count]) => `
+    <div>
+      <div class="mb-1 flex justify-between text-xs text-ink-soft"><span>${esc(name)}</span><span>${count}</span></div>
+      <div class="source-bar"><span style="width:${Math.max(8, (count / max) * 100)}%"></span></div>
+    </div>
+  `).join("") || `<p class="text-sm text-ink-mute">No source data yet.</p>`
 }
 
-let allJobs = []
+const quickJump = (label) => {
+  if (label === "Strong matches") setTab("matches")
+  else if (label === "Digest matches") setTab("digest")
+  else if (label === "Failed alerts") setTab("failed")
+  else if (label === "Sent to Discord") {
+    document.getElementById("filter-score").value = "65"
+    setTab("all")
+  } else setTab("all")
+}
 
 const loadJobs = async () => {
-  const status = document.getElementById("filter-status").value
-  const minScore = document.getElementById("filter-score").value
   const params = new URLSearchParams()
-  if (status) params.set("status", status)
+  const q = document.getElementById("filter-q").value.trim()
+  const source = document.getElementById("filter-source").value
+  const minScore = document.getElementById("filter-score").value
+  const sort = document.getElementById("filter-sort").value
+  if (q) params.set("q", q)
+  if (source) params.set("source", source)
   if (minScore) params.set("min_score", minScore)
+  if (sort) params.set("sort", sort)
+  params.set("limit", "400")
+
+  if (state.tab === "matches") params.set("decision", "SEND")
+  if (state.tab === "digest") params.set("decision", "DIGEST")
+  if (state.tab === "failed") params.set("status", "notify_failed")
+  if (state.tab === "rejected") params.set("status", "rejected")
+
   const res = await fetch("/api/jobs?" + params.toString())
   const data = await res.json()
-  allJobs = data.jobs || []
+  let jobs = data.jobs || []
+  if (state.tab === "saved") {
+    jobs = jobs.filter((j) => state.saved.has(j.dedup_key))
+    if (!jobs.length) {
+      // fall back to all saved from full list
+      const allRes = await fetch("/api/jobs?limit=1000")
+      const allData = await allRes.json()
+      jobs = (allData.jobs || []).filter((j) => state.saved.has(j.dedup_key))
+    }
+  }
+  state.allJobs = jobs
   renderJobs()
 }
 
 const renderJobs = () => {
-  const tbody = document.getElementById("jobs-body")
   const empty = document.getElementById("empty-state")
-  if (!allJobs.length) {
+  const tbody = document.getElementById("jobs-body")
+  const cards = document.getElementById("cards-wrap")
+  document.getElementById("result-count").textContent = `${state.allJobs.length} result${state.allJobs.length === 1 ? "" : "s"}`
+
+  if (!state.allJobs.length) {
     tbody.innerHTML = ""
+    cards.innerHTML = ""
     empty.classList.remove("hidden")
     return
   }
   empty.classList.add("hidden")
-  tbody.innerHTML = allJobs.map((j, i) => `
-    <tr class="job-row border-t border-mist-line/80" tabindex="0" role="button" aria-label="Open details for ${esc(j.title)}" onclick="openDetail(${i})" onkeydown="handleRowKey(event, ${i})">
-      <td class="px-4 py-3"><span class="score-pill ${scoreColor(j.score)}">${j.score ?? "—"}${j.score != null ? "%" : ""}</span></td>
-      <td class="px-4 py-3 font-medium text-ink">${esc(j.title)}</td>
-      <td class="px-4 py-3 text-ink-soft">${esc(j.company)}</td>
-      <td class="px-4 py-3 text-ink-mute">${esc(j.location_tier || j.location_raw || "—")}</td>
-      <td class="px-4 py-3 text-ink-mute">${esc(j.years_required_display || "—")}</td>
-      <td class="px-4 py-3 text-ink-mute">${esc(statusLabels[j.status] || j.status || "—")}</td>
+
+  tbody.innerHTML = state.allJobs.map((j, i) => `
+    <tr class="job-row border-t border-mist-line/80" tabindex="0" role="button" aria-label="Open ${esc(j.title)}" onclick="openDetail(${i})" onkeydown="handleRowKey(event, ${i})">
+      <td class="px-3 py-3">
+        <button type="button" class="star ${state.saved.has(j.dedup_key) ? "on" : ""}" aria-label="Save job" onclick="toggleSaved('${esc(j.dedup_key)}', event)">★</button>
+      </td>
+      <td class="px-3 py-3"><span class="score-pill ${scoreColor(j.score)}">${j.score ?? "—"}${j.score != null ? "%" : ""}</span></td>
+      <td class="px-3 py-3 font-medium text-ink">${esc(j.title)}</td>
+      <td class="px-3 py-3 text-ink-soft">${esc(j.company)}</td>
+      <td class="px-3 py-3 text-ink-mute">${esc((j.source || "—").split(":")[0])}</td>
+      <td class="px-3 py-3 text-ink-mute">${esc(statusLabels[j.status] || j.status || "—")}</td>
     </tr>
   `).join("")
+
+  cards.innerHTML = state.allJobs.map((j, i) => `
+    <article class="job-card glass rounded-2xl border border-mist-line p-4" tabindex="0" role="button" aria-label="Open ${esc(j.title)}" onclick="openDetail(${i})" onkeydown="handleRowKey(event, ${i})">
+      <div class="mb-3 flex items-start justify-between gap-2">
+        <span class="score-pill ${scoreColor(j.score)}">${j.score ?? "—"}${j.score != null ? "%" : ""}</span>
+        <button type="button" class="star ${state.saved.has(j.dedup_key) ? "on" : ""}" aria-label="Save job" onclick="toggleSaved('${esc(j.dedup_key)}', event)">★</button>
+      </div>
+      <h3 class="font-semibold text-ink">${esc(j.title)}</h3>
+      <p class="mt-1 text-sm text-ink-soft">${esc(j.company)}</p>
+      <p class="mt-3 text-xs text-ink-mute">${esc((j.source || "").split(":")[0])} · ${esc(statusLabels[j.status] || j.status || "—")}</p>
+    </article>
+  `).join("")
+}
+
+const setView = (view) => {
+  state.view = view
+  document.getElementById("table-wrap").classList.toggle("hidden", view !== "table")
+  document.getElementById("cards-wrap").classList.toggle("hidden", view !== "cards")
+  document.getElementById("view-table").setAttribute("aria-pressed", String(view === "table"))
+  document.getElementById("view-cards").setAttribute("aria-pressed", String(view === "cards"))
+}
+
+const setTab = (tab) => {
+  state.tab = tab
+  document.querySelectorAll("#quick-tabs .tab").forEach((btn) => {
+    const active = btn.dataset.tab === tab
+    btn.classList.toggle("active", active)
+    btn.setAttribute("aria-selected", String(active))
+  })
+  loadJobs()
 }
 
 const handleRowKey = (event, i) => {
@@ -288,8 +443,17 @@ const handleRowKey = (event, i) => {
   }
 }
 
+const copyText = async (text) => {
+  try {
+    await navigator.clipboard.writeText(text)
+    toast("Copied to clipboard")
+  } catch {
+    toast("Could not copy")
+  }
+}
+
 const openDetail = (i) => {
-  const j = allJobs[i]
+  const j = state.allJobs[i]
   const why = (j.why_matches || []).map((w) => `<li class="text-emerald-700">✓ ${esc(w)}</li>`).join("")
   const gaps = (j.gaps || []).map((g) => `<li class="text-amber-700">• ${esc(g)}</li>`).join("")
   document.getElementById("detail-content").innerHTML = `
@@ -301,59 +465,101 @@ const openDetail = (i) => {
       </div>
       <button type="button" onclick="closeDetail()" class="rounded-lg px-2 py-1 text-2xl leading-none text-ink-mute hover:bg-sky-wash hover:text-ink" aria-label="Close detail panel">&times;</button>
     </div>
-
     ${j.reasoning_summary ? `<p class="mb-5 text-sm leading-relaxed text-ink-soft">${esc(j.reasoning_summary)}</p>` : ""}
-
     ${why ? `<h3 class="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-mute">Why it matches</h3><ul class="mb-5 space-y-1.5 text-sm">${why}</ul>` : ""}
     ${gaps ? `<h3 class="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-mute">Gaps</h3><ul class="mb-5 space-y-1.5 text-sm">${gaps}</ul>` : ""}
-
     <h3 class="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-mute">Details</h3>
     <ul class="mb-6 space-y-1.5 text-sm text-ink-soft">
       <li>Location tier: ${esc(j.location_tier || "—")}</li>
-      <li>Experience required: ${esc(j.years_required_display || "not stated")}</li>
+      <li>Experience: ${esc(j.years_required_display || "not stated")}</li>
       <li>Source: ${esc(j.source || "—")}</li>
       <li>Confidence: ${esc(j.confidence || "—")}</li>
       <li>Status: ${esc(statusLabels[j.status] || j.status || "—")}</li>
+      <li>First seen: ${esc(relative(j.first_seen_at))}</li>
     </ul>
-
-    ${j.url ? `<a href="${esc(j.url)}" target="_blank" rel="noopener" class="inline-flex items-center rounded-xl bg-sky px-4 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-sky-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky">Apply / view posting →</a>` : ""}
+    <div class="flex flex-wrap gap-2">
+      ${j.url ? `<a href="${esc(j.url)}" target="_blank" rel="noopener" class="btn btn-primary">Apply / view →</a>` : ""}
+      ${j.url ? `<button type="button" class="btn btn-ghost" onclick="copyText('${esc(j.url)}')">Copy link</button>` : ""}
+      <button type="button" class="btn btn-ghost" onclick="toggleSaved('${esc(j.dedup_key)}')">${state.saved.has(j.dedup_key) ? "Unsave" : "Save"}</button>
+    </div>
   `
   document.getElementById("detail-overlay").classList.add("open")
   document.getElementById("detail-panel").focus()
 }
 
-const closeDetail = () => {
-  document.getElementById("detail-overlay").classList.remove("open")
-}
-
-const handleOverlayClick = (event) => {
-  if (event.target.id === "detail-overlay") closeDetail()
-}
+const closeDetail = () => document.getElementById("detail-overlay").classList.remove("open")
+const handleOverlayClick = (event) => { if (event.target.id === "detail-overlay") closeDetail() }
 
 const loadDiscovery = async () => {
   const res = await fetch("/api/discovery")
   const data = await res.json()
-  const li = document.getElementById("linkedin-links")
-  const boards = document.getElementById("board-links")
-  li.innerHTML = (data.linkedin || []).map((item) => `
-    <a class="chip" href="${esc(item.url)}" target="_blank" rel="noopener" aria-label="LinkedIn search for ${esc(item.role)}">${esc(item.role)}</a>
-  `).join("") || `<span class="text-sm text-ink-mute">No LinkedIn links configured.</span>`
-  boards.innerHTML = (data.boards || []).map((item) => `
-    <a class="chip" href="${esc(item.url)}" target="_blank" rel="noopener" title="${esc(item.note || "")}" aria-label="Open ${esc(item.name)}">${esc(item.name)}</a>
-  `).join("")
+  document.getElementById("linkedin-links").innerHTML = (data.linkedin || []).map((item) =>
+    `<a class="chip" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.role)}</a>`
+  ).join("") || `<span class="text-sm text-ink-mute">No LinkedIn links.</span>`
+  document.getElementById("board-links").innerHTML = (data.boards || []).map((item) =>
+    `<a class="chip" href="${esc(item.url)}" target="_blank" rel="noopener" title="${esc(item.note || "")}">${esc(item.name)}</a>`
+  ).join("")
 }
 
-document.getElementById("refresh-btn").addEventListener("click", () => {
-  loadStats()
-  loadJobs()
-  loadDiscovery()
+const refreshAll = async () => {
+  await Promise.all([loadStats(), loadJobs(), loadDiscovery()])
+  toast("Dashboard refreshed")
+}
+
+document.getElementById("refresh-btn").addEventListener("click", refreshAll)
+document.getElementById("filter-q").addEventListener("input", () => {
+  clearTimeout(loadJobs._t)
+  loadJobs._t = setTimeout(loadJobs, 220)
 })
-document.getElementById("filter-status").addEventListener("change", loadJobs)
-document.getElementById("filter-score").addEventListener("input", loadJobs)
+;["filter-source", "filter-sort", "filter-score"].forEach((id) => {
+  document.getElementById(id).addEventListener("change", loadJobs)
+  document.getElementById(id).addEventListener("input", loadJobs)
+})
+document.getElementById("view-table").addEventListener("click", () => setView("table"))
+document.getElementById("view-cards").addEventListener("click", () => setView("cards"))
+document.querySelectorAll("#quick-tabs .tab").forEach((btn) => {
+  btn.addEventListener("click", () => setTab(btn.dataset.tab))
+})
+document.getElementById("toggle-discovery").addEventListener("click", (e) => {
+  const body = document.getElementById("discovery-body")
+  const hidden = body.classList.toggle("hidden")
+  e.currentTarget.textContent = hidden ? "Show" : "Hide"
+  e.currentTarget.setAttribute("aria-expanded", String(!hidden))
+})
+document.getElementById("test-discord-btn").addEventListener("click", async () => {
+  const res = await fetch("/api/discord/test", { method: "POST" })
+  const data = await res.json()
+  toast(data.ok ? "Discord test sent" : (data.error || "Discord test failed"))
+})
+document.getElementById("retry-discord-btn").addEventListener("click", async () => {
+  toast("Retrying failed alerts…")
+  const res = await fetch("/api/discord/retry-failed", { method: "POST" })
+  const data = await res.json()
+  if (!data.ok) {
+    toast(data.error || "Retry failed")
+    return
+  }
+  toast(`Retried — immediate ${data.sent_immediate}, digest ${data.digest_sent}`)
+  await refreshAll()
+})
+document.getElementById("auto-refresh").addEventListener("change", (e) => {
+  clearInterval(state.refreshTimer)
+  if (e.target.checked) {
+    state.refreshTimer = setInterval(() => {
+      loadStats(); loadJobs()
+    }, 60000)
+    toast("Auto-refresh on")
+  }
+})
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeDetail()
+  if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+    event.preventDefault()
+    document.getElementById("filter-q").focus()
+  }
 })
 
+setView("table")
 loadStats()
 loadJobs()
 loadDiscovery()

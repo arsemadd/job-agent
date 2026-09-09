@@ -50,3 +50,37 @@ def test_digest_embed_shape():
     assert "XYZ" in embed["description"]
     assert embed["url"] == SAMPLE_RECORD["url"]
     assert isinstance(embed["color"], int)
+
+
+def test_run_summary_mentions_quiet_day():
+    from backend.notifications.discord import format_run_summary
+
+    msg = format_run_summary({
+        "sent_immediate": 0,
+        "digest_sent": 0,
+        "new_postings": 12,
+        "passed_hard_filters": 2,
+        "scored": 2,
+        "total_in_store": 100,
+    })
+    assert "no new Discord alerts" in msg
+    assert "12" in msg
+
+
+def test_forum_fields_off_by_default(monkeypatch):
+    from backend.notifications import discord as discord_mod
+
+    monkeypatch.delenv("DISCORD_FORUM", raising=False)
+    monkeypatch.delenv("DISCORD_THREAD_ID", raising=False)
+    monkeypatch.delenv("DISCORD_THREAD_NAME", raising=False)
+    assert discord_mod._forum_fields("Digest") == {}
+    assert discord_mod._forum_fields("Digest", force=True).get("thread_name") == "Digest"
+
+
+def test_forum_fields_when_enabled(monkeypatch):
+    from backend.notifications import discord as discord_mod
+
+    monkeypatch.setenv("DISCORD_FORUM", "1")
+    fields = discord_mod._forum_fields("Digest today")
+    assert fields.get("thread_name") == "Digest today"
+

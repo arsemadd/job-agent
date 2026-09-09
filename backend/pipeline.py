@@ -12,6 +12,7 @@ import json
 import logging
 import os
 import sys
+import time
 from datetime import datetime, timezone
 
 from dotenv import load_dotenv
@@ -172,10 +173,16 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
         if record["status"] == "pending_immediate":
             immediate_sent.append(key)
 
-    # Send immediate (SEND-tier) notifications for jobs found this run.
+    # Send immediate (SEND-tier) notifications for jobs found this run,
+    # plus any earlier notify_failed SEND-tier rows that need a retry.
     sent_immediate = 0
     if not skip_notify:
-        for key in immediate_sent:
+        retry_immediate = [
+            r["dedup_key"]
+            for r in store.all()
+            if r.get("status") == "notify_failed" and r.get("decision") == "SEND" and r.get("dedup_key")
+        ]
+        for key in list(dict.fromkeys([*immediate_sent, *retry_immediate])):
             record = store.get(key)
             if not record:
                 continue
@@ -183,12 +190,18 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
             store.upsert(key, {"status": "sent" if ok else "notify_failed", "notified_at": datetime.now(timezone.utc).isoformat()})
             if ok:
                 sent_immediate += 1
+            time.sleep(0.6)
 
     # Send one batched digest covering every DIGEST-tier job not yet digested,
-    # from this run or any prior run that hasn't been flushed yet.
+    # including prior notify_failed digests that should be retried.
     digest_sent = 0
     if not skip_notify:
-        pending_digest = [r for r in store.all() if r.get("status") == "digest_pending"]
+        pending_digest = [
+            r for r in store.all()
+            if r.get("status") in ("digest_pending",) or (
+                r.get("status") == "notify_failed" and r.get("decision") == "DIGEST"
+            )
+        ]
         if pending_digest:
             ok = discord.send_digest(pending_digest, webhook_url)
             status = "digest_sent" if ok else "notify_failed"
@@ -196,8 +209,6 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
                 store.upsert(r["dedup_key"], {"status": status, "notified_at": datetime.now(timezone.utc).isoformat()})
             if ok:
                 digest_sent = len(pending_digest)
-
-    store.save()
 
     summary = {
         "run_started": run_started,
@@ -210,6 +221,15 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
         "digest_sent": digest_sent,
         "total_in_store": len(store.all()),
     }
+
+    # Quiet-day heartbeat so Discord still shows that the agent ran.
+    if not skip_notify and webhook_url:
+        notify_empty = (os.environ.get("DISCORD_NOTIFY_EMPTY_RUNS") or "1").strip().lower()
+        should_summary = notify_empty not in {"0", "false", "no"} or sent_immediate or digest_sent
+        if should_summary:
+            discord.send_run_summary(summary, webhook_url)
+
+    store.save()
     logger.info("run summary: %s", json.dumps(summary))
     return summary
 
