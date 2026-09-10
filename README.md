@@ -69,7 +69,9 @@ pytest
 
 ## Scheduling
 
-Hourly from **09:00 through 23:00 Africa/Nairobi** (`cron: 0 6-20 * * *` UTC). GitHub Actions cron is UTC-only; Nairobi is UTC+3 year-round, so this lines up with wall-clock hours. Each run commits an updated `data/jobs.json`. Trigger ad-hoc runs with `workflow_dispatch` on the Actions tab.
+Hourly **every hour UTC** (`cron: 0 * * * *`). GitHub Actions cron can delay or skip runs on public repos under load — if a slot is missed, the next hour usually picks up. Manual runs: Actions tab → `workflow_dispatch`.
+
+Quiet runs still post a short Discord heartbeat when `DISCORD_NOTIFY_EMPTY_RUNS=1` (default), so you can tell the agent ran even when nothing scored ≥65.
 
 ## Sources
 

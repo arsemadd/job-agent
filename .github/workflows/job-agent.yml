@@ -2,8 +2,10 @@ name: Job Matcher
 
 on:
   schedule:
-    # Hourly 09:00–23:00 Africa/Nairobi (UTC+3) = 06:00–20:00 UTC
-    - cron: "0 6-20 * * *"
+    # Every hour, all day (UTC). GitHub can delay/skip crons on free public repos;
+    # hourly-all-day gives more chances than a narrow daytime window.
+    # Africa/Nairobi = UTC+3, so 09:00 Nairobi ≈ 06:00 UTC, etc.
+    - cron: "0 * * * *"
   workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
 
 permissions:

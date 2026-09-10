@@ -123,10 +123,15 @@ def format_run_summary(summary: dict) -> str:
     passed = int(summary.get("passed_hard_filters") or 0)
     total = int(summary.get("total_in_store") or 0)
     alerts = immediate + digest
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     if alerts:
-        headline = f"✅ Job Matcher run — {alerts} Discord alert(s) sent"
+        headline = f"✅ **Job Matcher** ({now}) — {alerts} alert(s) sent"
     else:
-        headline = "ℹ️ Job Matcher run — no new Discord alerts"
+        headline = (
+            f"ℹ️ **Job Matcher** ({now}) — ran successfully, "
+            f"but **no jobs scored high enough** for Discord "
+            f"(need ≥65 digest / ≥85 immediate)"
+        )
     return (
         f"{headline}\n"
         f"New postings: **{new}** · Passed filters: **{passed}** · Scored: **{scored}**\n"

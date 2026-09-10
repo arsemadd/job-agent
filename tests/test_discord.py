@@ -63,7 +63,7 @@ def test_run_summary_mentions_quiet_day():
         "scored": 2,
         "total_in_store": 100,
     })
-    assert "no new Discord alerts" in msg
+    assert "no jobs scored high enough" in msg
     assert "12" in msg
 
 
