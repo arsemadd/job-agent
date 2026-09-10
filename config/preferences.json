@@ -78,11 +78,21 @@
       "mindtheproduct",
       "arbeitnow",
       "jobicy",
+      "workingnomads",
+      "remotefirstjobs",
+      "nodesk",
+      "jobspresso",
+      "fourdayweek",
       "greenhouse",
       "lever",
       "ashby"
     ],
-    "disabled_pending_manual_setup": ["wellfound"],
+    "manual_imports": [
+      {"name": "wellfound", "file": "data/wellfound_manual.json"},
+      {"name": "thesaasjobs", "file": "data/thesaasjobs_manual.json"},
+      {"name": "startupjobs", "file": "data/startupjobs_manual.json"}
+    ],
+    "disabled_pending_manual_setup": ["wellfound", "thesaasjobs", "startupjobs"],
     "greenhouse_boards": [
       "intercom",
       "miro",
@@ -102,7 +112,7 @@
       "ramp",
       "vercel"
     ],
-    "note": "wellfound has no public jobs API (manual import only). LinkedIn is discovery-only via /api/discovery — never scraped. Add more greenhouse_boards / lever_companies / ashby_companies slugs to pull company ATS boards directly."
+    "note": "Live collectors need no setup. Manual boards (Wellfound, The SaaS Jobs, Startup Jobs) read data/*_manual.json when present — see *.example.json. Discovery-only boards (JustRemote, Otta, Built In, etc.) appear in the dashboard Discovery panel and are never scraped. LinkedIn is discovery-only via /api/discovery."
   },
 
   "schedule": {

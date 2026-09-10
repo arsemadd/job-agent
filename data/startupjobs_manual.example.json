@@ -1,0 +1,15 @@
+[
+  {
+    "id": "example-1",
+    "title": "Product Manager",
+    "company": "Example Startup",
+    "url": "https://startup.jobs/example",
+    "location": "Remote",
+    "hires_remotely_from": null,
+    "description": "Replace this example with real listings you copy from startup.jobs",
+    "salary": null,
+    "job_type": "full-time",
+    "posted_at": null,
+    "tags": ["startup", "product"]
+  }
+]

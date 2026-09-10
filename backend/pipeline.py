@@ -22,15 +22,21 @@ load_dotenv()
 from backend.collectors.arbeitnow import ArbeitnowCollector
 from backend.collectors.ashby import AshbyCollector
 from backend.collectors.base import Collector
+from backend.collectors.fourdayweek import FourDayWeekCollector
 from backend.collectors.greenhouse import GreenhouseCollector
 from backend.collectors.himalayas import HimalayasCollector
 from backend.collectors.jobicy import JobicyCollector
+from backend.collectors.jobspresso import JobspressoCollector
 from backend.collectors.lever import LeverCollector
+from backend.collectors.manual_import import ManualImportCollector
 from backend.collectors.mindtheproduct import MindTheProductCollector
+from backend.collectors.nodesk import NoDeskCollector
+from backend.collectors.remotefirstjobs import RemoteFirstJobsCollector
 from backend.collectors.remoteok import RemoteOKCollector
 from backend.collectors.remotive import RemotiveCollector
 from backend.collectors.wellfound import WellfoundCollector
 from backend.collectors.weworkremotely import WeWorkRemotelyCollector
+from backend.collectors.workingnomads import WorkingNomadsCollector
 from backend.filters.pipeline import run_hard_filters
 from backend.matching.candidate import load_candidate_profile
 from backend.matching.scoring import build_scorer
@@ -57,6 +63,11 @@ def build_collectors(prefs: dict) -> list[Collector]:
     boards = prefs.get("sources", {}).get("greenhouse_boards", [])
     companies = prefs.get("sources", {}).get("lever_companies", [])
     ashby_companies = prefs.get("sources", {}).get("ashby_companies", [])
+    manual_imports = prefs.get("sources", {}).get("manual_imports") or [
+        {"name": "wellfound", "file": "data/wellfound_manual.json"},
+        {"name": "thesaasjobs", "file": "data/thesaasjobs_manual.json"},
+        {"name": "startupjobs", "file": "data/startupjobs_manual.json"},
+    ]
 
     all_collectors: list[Collector] = [
         RemoteOKCollector(),
@@ -66,12 +77,25 @@ def build_collectors(prefs: dict) -> list[Collector]:
         MindTheProductCollector(),
         ArbeitnowCollector(),
         JobicyCollector(),
+        WorkingNomadsCollector(),
+        RemoteFirstJobsCollector(),
+        NoDeskCollector(),
+        JobspressoCollector(),
+        FourDayWeekCollector(),
         GreenhouseCollector(boards),
         LeverCollector(companies),
         AshbyCollector(ashby_companies),
         WellfoundCollector(),
     ]
-    return [c for c in all_collectors if c.name in enabled or c.name == "wellfound"]
+    for entry in manual_imports:
+        name = (entry or {}).get("name")
+        path = (entry or {}).get("file")
+        if not name or not path or name == "wellfound":
+            continue  # wellfound kept via dedicated collector for backward compatibility
+        all_collectors.append(ManualImportCollector(name, path))
+
+    always_on = {"wellfound", "thesaasjobs", "startupjobs"}
+    return [c for c in all_collectors if c.name in enabled or c.name in always_on]
 
 
 def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None = None) -> dict:

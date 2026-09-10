@@ -167,6 +167,48 @@ def test_linkedin_discovery_builds_remote_urls():
     assert "linkedin.com/jobs/search" in data["linkedin"][0]["url"]
     assert "f_WT=2" in data["linkedin"][0]["url"]
     assert any(b["name"] == "Mind the Product" for b in data["boards"])
+    assert any(b["name"] == "Working Nomads" for b in data["boards"])
+    assert any(b["name"] == "TestDevJobs" for b in data["boards"])
+
+
+@responses.activate
+def test_workingnomads_filters_to_pm_ish_titles():
+    from backend.collectors.workingnomads import WorkingNomadsCollector, API_URL
+
+    responses.add(
+        responses.GET, API_URL,
+        json=[
+            {"url": "https://x/1", "title": "Product Manager", "company_name": "Acme",
+             "description": "d", "category_name": "Product", "tags": [], "location": "Worldwide", "pub_date": "2026-09-01"},
+            {"url": "https://x/2", "title": "Backend Engineer", "company_name": "Acme",
+             "description": "d", "category_name": "Engineering", "tags": [], "location": "Worldwide", "pub_date": "2026-09-01"},
+        ],
+        status=200,
+    )
+    jobs = WorkingNomadsCollector().fetch()
+    assert len(jobs) == 1
+    assert jobs[0].title == "Product Manager"
+
+
+@responses.activate
+def test_remotefirstjobs_parses_rss():
+    from backend.collectors.remotefirstjobs import RemoteFirstJobsCollector, FEED_TMPL
+
+    rss = """<?xml version="1.0"?><rss><channel>
+      <item><title>QA Analyst at Acme</title><link>https://remotefirstjobs.com/jobs/1</link>
+      <description>desc</description><pubDate>Mon, 01 Sep 2026 00:00:00 +0000</pubDate></item>
+    </channel></rss>"""
+    for slug in ("product", "qa", "project-management", "business-analyst"):
+        responses.add(responses.GET, FEED_TMPL.format(slug=slug), body=rss, status=200, content_type="application/rss+xml")
+    jobs = RemoteFirstJobsCollector().fetch()
+    assert len(jobs) == 1
+    assert "QA Analyst" in jobs[0].title
+
+
+def test_manual_import_noop_without_file(tmp_path):
+    from backend.collectors.manual_import import ManualImportCollector
+
+    assert ManualImportCollector("thesaasjobs", str(tmp_path / "missing.json")).fetch() == []
 
 
 @responses.activate

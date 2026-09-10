@@ -10,7 +10,7 @@ The model returns a 0–100 score. SEND / DIGEST / REJECT is derived from that s
 
 ## Features
 
-- Sources: RemoteOK, Remotive, We Work Remotely, Himalayas, Mind the Product, Arbeitnow, Jobicy, Greenhouse, Lever, Ashby
+- Sources: RemoteOK, Remotive, We Work Remotely, Himalayas, Mind the Product, Arbeitnow, Jobicy, Working Nomads, Remote First Jobs, NoDesk, Jobspresso, 4 Day Week, Greenhouse, Lever, Ashby (+ manual Wellfound / SaaS Jobs / Startup Jobs; discovery links for many more)
 - Hard filters (role, location, experience, job type, company quality) before any AI call
 - Swappable scorers: Gemini (default, free tier) or Anthropic Claude
 - Discord: immediate alerts for strong matches (85+), digest for mid-band matches (65–84)
@@ -75,20 +75,37 @@ Quiet runs still post a short Discord heartbeat when `DISCORD_NOTIFY_EMPTY_RUNS=
 
 ## Sources
 
+### Live collectors (public API / RSS)
+
 | Source | Method | Notes |
 |---|---|---|
 | RemoteOK | Public API | |
 | Remotive | Public API | Category queries |
 | We Work Remotely | RSS | Uses `<region>` when present |
 | Himalayas | Public API | Uses `locationRestrictions` when present |
-| Mind the Product | Public JSON list | Product-focused board (`/api/jobs/list`) |
+| Mind the Product | Public JSON list | Product-focused board |
 | Arbeitnow | Public API | Tag-hinted PM/QA subset |
 | Jobicy | Public API | Product / QA / business remote queries |
+| Working Nomads | Public JSON | `api/exposed_jobs` + local PM/QA filter |
+| Remote First Jobs | Category RSS | `product`, `qa`, … |
+| NoDesk | RSS | Product/QA title filter |
+| Jobspresso | RSS | Job listing feed + PM/QA filter |
+| 4 Day Week | Public API | Remote + product/QA queries |
 | Greenhouse | Per-company board API | Tokens in `sources.greenhouse_boards` |
 | Lever | Per-company API | Slugs in `sources.lever_companies` |
 | Ashby | Per-company API | Slugs in `sources.ashby_companies` |
-| Wellfound | Manual import | `data/wellfound_manual.json` if present (no scraping) |
-| LinkedIn | Discovery links only | Dashboard `/api/discovery` — search URLs, never scraped |
+
+### Manual import (no scraping)
+
+| Source | File | Notes |
+|---|---|---|
+| Wellfound | `data/wellfound_manual.json` | See example schema in collector docs |
+| The SaaS Jobs | `data/thesaasjobs_manual.json` | Copy from `*.example.json` |
+| Startup Jobs | `data/startupjobs_manual.json` | Cloudflare-gated site — manual only |
+
+### Discovery only (dashboard links, never scraped)
+
+LinkedIn, JustRemote, Dynamite Jobs, DailyRemote, Hiring Cafe, Jobgether, WeLoveProduct, Product Manager Job Board, Uxcel, Workello, TestDevJobs, Built In, Work at a Startup (YC), Underdog.io, Otta / Welcome to the Jungle, Remote100K, Arc, FlexJobs, PowerToFly, Virtual Vocations — all listed under Discovery in the dashboard (`/api/discovery`).
 
 ## Project layout
 

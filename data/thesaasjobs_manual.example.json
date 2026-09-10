@@ -1,0 +1,15 @@
+[
+  {
+    "id": "example-1",
+    "title": "Product Manager",
+    "company": "Example SaaS Co",
+    "url": "https://thesaasjobs.com/example",
+    "location": "Remote - Worldwide",
+    "hires_remotely_from": "Worldwide",
+    "description": "Replace this example with real listings you copy from thesaasjobs.com",
+    "salary": null,
+    "job_type": "full-time",
+    "posted_at": null,
+    "tags": ["product"]
+  }
+]
