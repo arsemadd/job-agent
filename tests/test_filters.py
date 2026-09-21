@@ -170,3 +170,75 @@ def test_pipeline_rejects_missing_company_name(prefs):
               url="https://x.com/1", location_raw="Remote - Worldwide")
     verdict = run_hard_filters(job, prefs)
     assert verdict.passed is False
+
+
+# ---------- language ----------
+
+from backend.filters.language import check_language
+
+
+def test_language_rejects_fluent_german(prefs):
+    res = check_language(
+        "Product Manager",
+        "Requirements: fluent in German and English. Remote EMEA.",
+        prefs,
+    )
+    assert res.passed is False
+    assert "german" in res.reason.lower() or "German" in res.reason
+
+
+def test_language_rejects_basic_spanish(prefs):
+    res = check_language(
+        "QA Analyst",
+        "Basic Spanish is required for customer interviews.",
+        prefs,
+    )
+    assert res.passed is False
+
+
+def test_language_rejects_cefr_level(prefs):
+    res = check_language(
+        "Product Owner",
+        "German (B2) mandatory. English C1.",
+        prefs,
+    )
+    assert res.passed is False
+
+
+def test_language_rejects_german_speaking_title(prefs):
+    res = check_language("German-speaking Product Manager", "Remote worldwide.", prefs)
+    assert res.passed is False
+
+
+def test_language_allows_english_only_requirement(prefs):
+    res = check_language(
+        "Product Manager",
+        "Fluent English required. Excellent written and spoken English.",
+        prefs,
+    )
+    assert res.passed is True
+
+
+def test_language_allows_bare_country_mention_without_proficiency(prefs):
+    # Avoid false positives from office/market mentions alone
+    res = check_language(
+        "Product Manager",
+        "Our customers are in Germany and Spain. English is the working language.",
+        prefs,
+    )
+    assert res.passed is True
+
+
+def test_pipeline_rejects_non_english_language_requirement(prefs):
+    job = Job(
+        source="s",
+        external_id="1",
+        title="Product Manager",
+        company="EuroCo",
+        url="https://x.com/1",
+        location_raw="Remote - Worldwide",
+        description="2-4 years experience. Must speak French fluently.",
+    )
+    verdict = run_hard_filters(job, prefs)
+    assert verdict.passed is False
+    assert any("language:" in r for r in verdict.reasons)

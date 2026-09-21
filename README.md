@@ -6,7 +6,7 @@ Personal job-matching agent for remote Product Management and QA roles. Collects
 Collectors → dedupe → hard filters → AI match scoring → storage → Discord
 ```
 
-The model returns a 0–100 score. SEND / DIGEST / REJECT is derived from that score against `config/preferences.json` thresholds — the model does not choose the routing decision.
+Hard filters handle role, location, experience, job type, company quality, and non-English language requirements. The model returns a 0–100 score. SEND / DIGEST / REJECT is derived from that score against `config/preferences.json` thresholds — the model does not choose the routing decision.
 
 ## Features
 
@@ -131,6 +131,7 @@ Edit `config/preferences.json`:
 
 - `roles.include` / `roles.exclude_keywords`
 - `experience.hard_reject_years`, seniority title rules
+- `language.reject_non_english_requirements` (default true) — drop roles that need fluent/basic/native skill in any language other than English
 - `location` tier keyword lists
 - `scoring.min_score_to_send_immediate` (default 85) / `min_score_to_send_digest` (default 65)
 - `sources.greenhouse_boards` / `sources.lever_companies` / `sources.ashby_companies`

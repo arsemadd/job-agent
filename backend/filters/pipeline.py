@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 from backend.filters.company_quality import check_company_quality
 from backend.filters.experience import check_experience
 from backend.filters.job_type import check_job_type
+from backend.filters.language import check_language
 from backend.filters.location import classify_location
 from backend.filters.role import check_role
 from backend.models import Job
@@ -47,6 +48,11 @@ def run_hard_filters(job: Job, prefs: dict) -> HardFilterVerdict:
     jt_res = check_job_type(job.job_type_raw, job.title, job.description, prefs)
     reasons.append(f"job_type: {jt_res.reason}")
     if not jt_res.passed:
+        return HardFilterVerdict(False, loc_res.tier, reasons)
+
+    lang_res = check_language(job.title, job.description, prefs)
+    reasons.append(f"language: {lang_res.reason}")
+    if not lang_res.passed:
         return HardFilterVerdict(False, loc_res.tier, reasons)
 
     exp_res = check_experience(job.title, job.description, prefs)

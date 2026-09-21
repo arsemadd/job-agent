@@ -51,6 +51,11 @@
     "reject": ["part-time", "internship", "unpaid", "commission-only", "commission only"]
   },
 
+  "language": {
+    "reject_non_english_requirements": true,
+    "note": "Hard-reject any posting that requires fluent, basic, native, conversational, or CEFR-level skill in a language other than English. English-only requirements pass. Bare language words without a proficiency/requirement signal are ignored to avoid false positives."
+  },
+
   "scoring": {
     "min_score_to_send_digest": 65,
     "min_score_to_send_immediate": 85,
