@@ -30,7 +30,10 @@
 
   "location": {
     "priority_order": ["A_WORLDWIDE", "B_AFRICA_EMEA", "C_UNCLEAR", "D_REJECT"],
-    "tier_a_worldwide_keywords": ["remote - worldwide", "remote - anywhere", "remote - global", "fully remote", "work from anywhere", "location independent", "remote (global)", "worldwide", "anywhere", "global"],
+    "require_fully_remote": true,
+    "reject_hybrid_onsite": true,
+    "reject_work_authorization": true,
+    "tier_a_worldwide_keywords": ["remote - worldwide", "remote - anywhere", "remote - global", "fully remote", "100% remote", "work from anywhere", "location independent", "remote (global)", "worldwide", "anywhere", "global"],
     "tier_b_africa_emea_keywords": [
       "remote - africa", "remote - emea", "africa timezone", "emea timezone",
       "kenya", "nigeria", "south africa", "ethiopia", "ghana", "egypt", "rwanda", "uganda", "tanzania",
@@ -41,9 +44,10 @@
       "uk only", "united kingdom only", "eu only", "european union only", "canada only",
       "must be located in", "must reside in", "authorized to work in the us", "us citizen",
       "us work authorization required", "no visa sponsorship", "within the united states",
-      "within the eu", "within canada", "within the uk", "latam only", "apac only"
+      "within the eu", "within canada", "within the uk", "latam only", "apac only",
+      "hybrid", "on-site", "onsite", "in-office", "office-based", "relocation required"
     ],
-    "note": "Tier C = 'Remote' with no eligibility statement found. Wellfound's 'Hires Remotely From' field, when present, is authoritative and overrides keyword guessing."
+    "note": "Fully remote only. Hybrid/on-site/office and any work-authorization or visa restriction are hard rejects. City-only postings without a remote signal are rejected. Tier C = remote with unclear country eligibility (still remote)."
   },
 
   "job_type": {
@@ -88,6 +92,10 @@
       "nodesk",
       "jobspresso",
       "fourdayweek",
+      "remotewoman",
+      "aijobs",
+      "jsremotely",
+      "remoterocketship",
       "greenhouse",
       "lever",
       "ashby"
@@ -98,6 +106,12 @@
       {"name": "startupjobs", "file": "data/startupjobs_manual.json"}
     ],
     "disabled_pending_manual_setup": ["wellfound", "thesaasjobs", "startupjobs"],
+    "discovery_only": [
+      "flexjobs",
+      "toptal",
+      "jobfill",
+      "workwave"
+    ],
     "greenhouse_boards": [
       "intercom",
       "miro",
@@ -117,7 +131,7 @@
       "ramp",
       "vercel"
     ],
-    "note": "Live collectors need no setup. Manual boards (Wellfound, The SaaS Jobs, Startup Jobs) read data/*_manual.json when present — see *.example.json. Discovery-only boards (JustRemote, Otta, Built In, etc.) appear in the dashboard Discovery panel and are never scraped. LinkedIn is discovery-only via /api/discovery."
+    "note": "Live collectors need no setup. remoterocketship needs REMOTE_ROCKETSHIP_API_KEY for live fetch (otherwise skips). Manual boards (Wellfound, The SaaS Jobs, Startup Jobs) read data/*_manual.json. FlexJobs/Toptal/JobFill/WorkWave are discovery-only (paid, gated, or not a job board)."
   },
 
   "schedule": {

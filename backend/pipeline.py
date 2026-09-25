@@ -21,18 +21,22 @@ load_dotenv()
 
 from backend.collectors.arbeitnow import ArbeitnowCollector
 from backend.collectors.ashby import AshbyCollector
+from backend.collectors.aijobs import AIJobsCollector
 from backend.collectors.base import Collector
 from backend.collectors.fourdayweek import FourDayWeekCollector
 from backend.collectors.greenhouse import GreenhouseCollector
 from backend.collectors.himalayas import HimalayasCollector
 from backend.collectors.jobicy import JobicyCollector
 from backend.collectors.jobspresso import JobspressoCollector
+from backend.collectors.jsremotely import JSRemotelyCollector
 from backend.collectors.lever import LeverCollector
 from backend.collectors.manual_import import ManualImportCollector
 from backend.collectors.mindtheproduct import MindTheProductCollector
 from backend.collectors.nodesk import NoDeskCollector
 from backend.collectors.remotefirstjobs import RemoteFirstJobsCollector
 from backend.collectors.remoteok import RemoteOKCollector
+from backend.collectors.remoterocketship import RemoteRocketshipCollector
+from backend.collectors.remotewoman import RemoteWomanCollector
 from backend.collectors.remotive import RemotiveCollector
 from backend.collectors.wellfound import WellfoundCollector
 from backend.collectors.weworkremotely import WeWorkRemotelyCollector
@@ -82,6 +86,10 @@ def build_collectors(prefs: dict) -> list[Collector]:
         NoDeskCollector(),
         JobspressoCollector(),
         FourDayWeekCollector(),
+        RemoteWomanCollector(),
+        AIJobsCollector(),
+        JSRemotelyCollector(),
+        RemoteRocketshipCollector(),
         GreenhouseCollector(boards),
         LeverCollector(companies),
         AshbyCollector(ashby_companies),
@@ -133,13 +141,24 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
 
     for job in raw_jobs:
         key = job.dedup_key
-        if store.seen(key):
-            store.upsert(key, {})  # just bumps last_seen_at
+        # Never re-process / re-alert the same company+title once it is in the store
+        # (covers URL churn across boards and across daily runs).
+        if store.seen(key) or store.seen_identity(job.company, job.title):
+            if store.seen(key):
+                store.upsert(key, {})  # bumps last_seen_at
+            continue
+        if store.already_notified_identity(job.company, job.title):
+            # Extra guard if identity index points at a notified sibling key
             continue
         new_count += 1
 
         verdict = run_hard_filters(job, prefs)
         record = job.to_dict()
+        # Truncate description early for rejects to keep the store small
+        if not verdict.passed:
+            record["description"] = ""
+        elif len(record.get("description") or "") > 4000:
+            record["description"] = (record["description"] or "")[:4000]
         record.update(
             {
                 "hard_filter_passed": verdict.passed,
@@ -191,6 +210,7 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
             record["status"] = "digest_pending"
         else:
             record["status"] = "rejected"
+            record["description"] = ""
 
         store.upsert(key, record)
 

@@ -101,6 +101,41 @@ def test_location_unclear_tier_c_passes_to_ai(prefs):
     assert res.tier == TIER_C and res.passed is True
 
 
+def test_location_rejects_hybrid(prefs):
+    res = classify_location(_job(location_raw="Hybrid - London / Remote"), prefs)
+    assert res.passed is False
+    assert res.tier == TIER_D
+
+
+def test_location_rejects_hybrid_in_description(prefs):
+    res = classify_location(
+        _job(location_raw="Remote", description="This is a hybrid role with 3 days in office."),
+        prefs,
+    )
+    assert res.passed is False
+
+
+def test_location_rejects_work_authorization(prefs):
+    res = classify_location(
+        _job(
+            location_raw="Remote",
+            description="Candidates must be authorized to work in the US. We are not able to offer visa sponsorship.",
+        ),
+        prefs,
+    )
+    assert res.passed is False
+
+
+def test_location_rejects_city_only_without_remote(prefs):
+    res = classify_location(_job(location_raw="Hamburg, Germany"), prefs)
+    assert res.passed is False
+
+
+def test_location_rejects_onsite(prefs):
+    res = classify_location(_job(location_raw="On-site - New York"), prefs)
+    assert res.passed is False
+
+
 def test_location_explicit_field_overrides_vague_text(prefs):
     # Wellfound-style explicit field takes priority over generic "Remote" text.
     res = classify_location(_job(location_raw="Remote", hires_remotely_from="Worldwide"), prefs)

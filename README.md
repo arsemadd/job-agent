@@ -132,7 +132,9 @@ Edit `config/preferences.json`:
 - `roles.include` / `roles.exclude_keywords`
 - `experience.hard_reject_years`, seniority title rules
 - `language.reject_non_english_requirements` (default true) — drop roles that need fluent/basic/native skill in any language other than English
+- `location.require_fully_remote` / `reject_hybrid_onsite` / `reject_work_authorization` — fully remote only; hybrid, on-site, and visa/auth restrictions are hard rejects
 - `location` tier keyword lists
+- Dedup is by **company + title** (URL churn no longer re-alerts). The job store is pruned/compacted each run so GitHub Actions can push under the 100 MB limit.
 - `scoring.min_score_to_send_immediate` (default 85) / `min_score_to_send_digest` (default 65)
 - `sources.greenhouse_boards` / `sources.lever_companies` / `sources.ashby_companies`
 

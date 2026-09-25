@@ -45,12 +45,42 @@ jobs:
           # This repo's webhook targets a Discord forum channel (requires thread_name).
           DISCORD_FORUM: ${{ vars.DISCORD_FORUM || '1' }}
           DISCORD_NOTIFY_EMPTY_RUNS: ${{ vars.DISCORD_NOTIFY_EMPTY_RUNS || '1' }}
+          REMOTE_ROCKETSHIP_API_KEY: ${{ secrets.REMOTE_ROCKETSHIP_API_KEY }}
         run: python -m backend.pipeline
+
+      - name: Compact job store under GitHub 100MB limit
+        run: |
+          python - <<'PY'
+          import os
+          from backend.storage.store import JobStore
+          path = "data/jobs.json"
+          store = JobStore(path)
+          removed = store.prune()
+          store.save(prune_first=False)
+          size_mb = os.path.getsize(path) / (1024 * 1024)
+          print(f"pruned={removed} size_mb={size_mb:.2f} jobs={len(store.all())}")
+          if size_mb >= 95:
+              raise SystemExit(f"jobs.json still too large ({size_mb:.2f} MB) — prune harder")
+          PY
 
       - name: Commit updated job store
         run: |
           git config user.name "job-matcher-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/jobs.json
-          git diff --cached --quiet && echo "No changes to commit" || git commit -m "chore: update job store [skip ci]"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update job store [skip ci]"
+            # Retry push once if another bot commit landed mid-run
+            for i in 1 2 3; do
+              if git push; then
+                exit 0
+              fi
+              echo "push failed (attempt $i) — rebasing onto origin/main"
+              git pull --rebase origin main || true
+              sleep 5
+            done
+            echo "ERROR: could not push job store after retries"
+            exit 1
+          fi
