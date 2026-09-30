@@ -192,9 +192,9 @@ def test_discord_alerts_tracker_and_quick_apply(client):
     # 1. Insert jobs with alerted status or high score
     with get_db() as conn:
         conn.execute("""
-        INSERT OR REPLACE INTO jobs (id, source, title, company, url, description, score, status, notified_at, first_seen_at, updated_at)
+        INSERT OR REPLACE INTO jobs (id, source, title, company, url, description, location_raw, score, status, notified_at, first_seen_at, updated_at)
         VALUES ('alert-job-1', 'jobgether', 'Remote Technical PM', 'GlobalTech', 'https://jobgether.com/job/123', 
-                'Remote PM job', 92, 'DISCOVERED', '2026-09-30T10:00:00Z', '2026-09-30T10:00:00Z', '2026-09-30T10:00:00Z')
+                'Work from anywhere in the world', 'Remote - Worldwide', 92, 'DISCOVERED', '2026-09-30T10:00:00Z', '2026-09-30T10:00:00Z', '2026-09-30T10:00:00Z')
         """)
 
     # 2. Get alerts list
@@ -216,3 +216,57 @@ def test_discord_alerts_tracker_and_quick_apply(client):
     matched_job = next(a for a in res_updated.json()["alerts"] if a["id"] == "alert-job-1")
     assert matched_job["application_status"] == "APPLIED"
 
+
+
+def test_strict_remote_from_anywhere_discord_gate():
+    """Verify that jobs restricted to US, Canada, UK, or Europe are blocked from Discord alerts."""
+    from backend.filters.location import is_remote_from_anywhere
+
+    # 1. Worldwide jobs must PASS
+    pass_job_1 = {"location_raw": "Remote - Worldwide", "description": "Global distributed team."}
+    pass_job_2 = {"location_raw": "Remote", "description": "Work from anywhere in the world."}
+    pass_job_3 = {"location_raw": "Anywhere", "description": "We hire globally across all regions."}
+    assert is_remote_from_anywhere(pass_job_1)[0] is True
+    assert is_remote_from_anywhere(pass_job_2)[0] is True
+    assert is_remote_from_anywhere(pass_job_3)[0] is True
+
+    # 2. US, Canada, and country-restricted jobs must REJECT
+    reject_us = {"location_raw": "Remote - US", "description": "Remote in the United States."}
+    reject_canada = {"location_raw": "Remote - Canada", "description": "Eligible to work in Canada."}
+    reject_north_america = {"location_raw": "Remote (US/Canada)", "description": "North America only."}
+    reject_uk = {"location_raw": "London, United Kingdom", "description": "Based in London."}
+    reject_germany = {"location_raw": "Hamburg, Germany", "description": "Our Germany office."}
+    reject_visa = {"location_raw": "Remote", "description": "Must be authorized to work in the US without sponsorship."}
+
+    assert is_remote_from_anywhere(reject_us)[0] is False
+    assert is_remote_from_anywhere(reject_canada)[0] is False
+    assert is_remote_from_anywhere(reject_north_america)[0] is False
+    assert is_remote_from_anywhere(reject_uk)[0] is False
+    assert is_remote_from_anywhere(reject_germany)[0] is False
+    assert is_remote_from_anywhere(reject_visa)[0] is False
+
+
+def test_reset_data_endpoint(client):
+    """Verify that /api/reset-data wipes all records and starts completely fresh."""
+    # First insert some mock data
+    with get_db() as conn:
+        conn.execute("""
+        INSERT OR REPLACE INTO jobs (id, source, title, company, url, description, score, status, notified_at, first_seen_at, updated_at)
+        VALUES ('temp-job-1', 'jobgether', 'PM', 'Acme', 'https://example.com', 'desc', 90, 'DISCOVERED', '2026-09-30T10:00:00Z', '2026-09-30T10:00:00Z', '2026-09-30T10:00:00Z')
+        """)
+
+    res = client.post("/api/reset-data")
+    assert res.status_code == 200
+    res_data = res.json()
+    assert res_data["success"] is True
+    assert res_data["counts"]["jobs"] == 0
+    assert res_data["counts"]["alerts"] == 0
+
+    # Verify database is empty
+    res_stats = client.get("/api/stats")
+    assert res_stats.status_code == 200
+    stats = res_stats.json()
+    assert stats["total_jobs"] == 0
+    assert stats["applied"] == 0
+    assert stats["interviewing"] == 0
+    assert stats["pending_tasks"] == 0

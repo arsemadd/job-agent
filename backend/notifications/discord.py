@@ -204,6 +204,12 @@ def _post(webhook_url: str, payload: dict, max_retries: int = 3, thread_name: st
 
 
 def send_immediate(record: dict, webhook_url: str) -> bool:
+    from backend.filters.location import is_remote_from_anywhere
+    is_worldwide, reason = is_remote_from_anywhere(record)
+    if not is_worldwide:
+        logger.warning("Blocked Discord alert for %s: not remote from anywhere (%s)", record.get("title"), reason)
+        return False
+
     content = format_immediate_message(record)
     score = int(record.get("score") or 0)
     title = (record.get("title") or "Match")[:60]
@@ -212,9 +218,18 @@ def send_immediate(record: dict, webhook_url: str) -> bool:
 
 
 def send_digest(records: list[dict], webhook_url: str) -> bool:
-    if not records:
+    from backend.filters.location import is_remote_from_anywhere
+    eligible_records = []
+    for r in records:
+        is_worldwide, reason = is_remote_from_anywhere(r)
+        if is_worldwide:
+            eligible_records.append(r)
+        else:
+            logger.warning("Excluded from Discord digest (%s): %s", reason, r.get("title"))
+
+    if not eligible_records:
         return True
-    records = sorted(records, key=lambda r: r.get("score", 0), reverse=True)
+    records = sorted(eligible_records, key=lambda r: r.get("score", 0), reverse=True)
     day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     ok = True
     for i in range(0, len(records), MAX_EMBEDS_PER_MESSAGE):

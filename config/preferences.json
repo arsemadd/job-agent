@@ -45,9 +45,19 @@
       "must be located in", "must reside in", "authorized to work in the us", "us citizen",
       "us work authorization required", "no visa sponsorship", "within the united states",
       "within the eu", "within canada", "within the uk", "latam only", "apac only",
+      "remote - us", "remote (us)", "remote, us", "us remote", "remote us", "united states remote", "remote - united states", "remote (united states)",
+      "remote - canada", "remote (canada)", "remote, canada", "canada remote", "remote canada",
+      "remote - north america", "north america remote", "us/canada", "us or canada", "canada/us", "canada or us",
+      "remote - uk", "remote (uk)", "remote, uk", "uk remote", "remote uk", "remote - united kingdom", "remote (united kingdom)", "london, united kingdom", "london, uk",
+      "remote - europe", "remote (europe)", "remote, europe", "europe only", "eu only", "within europe",
+      "remote - germany", "remote (germany)", "remote, germany", "germany only", "berlin, germany", "munich, germany",
+      "remote - france", "remote, france", "remote - spain", "remote, spain", "remote - netherlands", "remote, netherlands",
+      "remote - australia", "remote, australia", "remote - latam", "remote, latam", "remote - apac", "remote, apac", "remote - india",
+      "canadian work authorization", "authorized to work in canada", "canadian citizen", "authorized to work in the uk", "eligible to work in the eu",
       "hybrid", "on-site", "onsite", "in-office", "office-based", "relocation required"
     ],
-    "note": "Fully remote only. Hybrid/on-site/office and any work-authorization or visa restriction are hard rejects. City-only postings without a remote signal are rejected. Tier C = remote with unclear country eligibility (still remote)."
+    "require_worldwide_for_alerts": true,
+    "note": "Fully remote from anywhere only. US, Canada, UK, and region-restricted roles are hard-rejected. Discord alerts strictly require remote from anywhere / worldwide."
   },
 
   "job_type": {

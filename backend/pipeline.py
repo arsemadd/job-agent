@@ -41,6 +41,7 @@ from backend.collectors.remotive import RemotiveCollector
 from backend.collectors.wellfound import WellfoundCollector
 from backend.collectors.weworkremotely import WeWorkRemotelyCollector
 from backend.collectors.workingnomads import WorkingNomadsCollector
+from backend.filters.location import is_remote_from_anywhere
 from backend.filters.pipeline import run_hard_filters
 from backend.matching.candidate import load_candidate_profile
 from backend.matching.scoring import build_scorer
@@ -205,9 +206,23 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
         if evaluation.error:
             record["status"] = "scoring_error"
         elif evaluation.decision == "SEND":
-            record["status"] = "pending_immediate"
+            is_worldwide, reason = is_remote_from_anywhere(job)
+            if is_worldwide:
+                record["status"] = "pending_immediate"
+            else:
+                logger.info("SEND candidate %s skipped: not remote from anywhere (%s)", job.title, reason)
+                record["status"] = "rejected_not_worldwide"
+                record["decision"] = "REJECT"
+                record["description"] = ""
         elif evaluation.decision == "DIGEST":
-            record["status"] = "digest_pending"
+            is_worldwide, reason = is_remote_from_anywhere(job)
+            if is_worldwide:
+                record["status"] = "digest_pending"
+            else:
+                logger.info("DIGEST candidate %s skipped: not remote from anywhere (%s)", job.title, reason)
+                record["status"] = "rejected_not_worldwide"
+                record["decision"] = "REJECT"
+                record["description"] = ""
         else:
             record["status"] = "rejected"
             record["description"] = ""
@@ -230,6 +245,11 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
             record = store.get(key)
             if not record:
                 continue
+            is_worldwide, reason = is_remote_from_anywhere(record)
+            if not is_worldwide:
+                logger.info("Skipping Discord immediate alert for %s: %s", record.get("title"), reason)
+                store.upsert(key, {"status": "rejected_not_worldwide"})
+                continue
             ok = discord.send_immediate(record, webhook_url)
             store.upsert(key, {"status": "sent" if ok else "notify_failed", "notified_at": datetime.now(timezone.utc).isoformat()})
             if ok:
@@ -242,9 +262,9 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
     if not skip_notify:
         pending_digest = [
             r for r in store.all()
-            if r.get("status") in ("digest_pending",) or (
+            if (r.get("status") in ("digest_pending",) or (
                 r.get("status") == "notify_failed" and r.get("decision") == "DIGEST"
-            )
+            )) and is_remote_from_anywhere(r)[0]
         ]
         if pending_digest:
             ok = discord.send_digest(pending_digest, webhook_url)

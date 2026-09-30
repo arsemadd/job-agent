@@ -900,7 +900,11 @@ def get_alerts(
     unapplied_only: bool = Query(False),
     limit: int = Query(100, le=500),
 ):
-    """Retrieve all jobs that have been alerted to Discord, along with their application tracking status."""
+    """Retrieve all jobs that have been alerted to Discord, along with their application tracking status.
+    Strictly filters for roles that allow remote work from anywhere (excluding US-only, Canada-only, etc.).
+    """
+    from backend.filters.location import is_remote_from_anywhere
+
     with get_db() as conn:
         query = """
             SELECT 
@@ -910,13 +914,13 @@ def get_alerts(
                 a.applied_at as application_applied_at
             FROM jobs j
             LEFT JOIN applications a ON j.id = a.job_id
-            WHERE (j.notified_at IS NOT NULL OR j.score >= 85 OR (j.decision IS NOT NULL AND upper(j.decision) = 'SEND'))
+            WHERE j.notified_at IS NOT NULL
         """
         if unapplied_only:
             query += " AND (a.status IS NULL OR a.status IN ('DISCOVERED', 'SHORTLISTED', 'SAVED', 'PREPARING'))"
         
-        query += " ORDER BY COALESCE(j.notified_at, j.first_seen_at) DESC, j.score DESC LIMIT ?"
-        rows = conn.execute(query, (limit,)).fetchall()
+        query += " ORDER BY COALESCE(j.notified_at, j.first_seen_at) DESC, j.score DESC"
+        rows = conn.execute(query).fetchall()
         alerts = []
         for r in rows:
             d = row_to_dict(r)
@@ -924,24 +928,50 @@ def get_alerts(
                 d["tags"] = json.loads(d.get("tags_json") or "[]")
             except Exception:
                 d["tags"] = []
-            alerts.append(d)
+            if is_remote_from_anywhere(d)[0]:
+                alerts.append(d)
 
-        total_alerts = conn.execute("""
-            SELECT COUNT(*) FROM jobs WHERE (notified_at IS NOT NULL OR score >= 85 OR (decision IS NOT NULL AND upper(decision) = 'SEND'))
-        """).fetchone()[0]
-
-        unapplied_count = conn.execute("""
-            SELECT COUNT(*) FROM jobs j
-            LEFT JOIN applications a ON j.id = a.job_id
-            WHERE (j.notified_at IS NOT NULL OR j.score >= 85 OR (j.decision IS NOT NULL AND upper(j.decision) = 'SEND'))
-              AND (a.status IS NULL OR a.status IN ('DISCOVERED', 'SHORTLISTED', 'SAVED', 'PREPARING'))
-        """).fetchone()[0]
+        total_alerts = len(alerts)
+        unapplied_count = sum(1 for a in alerts if not a.get("application_status") or a.get("application_status") in ('DISCOVERED', 'SHORTLISTED', 'SAVED', 'PREPARING'))
+        alerts = alerts[:limit]
 
     return {
         "count": len(alerts),
         "total_alerts": total_alerts,
         "unapplied_count": unapplied_count,
         "alerts": alerts,
+    }
+
+
+@app.post("/api/reset-data")
+def reset_data():
+    """Wipes all jobs, applications, interviews, tasks, and alerts to start completely fresh."""
+    with get_db() as conn:
+        conn.execute("DELETE FROM activity_log;")
+        conn.execute("DELETE FROM tasks;")
+        conn.execute("DELETE FROM interviews;")
+        conn.execute("DELETE FROM cover_letters;")
+        conn.execute("DELETE FROM applications;")
+        conn.execute("DELETE FROM companies;")
+        conn.execute("DELETE FROM jobs;")
+
+    jobs_json_path = os.path.join("data", "jobs.json")
+    try:
+        with open(jobs_json_path, "w", encoding="utf-8") as f:
+            json.dump({"updated_at": datetime.now(timezone.utc).isoformat(), "jobs": []}, f, indent=2)
+    except Exception as e:
+        logger.warning(f"Could not reset jobs.json: {e}")
+
+    return {
+        "success": True,
+        "message": "All database records and legacy jobs have been completely cleared. Fresh start initialized.",
+        "counts": {
+            "jobs": 0,
+            "alerts": 0,
+            "applications": 0,
+            "interviews": 0,
+            "tasks": 0
+        }
     }
 
 
