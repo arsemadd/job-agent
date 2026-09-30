@@ -1,145 +1,148 @@
-# Job Matcher
+# CareerOS (formerly Job Matcher) 🚀
 
-Personal job-matching agent for remote Product Management and QA roles. Collects public board postings, applies deterministic eligibility filters, scores survivors against a structured candidate profile (Gemini by default, Anthropic optional), and posts only threshold-clearing matches to Discord.
+**Personal Job Search & Career Operating System for Remote Product Management & QA Roles**  
+Designed for **Arsema Doji Wordofa** (Product Manager & Software Engineer, 3+ yrs experience, 100% Remote, English-only, target: PM / Technical PM / AI PM).
 
 ```
-Collectors → dedupe → hard filters → AI match scoring → storage → Discord
+Job Discovery (31+ Boards) → Hard Filters → AI Match Scoring (Gemini/Anthropic) 
+  ↓
+Discord Webhook Alerts (85+ Immediate / 65+ Digest)
+  ↓
+CareerOS Application Lifecycle (Draft Cover Letter → Tailor & Diff → 1-Click Track → Interview → Outcome)
 ```
 
-Hard filters handle role, location, experience, job type, company quality, and non-English language requirements. The model returns a 0–100 score. SEND / DIGEST / REJECT is derived from that score against `config/preferences.json` thresholds — the model does not choose the routing decision.
+---
 
-## Features
+## 🌟 What's New in CareerOS
 
-- Sources: RemoteOK, Remotive, We Work Remotely, Himalayas, Mind the Product, Arbeitnow, Jobicy, Working Nomads, Remote First Jobs, NoDesk, Jobspresso, 4 Day Week, Greenhouse, Lever, Ashby (+ manual Wellfound / SaaS Jobs / Startup Jobs; discovery links for many more)
-- Hard filters (role, location, experience, job type, company quality) before any AI call
-- Swappable scorers: Gemini (default, free tier) or Anthropic Claude
-- Discord: immediate alerts for strong matches (85+), digest for mid-band matches (65–84)
-- FastAPI dashboard over `data/jobs.json`, plus LinkedIn / board discovery links
-- GitHub Actions hourly schedule; job store committed back to the repo
+CareerOS evolves the simple job-matching script into a complete, end-to-end career workflow:
 
-## Stack
+1. **Discord Alerts Center & 1-Click Tracking**:
+   - Every role sent to your Discord webhook appears in the dedicated **Discord Alerts** dashboard section.
+   - Direct external **Apply** link opens the original posting in one click.
+   - Click **"Track as Applied"** to immediately record the application, advance its status, and set up an automated 7-day follow-up reminder.
+2. **End-to-End Application Lifecycle**:
+   - Status pipeline: `DISCOVERED` → `SHORTLISTED` → `PREPARING` → `APPLIED` → `SCREENING` → `INTERVIEWING` → `OFFER` / `ARCHIVED`.
+   - Kanban board and table views with quick-filtering.
+3. **Grounded AI Application Strategy & Cover Letter Generator**:
+   - Auto-generates tailored application strategies grounded in Arsema's authentic portfolio (Bravura Healthcare EHR, Composity ERP, Ethiojobs, AAU Software Engineering B.Sc.).
+   - Drafts role-specific cover letters, strategic angles, and custom Q&A answers.
+4. **Document Versioning & Visual Diff Engine**:
+   - Compare draft cover letters vs tailored versions with git-style line/word addition and deletion highlights.
+   - Stores exact submission snapshots (resume version, cover letter copy, questions & answers, portfolio links).
+5. **31+ Curated Remote Job Boards + Jobgether**:
+   - Includes Jobgether, PowerToFly, RemoteWoman, RemoteHub, RemoteWorkHub, RemoteJobsClub, CloudPeeps, WordPress Jobs, Simply Communicate, VirtualAssistantJobs, OutsourcingJobs, Jobmote, RemoteBaba, Idealist, RemoteJobr, JobScribe, RemoteHunt, OutsourcingInsight, GoRemote, DynamiteJobs, TheMuse, AwesomeJobs, TechJobs, LaravelJobs, JobsinPods, RubyNow, Remoters, Outsourcely, Crossover, RemoteJobs.com, and more.
+6. **SQLite Relational Store (`data/careeros.db`)**:
+   - Automatically migrates existing jobs from `data/jobs.json`.
+   - Backed by relational tables for jobs, applications, cover letters, resume versions, interviews, tasks, and activity logs.
+
+---
+
+## 🛠️ Tech Stack
 
 | Layer | Choice |
 |---|---|
 | Pipeline | Python 3.12 |
-| AI | Gemini (`google-genai`) or Anthropic |
-| API / dashboard | FastAPI + vanilla HTML (Tailwind CDN) |
-| Storage | `data/jobs.json` |
-| CI | GitHub Actions |
+| AI Model | Gemini 2.5 Flash / Flash Lite (`google-genai`) or Anthropic Claude |
+| Backend API | FastAPI + SQLite (`data/careeros.db`) + Background Scheduler |
+| Frontend | Vanilla HTML5 + Tailwind CSS (Responsive Single-Page App) |
+| Alerts | Discord Webhook Notifications (Forum & Text Channels) |
+| Container | Dockerfile, Render Blueprint (`render.yaml`), Procfile |
 
-## Configuration
+---
 
-| File | Purpose |
-|---|---|
-| `config/candidate_profile.json` | Resume + portfolio evidence the scorer reads |
-| `config/preferences.json` | Roles, location tiers, experience rules, score thresholds, sources |
-| `.env` | Local secrets (see `.env.example`) |
+## 🚀 Quick Start (Local Run)
 
-### Environment variables
-
-| Variable | Required | Notes |
-|---|---|---|
-| `AI_PROVIDER` | no | `gemini` (default) or `anthropic` |
-| `GEMINI_API_KEY` | if using Gemini | [Google AI Studio](https://aistudio.google.com/apikey) |
-| `GEMINI_MODEL` | no | defaults to `gemini-3.5-flash-lite` |
-| `ANTHROPIC_API_KEY` | if using Claude | |
-| `ANTHROPIC_MODEL` | no | override default Claude model ID |
-| `DISCORD_WEBHOOK_URL` | for notifications | channel webhook |
-| `DISCORD_FORUM` | no | set `1` only if the webhook targets a forum channel |
-| `DISCORD_THREAD_ID` | no | post into an existing forum thread |
-| `DISCORD_THREAD_NAME` | no | forum post name when forum mode is on |
-| `DISCORD_NOTIFY_EMPTY_RUNS` | no | `1` (default) posts a short run heartbeat |
-
-GitHub Actions uses the same keys via repository **Secrets** / **Variables**.
-
-## Quick start
-
+### 1. Prerequisites & Virtual Environment
 ```bash
+# Clone the repository
+git clone https://github.com/arsemadd/job-agent.git
+cd job-agent
+
+# Create & activate virtual environment
 python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
+.venv\Scripts\activate      # On Windows
+source .venv/bin/activate   # On Linux/macOS
+
+# Install dependencies
 pip install -r requirements-dev.txt
-cp .env.example .env               # set GEMINI_API_KEY and DISCORD_WEBHOOK_URL
-
-python -m backend.pipeline         # collect → filter → score → Discord
-python -m backend.pipeline --dry-run
-
-uvicorn backend.app:app --reload   # http://127.0.0.1:8000
-pytest
 ```
 
-## Scheduling
-
-Hourly **every hour UTC** (`cron: 0 * * * *`). GitHub Actions cron can delay or skip runs on public repos under load — if a slot is missed, the next hour usually picks up. Manual runs: Actions tab → `workflow_dispatch`.
-
-Quiet runs still post a short Discord heartbeat when `DISCORD_NOTIFY_EMPTY_RUNS=1` (default), so you can tell the agent ran even when nothing scored ≥65.
-
-## Sources
-
-### Live collectors (public API / RSS)
-
-| Source | Method | Notes |
-|---|---|---|
-| RemoteOK | Public API | |
-| Remotive | Public API | Category queries |
-| We Work Remotely | RSS | Uses `<region>` when present |
-| Himalayas | Public API | Uses `locationRestrictions` when present |
-| Mind the Product | Public JSON list | Product-focused board |
-| Arbeitnow | Public API | Tag-hinted PM/QA subset |
-| Jobicy | Public API | Product / QA / business remote queries |
-| Working Nomads | Public JSON | `api/exposed_jobs` + local PM/QA filter |
-| Remote First Jobs | Category RSS | `product`, `qa`, … |
-| NoDesk | RSS | Product/QA title filter |
-| Jobspresso | RSS | Job listing feed + PM/QA filter |
-| 4 Day Week | Public API | Remote + product/QA queries |
-| Greenhouse | Per-company board API | Tokens in `sources.greenhouse_boards` |
-| Lever | Per-company API | Slugs in `sources.lever_companies` |
-| Ashby | Per-company API | Slugs in `sources.ashby_companies` |
-
-### Manual import (no scraping)
-
-| Source | File | Notes |
-|---|---|---|
-| Wellfound | `data/wellfound_manual.json` | See example schema in collector docs |
-| The SaaS Jobs | `data/thesaasjobs_manual.json` | Copy from `*.example.json` |
-| Startup Jobs | `data/startupjobs_manual.json` | Cloudflare-gated site — manual only |
-
-### Discovery only (dashboard links, never scraped)
-
-LinkedIn, JustRemote, Dynamite Jobs, DailyRemote, Hiring Cafe, Jobgether, WeLoveProduct, Product Manager Job Board, Uxcel, Workello, TestDevJobs, Built In, Work at a Startup (YC), Underdog.io, Otta / Welcome to the Jungle, Remote100K, Arc, FlexJobs, PowerToFly, Virtual Vocations — all listed under Discovery in the dashboard (`/api/discovery`).
-
-## Project layout
-
-```
-backend/
-  collectors/      job sources → backend.models.Job
-  filters/         role, location, experience, job_type, company_quality
-  matching/        candidate profile + Gemini / Anthropic scorers
-  notifications/   Discord webhook formatting
-  storage/         data/jobs.json persistence + dedup
-  pipeline.py      one full run
-  app.py           FastAPI dashboard + /api/jobs, /api/stats
-frontend/dashboard/index.html
-config/            candidate_profile.json, preferences.json
-data/jobs.json     job store (updated by scheduled runs)
-tests/             pytest suite (mocked HTTP / AI — no live network)
-.github/workflows/job-agent.yml
+### 2. Configure Environment (`.env`)
+Create a `.env` file based on `.env.example`:
+```env
+AI_PROVIDER=gemini
+GEMINI_API_KEY=your_gemini_api_key_here
+DISCORD_WEBHOOK_URL=https://discordapp.com/api/webhooks/your_webhook_id/your_webhook_token
+GEMINI_MODEL=gemini-3.5-flash-lite
+DISCORD_FORUM=0
+DISCORD_NOTIFY_EMPTY_RUNS=1
+ENABLE_BACKGROUND_SCHEDULER=1
 ```
 
-## Tuning
+### 3. Run CareerOS Dashboard
+```bash
+python run_careeros.py
+```
+This opens the CareerOS Dashboard automatically at **http://127.0.0.1:8000** (API docs at **http://127.0.0.1:8000/docs**).
 
-Edit `config/preferences.json`:
+---
 
-- `roles.include` / `roles.exclude_keywords`
-- `experience.hard_reject_years`, seniority title rules
-- `language.reject_non_english_requirements` (default true) — drop roles that need fluent/basic/native skill in any language other than English
-- `location.require_fully_remote` / `reject_hybrid_onsite` / `reject_work_authorization` — fully remote only; hybrid, on-site, and visa/auth restrictions are hard rejects
-- `location` tier keyword lists
-- Dedup is by **company + title** (URL churn no longer re-alerts). The job store is pruned/compacted each run so GitHub Actions can push under the 100 MB limit.
-- `scoring.min_score_to_send_immediate` (default 85) / `min_score_to_send_digest` (default 65)
-- `sources.greenhouse_boards` / `sources.lever_companies` / `sources.ashby_companies`
+## ☁️ Deployment Guide (Keep Running 24/7 in Cloud)
 
-Keep `config/candidate_profile.json` in sync with the resume and portfolio so match rationale stays accurate.
+Because CareerOS includes both an interactive web dashboard and a persistent SQLite database, standard static hosts like Netlify (which only host client-side assets) cannot keep a Python server and database running.
 
-## License
+Here are the easiest recommended options to keep CareerOS running 24/7:
 
-Private personal project — not published as an open-source package.
+### Option A: Render.com (Recommended Free/Low Cost)
+1. Push code to your GitHub repo.
+2. Sign up at [Render.com](https://render.com) and click **New → Web Service**.
+3. Select your GitHub repository `arsemadd/job-agent`.
+4. Render automatically detects `render.yaml` or you can specify:
+   - **Environment**: Python 3
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `uvicorn backend.app:app --host 0.0.0.0 --port $PORT`
+5. Under **Environment Variables**, add:
+   - `GEMINI_API_KEY`
+   - `DISCORD_WEBHOOK_URL`
+   - `ENABLE_BACKGROUND_SCHEDULER=1`
+   - `DISCORD_FORUM=0`
+6. Click **Deploy**. Your app will be live 24/7 at `https://careeros-xxxx.onrender.com`!
+
+### Option B: GitHub Actions (Free Hourly Cron)
+- The repo already includes `.github/workflows/job-agent.yml` which executes the sourcing pipeline hourly, sends Discord alerts, and commits new jobs back to the repository.
+- Ensure your repository Secrets contain:
+  - `GEMINI_API_KEY`
+  - `DISCORD_WEBHOOK_URL`
+
+### Option C: Docker Container
+```bash
+docker build -t careeros:latest .
+docker run -d -p 8000:8000 --env-file .env careeros:latest
+```
+
+---
+
+## 🧪 Testing
+
+Run the full automated test suite (85+ tests):
+```bash
+pytest tests/
+```
+
+---
+
+## 🔒 Configuration & Candidate Profile
+
+- `config/candidate_profile.json`: Contains Arsema's projects (Bravura EHR, Composity ERP), skills, education, and target job criteria.
+- `config/preferences.json`: Strict filtering rules:
+  - `language.reject_non_english_requirements`: True (rejects any jobs requiring French, German, Spanish, etc.)
+  - `location.require_fully_remote`: True (rejects hybrid and on-site)
+  - `experience.hard_reject_years`: Rejects roles demanding >6 years of experience.
+  - `scoring.min_score_to_send_immediate`: 85
+  - `scoring.min_score_to_send_digest`: 65
+
+---
+
+## 📜 License
+Private personal project for Arsema Doji Wordofa.
