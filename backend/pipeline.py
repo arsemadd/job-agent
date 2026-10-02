@@ -142,9 +142,10 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
 
     for job in raw_jobs:
         key = job.dedup_key
-        # Never re-process / re-alert the same company+title once it is in the store
-        # (covers URL churn across boards and across daily runs).
-        if store.seen(key) or store.seen_identity(job.company, job.title):
+        existing = store.get(key)
+        if existing and existing.get("status") in ("dry_run_not_scored", "queued_for_scoring"):
+            pass
+        elif store.seen(key) or store.seen_identity(job.company, job.title):
             if store.seen(key):
                 store.upsert(key, {})  # bumps last_seen_at
             continue
@@ -180,7 +181,6 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
 
         if dry_run:
             record.update({"status": "dry_run_not_scored", "decision": None, "score": None})
-            store.upsert(key, record)
             continue
 
         max_score = int(os.environ.get("MAX_SCORE_PER_RUN", "0") or "0")

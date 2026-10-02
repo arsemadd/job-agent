@@ -4,7 +4,7 @@ import os
 import pytest
 
 from backend.filters.experience import check_experience, extract_min_years
-from backend.filters.location import classify_location, TIER_A, TIER_B, TIER_C, TIER_D
+from backend.filters.location import classify_location, is_remote_from_anywhere, TIER_A, TIER_B, TIER_C, TIER_D
 from backend.filters.pipeline import run_hard_filters
 from backend.filters.role import check_role
 from backend.models import Job
@@ -277,3 +277,48 @@ def test_pipeline_rejects_non_english_language_requirement(prefs):
     verdict = run_hard_filters(job, prefs)
     assert verdict.passed is False
     assert any("language:" in r for r in verdict.reasons)
+
+
+# ---------- is_remote_from_anywhere (Discord alert guard) ----------
+
+def test_is_remote_from_anywhere_worldwide():
+    job = Job(source="greenhouse", external_id="1", title="Product Manager", company="Acme",
+              url="https://x.com/1", location_raw="Remote - Worldwide", description="Work from anywhere.")
+    allowed, reason = is_remote_from_anywhere(job)
+    assert allowed is True
+
+
+def test_is_remote_from_anywhere_rejects_country_in_title():
+    job = Job(source="ashby", external_id="2", title="Product Owner - DICOM / Health Tech (Canada)",
+              company="Intelerad", url="https://x.com/2", location_raw="Remote", description="Remote role.")
+    allowed, reason = is_remote_from_anywhere(job)
+    assert allowed is False
+    assert "canada" in reason.lower()
+
+
+def test_is_remote_from_anywhere_rejects_us_only():
+    job = Job(source="lever", external_id="3", title="QA Engineer", company="BigTech",
+              url="https://x.com/3", location_raw="Remote - US Only", description="US residents only.")
+    allowed, reason = is_remote_from_anywhere(job)
+    assert allowed is False
+
+
+def test_is_remote_from_anywhere_accepts_clean_remote():
+    job = Job(source="greenhouse", external_id="4", title="QA Engineer", company="CleanSaaS",
+              url="https://x.com/4", location_raw="Remote", description="Fully remote position.")
+    allowed, reason = is_remote_from_anywhere(job)
+    assert allowed is True
+
+
+def test_is_remote_from_anywhere_handles_dict_tags_without_crash():
+    # FourDayWeek sends tags as dicts: [{"name": "Python"}, {"name": "Remote"}]
+    job = {
+        "title": "Product Manager",
+        "location_raw": "Remote",
+        "tags": [{"name": "Python", "slug": "python"}, {"name": "Remote"}],
+        "description": "Awesome role.",
+        "source": "fourdayweek"
+    }
+    allowed, reason = is_remote_from_anywhere(job)
+    assert allowed is True
+

@@ -84,23 +84,34 @@ def is_remote_from_anywhere(job: Job | dict) -> tuple[bool, str]:
     Used specifically for Discord alerts to ensure no US-only, Canada-only,
     or region-restricted jobs are ever alerted.
     """
+    def _extract_tags_str(raw_tags) -> str:
+        if isinstance(raw_tags, list):
+            parts = []
+            for t in raw_tags:
+                if isinstance(t, dict):
+                    parts.append(str(t.get("name") or t.get("slug") or ""))
+                else:
+                    parts.append(str(t))
+            return " ".join(parts)
+        return str(raw_tags or "")
+
     if isinstance(job, dict):
         loc_raw = (job.get("location_raw") or "").strip()
         explicit = (job.get("hires_remotely_from") or "").strip()
         desc = (job.get("description") or "")[:4000]
         title = (job.get("title") or "")
-        tags = " ".join(job.get("tags") or []) if isinstance(job.get("tags"), list) else str(job.get("tags") or "")
+        tags = _extract_tags_str(job.get("tags"))
         source = (job.get("source") or "")
     else:
         loc_raw = (job.location_raw or "").strip()
         explicit = (job.hires_remotely_from or "").strip()
         desc = (job.description or "")[:4000]
         title = job.title or ""
-        tags = " ".join(job.tags) if isinstance(job.tags, list) else str(job.tags or "")
+        tags = _extract_tags_str(job.tags)
         source = job.source or ""
 
     loc_combined = f"{loc_raw} | {explicit} | {tags}".lower()
-    full_text = f"{loc_raw} | {explicit} | {tags} | {desc}".lower()
+    full_text = f"{title} | {loc_raw} | {explicit} | {tags} | {desc}".lower()
 
     # 1. Hard check: hybrid or onsite
     for pat in HYBRID_PATTERNS:
@@ -116,6 +127,9 @@ def is_remote_from_anywhere(job: Job | dict) -> tuple[bool, str]:
     country_rejects = [
         "us only", "u.s. only", "usa only", "united states only", "canada only",
         "uk only", "united kingdom only", "eu only", "europe only", "latam only", "apac only",
+        "(us)", "(usa)", "(u.s.)", "(canada)", "(uk)", "(united states)", "(north america)",
+        "[us]", "[usa]", "[u.s.]", "[canada]", "[uk]", "[united states]", "[north america]",
+        "- us", "- usa", "- canada", "- uk",
         "remote - us", "remote (us)", "remote, us", "us remote", "remote us",
         "remote - usa", "remote, usa", "remote (usa)", "usa remote",
         "remote - united states", "remote, united states", "united states remote",
@@ -133,29 +147,35 @@ def is_remote_from_anywhere(job: Job | dict) -> tuple[bool, str]:
         if kw in loc_combined or kw in full_text:
             return False, f"Restricted to specific country/region: '{kw}'"
 
-    # 4. Check for explicit Worldwide / Anywhere in the World signal
+    # 4. Check for explicit Worldwide / Anywhere in the World / Africa / EMEA signal
     worldwide_keywords = [
         "worldwide", "remote - worldwide", "remote-worldwide", "worldwide remote",
         "anywhere", "remote - anywhere", "remote-anywhere", "anywhere in the world",
         "work from anywhere", "remote global", "remote - global", "global remote",
         "location independent", "100% remote anywhere", "open globally", "all countries",
-        "remote (worldwide)", "remote (anywhere)", "remote (global)"
+        "remote (worldwide)", "remote (anywhere)", "remote (global)",
+        "remote - emea", "remote (emea)", "remote, emea", "emea remote",
+        "remote - africa", "remote (africa)", "africa remote"
     ]
     for kw in worldwide_keywords:
         if kw in loc_combined:
-            return True, f"Explicitly remote from anywhere ('{kw}')"
+            return True, f"Explicitly remote from anywhere / EMEA ('{kw}')"
 
     for kw in ["anywhere in the world", "work from anywhere in the world", "work from anywhere", "hire anywhere", "100% remote worldwide"]:
         if kw in full_text:
             return True, f"Worldwide remote confirmed in description ('{kw}')"
 
     # 5. If it's a specific city/country location without remote worldwide, reject
-    if loc_raw and not re.search(r"\b(remote|telecommute|distributed)\b", loc_raw, re.I):
+    if loc_raw and not re.search(r"\b(remote|telecommute|distributed|anywhere|global)\b", loc_raw, re.I):
         return False, f"Location is a specific physical city/country: '{loc_raw}'"
 
-    # 6. Source-level worldwide signal
-    if source in ("remoteok", "weworkremotely", "jobgether") and ("worldwide" in full_text or "anywhere" in full_text):
-        return True, "Collector source confirmed worldwide"
+    # 6. If explicitly remote with NO country restrictions, accept
+    if re.search(r"\b(remote|telecommute|distributed|fully remote|100% remote)\b", loc_raw, re.I):
+        return True, "Fully remote role with no country restrictions"
+
+    # 7. Source-level remote board signal
+    if source in ("remoteok", "weworkremotely", "jobgether", "himalayas", "jobicy", "nodesk", "remotive"):
+        return True, "Verified remote board posting with no country restrictions"
 
     return False, "Not confirmed as Remote from Anywhere / Worldwide"
 

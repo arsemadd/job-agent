@@ -187,6 +187,11 @@ def _post(webhook_url: str, payload: dict, max_retries: int = 3, thread_name: st
                     logger.info("discord webhook is a forum channel — retrying with thread_name")
                     use_forum = True
                     continue
+                # Regular text channel webhooks reject thread_name (error 220003) — opt out and retry.
+                if resp.status_code == 400 and "220003" in err_text and use_forum:
+                    logger.info("discord webhook is a standard text channel — retrying without thread_name")
+                    use_forum = False
+                    continue
                 logger.warning(
                     "discord post failed (attempt %d/%d): HTTP %s %s",
                     attempt,
