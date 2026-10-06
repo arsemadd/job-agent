@@ -99,3 +99,24 @@ def test_compute_decision_thresholds_directly(prefs):
     assert compute_decision(65, False, prefs) == "DIGEST"
     assert compute_decision(64, False, prefs) == "REJECT"
     assert compute_decision(99, True, prefs) == "REJECT"
+
+
+def test_hybrid_or_location_in_gaps_triggers_rejection_and_purges_gap(candidate_profile, prefs):
+    scorer = _make_scorer(candidate_profile, prefs, {
+        "score": 90,
+        "why_matches": ["Great PM experience"],
+        "gaps": [
+            "Location is Addis Ababa, Ethiopia, while the posting is US-remote/hybrid-centric (though Ramp offers some global benefits, geographic alignment remains unclear relative to exact restrictions).",
+            "Lacks SQL"
+        ],
+        "confidence": "high",
+        "reasoning_summary": "Strong PM fit but location is hybrid-centric",
+    })
+    job = Job(source="s", external_id="1", title="Product Manager", company="Acme", url="https://x.com/1")
+    result = scorer.score_job(job, HardFilterVerdict(True, "A_WORLDWIDE"))
+    assert result.decision == "REJECT"
+    assert result.recommend_reject_override is True
+    assert result.score == 0
+    assert "Addis Ababa" not in " ".join(result.gaps)
+    assert result.gaps == ["Lacks SQL"]
+

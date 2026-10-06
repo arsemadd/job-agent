@@ -46,6 +46,8 @@ RESULT_JSON_SCHEMA = {
     "required": ["score", "why_matches", "gaps", "confidence", "reasoning_summary"],
 }
 
+import re
+
 SYSTEM_PROMPT = """You are a sharp, honest technical recruiter evaluating a SPECIFIC job posting \
 against ONE SPECIFIC candidate's actual resume and portfolio evidence. You are not writing generic \
 encouragement - you are deciding whether this candidate should spend her limited attention applying \
@@ -63,6 +65,18 @@ the job wants a data analyst who writes complex queries daily.
 
 Be honest about weak matches. A generic "product manager" posting is not automatically a 90+ just \
 because the title matches - read what the role actually needs.
+
+CRITICAL RULE — ZERO TOLERANCE FOR HYBRID, ONSITE, OR REGIONAL RESTRICTIONS:
+The candidate is based in Addis Ababa, Ethiopia. She accepts ONLY 100% remote roles that allow working \
+from anywhere worldwide or from Africa/EMEA.
+- NEVER list location restrictions, hybrid arrangements, office days, US-remote, Canada-remote, UK-remote, \
+or geographic alignment issues as a "gap" in the `gaps` list.
+- If a job mentions hybrid, requires office attendance, is restricted to the US/Canada/UK/India or any \
+specific region that excludes Ethiopia, or if remote eligibility from Ethiopia is doubtful:
+  You MUST set `recommend_reject_override: true`, set `override_reason` describing the location/hybrid \
+  disqualification, and set `score: 0`.
+- Hybrid or country-restricted roles are NON-NEGOTIABLE HARD REJECTS. Do not score them and do not include \
+location as a gap.
 
 You will be told the deterministic pre-filter results (location tier, years-required) that already \
 ran before you saw this job - trust those unless the posting text clearly contradicts them, in which \
@@ -84,6 +98,15 @@ class MatchEvaluation:
     error: str | None = None          # set if scoring failed after retries
 
 
+LOCATION_HYBRID_DISQUALIFY_PATTERNS = [
+    re.compile(r"\b(?:hybrid|on[- ]?site|in[- ]?office|office[- ]based)\b", re.I),
+    re.compile(r"\b(?:us[- ]remote|us[- ]centric|canada[- ]centric|uk[- ]centric)\b", re.I),
+    re.compile(r"\b(?:addis ababa|ethiopia)\b.*\b(?:geographic|alignment|unclear|mismatch|barrier|restricted|centric)\b", re.I),
+    re.compile(r"\b(?:geographic|regional)\b.*\b(?:alignment|unclear|mismatch|barrier|restricted)\b", re.I),
+    re.compile(r"\b(?:location eligibility|location is posted as|not worldwide|not remote from anywhere)\b", re.I),
+]
+
+
 def compute_decision(score: int, override: bool, prefs: dict) -> str:
     if override:
         return "REJECT"
@@ -98,12 +121,41 @@ def compute_decision(score: int, override: bool, prefs: dict) -> str:
 
 
 def evaluation_from_dict(data: dict) -> MatchEvaluation:
+    raw_gaps = list(data.get("gaps", []) or [])
+    clean_gaps = []
+    has_location_disqualification = False
+    disqualify_reason = ""
+
+    for g in raw_gaps:
+        g_str = str(g)
+        is_loc_mismatch = any(pat.search(g_str) for pat in LOCATION_HYBRID_DISQUALIFY_PATTERNS)
+        if is_loc_mismatch:
+            has_location_disqualification = True
+            disqualify_reason = g_str
+        else:
+            clean_gaps.append(g_str)
+
+    reasoning = str(data.get("reasoning_summary", "") or "")
+    if any(pat.search(reasoning) for pat in LOCATION_HYBRID_DISQUALIFY_PATTERNS):
+        has_location_disqualification = True
+        if not disqualify_reason:
+            disqualify_reason = reasoning
+
+    override = bool(data.get("recommend_reject_override", False)) or has_location_disqualification
+    override_reason = (data.get("override_reason", "") or "").strip()
+    if has_location_disqualification and not override_reason:
+        override_reason = f"Candidate requires 100% remote (worldwide/EMEA): rejected due to '{disqualify_reason}'"
+
+    score = int(data.get("score", 0))
+    if has_location_disqualification:
+        score = 0
+
     return MatchEvaluation(
-        score=int(data.get("score", 0)),
+        score=score,
         why_matches=list(data.get("why_matches", []) or []),
-        gaps=list(data.get("gaps", []) or []),
+        gaps=clean_gaps,
         confidence=data.get("confidence", "medium"),
-        reasoning_summary=data.get("reasoning_summary", ""),
-        recommend_reject_override=bool(data.get("recommend_reject_override", False)),
-        override_reason=data.get("override_reason", "") or "",
+        reasoning_summary=reasoning,
+        recommend_reject_override=override,
+        override_reason=override_reason,
     )

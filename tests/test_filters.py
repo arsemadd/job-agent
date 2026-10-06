@@ -322,3 +322,34 @@ def test_is_remote_from_anywhere_handles_dict_tags_without_crash():
     allowed, reason = is_remote_from_anywhere(job)
     assert allowed is True
 
+
+def test_is_remote_from_anywhere_rejects_office_hubs_and_hq():
+    job = Job(
+        source="ashby:ramp",
+        external_id="5",
+        title="Product Manager",
+        company="Ramp",
+        url="https://x.com/5",
+        location_raw="Remote · New York, NY (HQ); San Francisco, CA",
+        description="Fast growing fintech."
+    )
+    allowed, reason = is_remote_from_anywhere(job)
+    assert allowed is False
+    assert "office hub" in reason.lower() or "hq" in reason.lower()
+
+
+def test_classify_location_rejects_office_hubs_and_hq(prefs):
+    job = Job(
+        source="ashby:ramp",
+        external_id="6",
+        title="Product Manager",
+        company="Ramp",
+        url="https://x.com/6",
+        location_raw="Remote · New York, NY (HQ); San Francisco, CA",
+        description="Fast growing fintech."
+    )
+    res = classify_location(job, prefs)
+    assert res.passed is False
+    assert res.tier == TIER_D
+
+

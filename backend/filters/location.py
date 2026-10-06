@@ -33,6 +33,16 @@ HYBRID_PATTERNS = [
     re.compile(r"\bmust\s+be\s+(?:based|located)\s+in\b", re.I),
     re.compile(r"\brelocation\s+required\b", re.I),
     re.compile(r"\bcome\s+into\s+(?:the\s+)?office\b", re.I),
+    re.compile(r"\b(?:hybrid[- ]remote|remote/hybrid|hybrid/remote|office[- ]centric|hub[- ]centric|us[- ]centric)\b", re.I),
+]
+
+# Physical office hub / US state patterns in location_raw that indicate office ties / US-only presence
+LOCATION_RAW_OFFICE_PATTERNS = [
+    re.compile(r"\(hq\)", re.I),
+    re.compile(r"\bhq\b", re.I),
+    re.compile(r"\bheadquarters\b", re.I),
+    re.compile(r",\s*(?:AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY|DC)\b"),
+    re.compile(r"\b(?:new york|san francisco|los angeles|seattle|austin|chicago|boston|denver|atlanta|miami|dallas|portland|san diego|philadelphia|bangalore|bengaluru|singapore|toronto|vancouver|montreal|sydney|melbourne|london|paris|berlin|munich|dublin|amsterdam)\b", re.I),
 ]
 
 # Work authorization / visa — candidate cannot satisfy
@@ -165,15 +175,24 @@ def is_remote_from_anywhere(job: Job | dict) -> tuple[bool, str]:
         if kw in full_text:
             return True, f"Worldwide remote confirmed in description ('{kw}')"
 
-    # 5. If it's a specific city/country location without remote worldwide, reject
+    # 5. Check if location_raw contains office hubs, HQ, or US state/city ties without worldwide clearance
+    is_confirmed_worldwide = any(kw in loc_combined for kw in worldwide_keywords) or any(
+        kw in full_text for kw in ["anywhere in the world", "work from anywhere in the world", "work from anywhere", "hire anywhere", "100% remote worldwide"]
+    )
+    if not is_confirmed_worldwide and loc_raw:
+        office_match = _first_regex(loc_raw, LOCATION_RAW_OFFICE_PATTERNS)
+        if office_match:
+            return False, f"Location is tied to physical office hub or city: '{office_match}'"
+
+    # 6. If it's a specific city/country location without remote worldwide, reject
     if loc_raw and not re.search(r"\b(remote|telecommute|distributed|anywhere|global)\b", loc_raw, re.I):
         return False, f"Location is a specific physical city/country: '{loc_raw}'"
 
-    # 6. If explicitly remote with NO country restrictions, accept
+    # 7. If explicitly remote with NO country restrictions, accept
     if re.search(r"\b(remote|telecommute|distributed|fully remote|100% remote)\b", loc_raw, re.I):
         return True, "Fully remote role with no country restrictions"
 
-    # 7. Source-level remote board signal
+    # 8. Source-level remote board signal
     if source in ("remoteok", "weworkremotely", "jobgether", "himalayas", "jobicy", "nodesk", "remotive"):
         return True, "Verified remote board posting with no country restrictions"
 
@@ -222,6 +241,18 @@ def classify_location(job: Job, prefs: dict) -> FilterResult:
             tier=TIER_D,
             detail={"matched_keyword": d_hit, "source_field": "explicit" if explicit else "text"},
         )
+
+    # Check if location_raw has office hub or US state ties without worldwide clearance
+    is_worldwide = bool(_any_keyword(explicit or job.location_raw, tier_a_kw) or _any_keyword(explicit or job.location_raw, tier_b_kw))
+    if not is_worldwide and job.location_raw:
+        office_hit = _first_regex(job.location_raw, LOCATION_RAW_OFFICE_PATTERNS)
+        if office_hit:
+            return FilterResult(
+                False,
+                f"location is tied to specific office hub/city ('{office_hit}')",
+                tier=TIER_D,
+                detail={"matched": office_hit, "rule": "office_hub"},
+            )
 
     a_hit = _any_keyword(explicit or job.location_raw, tier_a_kw)
     if a_hit:
