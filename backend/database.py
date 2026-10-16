@@ -198,7 +198,7 @@ def migrate_from_json(json_path: str = os.path.join("data", "jobs.json"), db_pat
         return 0
 
     try:
-        with open(json_path, "r", encoding="utf-8") as f:
+        with open(json_path, "r", encoding="utf-8", errors="replace") as f:
             data = json.load(f)
     except Exception:
         return 0
@@ -279,6 +279,8 @@ def migrate_from_json(json_path: str = os.path.join("data", "jobs.json"), db_pat
                 now_iso,
             ))
             inserted += 1
+
+        conn.commit()
 
     return inserted
 
