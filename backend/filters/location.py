@@ -199,6 +199,41 @@ def is_remote_from_anywhere(job: Job | dict) -> tuple[bool, str]:
     return False, "Not confirmed as Remote from Anywhere / Worldwide"
 
 
+def eligible_for_alert(job: Job | dict, prefs: dict) -> tuple[bool, str]:
+    """Decide whether a scored job may be sent to Discord.
+
+    Prefer stored location_tier when present. Worldwide-only mode remains
+    available via location.require_worldwide_for_alerts; otherwise allow
+    configured alert_location_tiers (default Worldwide + Africa/EMEA).
+    """
+    loc_prefs = prefs.get("location", {}) or {}
+    require_worldwide = bool(loc_prefs.get("require_worldwide_for_alerts", False))
+    if require_worldwide:
+        return is_remote_from_anywhere(job)
+
+    if isinstance(job, dict):
+        tier = (job.get("location_tier") or "").strip().upper()
+    else:
+        tier = ""
+
+    allowed = [
+        str(t).strip().upper()
+        for t in (loc_prefs.get("alert_location_tiers") or [TIER_A, TIER_B])
+        if t
+    ]
+    if not allowed:
+        allowed = [TIER_A, TIER_B]
+
+    if tier in allowed:
+        return True, f"Alert-eligible location tier {tier}"
+
+    # Fallback when tier missing (legacy records): keep strict worldwide check
+    ok, reason = is_remote_from_anywhere(job)
+    if ok:
+        return True, reason
+    return False, f"Not in alert tiers {allowed}; {reason}"
+
+
 def classify_location(job: Job, prefs: dict) -> FilterResult:
     loc_prefs = prefs.get("location", {})
     tier_a_kw = loc_prefs.get("tier_a_worldwide_keywords", [])

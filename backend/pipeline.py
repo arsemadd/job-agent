@@ -38,10 +38,11 @@ from backend.collectors.remoteok import RemoteOKCollector
 from backend.collectors.remoterocketship import RemoteRocketshipCollector
 from backend.collectors.remotewoman import RemoteWomanCollector
 from backend.collectors.remotive import RemotiveCollector
+from backend.collectors.rss_boards import RssBoardsCollector
 from backend.collectors.wellfound import WellfoundCollector
 from backend.collectors.weworkremotely import WeWorkRemotelyCollector
 from backend.collectors.workingnomads import WorkingNomadsCollector
-from backend.filters.location import is_remote_from_anywhere
+from backend.filters.location import eligible_for_alert
 from backend.filters.pipeline import run_hard_filters
 from backend.matching.candidate import load_candidate_profile
 from backend.matching.scoring import build_scorer
@@ -68,6 +69,7 @@ def build_collectors(prefs: dict) -> list[Collector]:
     boards = prefs.get("sources", {}).get("greenhouse_boards", [])
     companies = prefs.get("sources", {}).get("lever_companies", [])
     ashby_companies = prefs.get("sources", {}).get("ashby_companies", [])
+    rss_feeds = prefs.get("sources", {}).get("rss_boards", [])
     manual_imports = prefs.get("sources", {}).get("manual_imports") or [
         {"name": "wellfound", "file": "data/wellfound_manual.json"},
         {"name": "thesaasjobs", "file": "data/thesaasjobs_manual.json"},
@@ -94,6 +96,7 @@ def build_collectors(prefs: dict) -> list[Collector]:
         GreenhouseCollector(boards),
         LeverCollector(companies),
         AshbyCollector(ashby_companies),
+        RssBoardsCollector(rss_feeds),
         WellfoundCollector(),
     ]
     for entry in manual_imports:
@@ -206,20 +209,20 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
         if evaluation.error:
             record["status"] = "scoring_error"
         elif evaluation.decision == "SEND":
-            is_worldwide, reason = is_remote_from_anywhere(job)
-            if is_worldwide:
+            alert_ok, reason = eligible_for_alert(record, prefs)
+            if alert_ok:
                 record["status"] = "pending_immediate"
             else:
-                logger.info("SEND candidate %s skipped: not remote from anywhere (%s)", job.title, reason)
+                logger.info("SEND candidate %s skipped for Discord (%s)", job.title, reason)
                 record["status"] = "rejected_not_worldwide"
                 record["decision"] = "REJECT"
                 record["description"] = ""
         elif evaluation.decision == "DIGEST":
-            is_worldwide, reason = is_remote_from_anywhere(job)
-            if is_worldwide:
+            alert_ok, reason = eligible_for_alert(record, prefs)
+            if alert_ok:
                 record["status"] = "digest_pending"
             else:
-                logger.info("DIGEST candidate %s skipped: not remote from anywhere (%s)", job.title, reason)
+                logger.info("DIGEST candidate %s skipped for Discord (%s)", job.title, reason)
                 record["status"] = "rejected_not_worldwide"
                 record["decision"] = "REJECT"
                 record["description"] = ""
@@ -245,8 +248,8 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
             record = store.get(key)
             if not record:
                 continue
-            is_worldwide, reason = is_remote_from_anywhere(record)
-            if not is_worldwide:
+            alert_ok, reason = eligible_for_alert(record, prefs)
+            if not alert_ok:
                 logger.info("Skipping Discord immediate alert for %s: %s", record.get("title"), reason)
                 store.upsert(key, {"status": "rejected_not_worldwide"})
                 continue
@@ -264,7 +267,7 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
             r for r in store.all()
             if (r.get("status") in ("digest_pending",) or (
                 r.get("status") == "notify_failed" and r.get("decision") == "DIGEST"
-            )) and is_remote_from_anywhere(r)[0]
+            )) and eligible_for_alert(r, prefs)[0]
         ]
         if pending_digest:
             ok = discord.send_digest(pending_digest, webhook_url)

@@ -33,9 +33,10 @@ BOARD_LINKS = [
     # -------------------------------------------------------------------------
     # 2. ATS Direct Integrations (Company Board Endpoints)
     # -------------------------------------------------------------------------
-    {"name": "Greenhouse Boards", "url": "https://boards.greenhouse.io", "category": "ATS Board", "note": "Direct ATS boards: Intercom, Miro, Duolingo, Calendly, GitLab, HashiCorp"},
-    {"name": "Lever Boards", "url": "https://jobs.lever.co", "category": "ATS Board", "note": "Direct ATS boards: Netflix, Spotify, Shopify"},
-    {"name": "Ashby Boards", "url": "https://jobs.ashbyhq.com", "category": "ATS Board", "note": "Direct ATS boards: Notion, Linear, Ramp, Vercel"},
+    {"name": "Greenhouse Boards", "url": "https://boards.greenhouse.io", "category": "ATS Board", "note": "90+ company career boards auto-polled (Stripe, Figma, HubSpot, Cloudflare, PostHog, …)"},
+    {"name": "Lever Boards", "url": "https://jobs.lever.co", "category": "ATS Board", "note": "70+ company career boards auto-polled (Netflix, Shopify, Gusto, Lattice, …)"},
+    {"name": "Ashby Boards", "url": "https://jobs.ashbyhq.com", "category": "ATS Board", "note": "70+ company career boards auto-polled (Notion, Linear, Rippling, Mercury, …)"},
+    {"name": "Extra RSS Boards", "url": "https://weworkremotely.com/categories/remote-product-jobs.rss", "category": "Live RSS", "note": "WWR product, Remotive product/QA, Remoters, WordPress Jobs feeds"},
 
     # -------------------------------------------------------------------------
     # 3. User-Requested Remote Job Portals & Aggregators
