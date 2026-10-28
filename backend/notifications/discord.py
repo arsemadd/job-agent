@@ -57,12 +57,16 @@ def _relative_time(iso_or_raw: str | None) -> str:
 
 
 def format_immediate_message(record: dict) -> str:
+    from backend.filters.job_brief import build_look_for_brief, build_requirements_brief
+
     score = int(record.get("score", 0))
     emoji = _score_emoji(score)
     title = (record.get("title") or "").upper()
     bar = "━" * 20
 
     verdict = "Strong match — worth applying" if score >= 85 else "Good match — consider applying"
+    look_for = build_look_for_brief(record)
+    requirements = build_requirements_brief(record)
 
     body = f"""{bar}
 {emoji} {score}% MATCH — {title}
@@ -73,6 +77,12 @@ Role: {record.get('title', '')}
 Location: {record.get('location_raw') or 'Remote'}
 Experience: {record.get('years_required_display', 'not specified')}
 Posted: {_relative_time(record.get('posted_at'))}
+
+WHAT THEY LOOK FOR
+{look_for}
+
+REQUIREMENTS
+{requirements}
 
 WHY IT MATCHES
 {_bullets(record.get('why_matches', []), '✓')}
@@ -94,17 +104,20 @@ Source: {record.get('source', 'unknown')}"""
 
 
 def format_digest_embed(record: dict) -> dict:
+    from backend.filters.job_brief import build_look_for_brief, build_requirements_brief
+
     score = int(record.get("score", 0))
-    why = ", ".join((record.get("why_matches") or [])[:2]) or "see link"
-    gaps = ", ".join((record.get("gaps") or [])[:2]) or "none noted"
-    # Discord total embed payload limit is 6000 chars — keep each card tiny.
-    why = why[:140] + ("…" if len(why) > 140 else "")
-    gaps = gaps[:100] + ("…" if len(gaps) > 100 else "")
+    look_for = build_look_for_brief(record)[:160]
+    requirements = build_requirements_brief(record)[:180]
     title = f"{_score_emoji(score)} {score}% — {record.get('title', '')}"
     title = title[:250] + ("…" if len(title) > 250 else "")
     company = (record.get("company") or "Unknown")[:80]
     location = (record.get("location_raw") or "Remote")[:80]
-    description = f"**{company}** · {location}\n**Why:** {why}\n**Gaps:** {gaps}"
+    description = (
+        f"**{company}** · {location}\n"
+        f"**Look for:** {look_for}\n"
+        f"**Requirements:** {requirements}"
+    )
     if len(description) > 400:
         description = description[:397] + "…"
     return {
@@ -130,7 +143,7 @@ def format_run_summary(summary: dict) -> str:
         headline = (
             f"ℹ️ **Job Matcher** ({now}) — ran successfully, "
             f"but **no jobs scored high enough** for Discord "
-            f"(need ≥65 digest / ≥85 immediate)"
+            f"(need ≥60 digest / ≥80 immediate)"
         )
     return (
         f"{headline}\n"
@@ -209,12 +222,9 @@ def _post(webhook_url: str, payload: dict, max_retries: int = 3, thread_name: st
 
 
 def send_immediate(record: dict, webhook_url: str) -> bool:
-    from backend.filters.location import is_remote_from_anywhere
-    is_worldwide, reason = is_remote_from_anywhere(record)
-    if not is_worldwide:
-        logger.warning("Blocked Discord alert for %s: not remote from anywhere (%s)", record.get("title"), reason)
-        return False
-
+    # Location eligibility is decided in the pipeline via eligible_for_alert().
+    # Do not re-apply the stricter description-wide worldwide scanner here —
+    # it false-positive rejected real global-remote roles (e.g. "London" in JD text).
     content = format_immediate_message(record)
     score = int(record.get("score") or 0)
     title = (record.get("title") or "Match")[:60]
@@ -223,18 +233,9 @@ def send_immediate(record: dict, webhook_url: str) -> bool:
 
 
 def send_digest(records: list[dict], webhook_url: str) -> bool:
-    from backend.filters.location import is_remote_from_anywhere
-    eligible_records = []
-    for r in records:
-        is_worldwide, reason = is_remote_from_anywhere(r)
-        if is_worldwide:
-            eligible_records.append(r)
-        else:
-            logger.warning("Excluded from Discord digest (%s): %s", reason, r.get("title"))
-
-    if not eligible_records:
+    if not records:
         return True
-    records = sorted(eligible_records, key=lambda r: r.get("score", 0), reverse=True)
+    records = sorted(records, key=lambda r: r.get("score", 0), reverse=True)
     day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     ok = True
     for i in range(0, len(records), MAX_EMBEDS_PER_MESSAGE):

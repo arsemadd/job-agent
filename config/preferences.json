@@ -72,15 +72,15 @@
   },
 
   "scoring": {
-    "min_score_to_send_digest": 65,
-    "min_score_to_send_immediate": 85,
-    "digest_range": [65, 84],
-    "auto_reject_below": 65
+    "min_score_to_send_digest": 60,
+    "min_score_to_send_immediate": 80,
+    "digest_range": [60, 79],
+    "auto_reject_below": 60
   },
 
   "discord": {
-    "send_immediate_at_or_above": 85,
-    "send_digest_between": [65, 84],
+    "send_immediate_at_or_above": 80,
+    "send_digest_between": [60, 79],
     "digest_schedule": "batched each scheduled run"
   },
 
@@ -119,10 +119,12 @@
     ],
     "disabled_pending_manual_setup": ["wellfound", "thesaasjobs", "startupjobs"],
     "discovery_only": [
-      "flexjobs",
-      "toptal",
-      "jobfill",
-      "workwave"
+      "flexjobs", "toptal", "jobfill", "workwave", "eztrackr",
+      "justremote", "dailyremote", "hubstafftalent", "careervault", "pangian",
+      "arc", "contra", "hired", "dice", "linkedin", "indeed", "glassdoor",
+      "jooble", "talent", "upwork", "fiverr", "freelancer", "guru",
+      "peopleperhour", "outsourcely", "otta", "workable", "cord", "yc",
+      "braintrust", "gunio", "lemonio", "revelo", "deel"
     ],
     "rss_boards": [
       {
@@ -136,6 +138,11 @@
         "pm_filter": true
       },
       {
+        "name": "wwr_all",
+        "url": "https://weworkremotely.com/remote-jobs.rss",
+        "pm_filter": true
+      },
+      {
         "name": "remotive_product_rss",
         "url": "https://remotive.com/remote-jobs/product/feed",
         "pm_filter": false
@@ -146,6 +153,16 @@
         "pm_filter": false
       },
       {
+        "name": "remote_co",
+        "url": "https://remote.co/remote-jobs/feed/",
+        "pm_filter": true
+      },
+      {
+        "name": "remoteok_rss",
+        "url": "https://remoteok.com/remote-dev-jobs.rss",
+        "pm_filter": true
+      },
+      {
         "name": "wordpress_jobs",
         "url": "https://jobs.wordpress.net/?feed=job_feed",
         "pm_filter": true
@@ -153,6 +170,11 @@
       {
         "name": "remoters",
         "url": "https://remoters.net/jobs/feed/",
+        "pm_filter": true
+      },
+      {
+        "name": "himalayas_rss",
+        "url": "https://himalayas.app/jobs/rss",
         "pm_filter": true
       }
     ],
@@ -197,8 +219,6 @@
       "notion",
       "sentry",
       "grafana",
-      "hashicorp",
-      "gitlab",
       "anthropic",
       "openai",
       "retool",
@@ -223,7 +243,6 @@
       "chime",
       "robinhood",
       "coursera",
-      "duolingo",
       "khanacademy",
       "wikimedia",
       "mozilla",
@@ -234,12 +253,10 @@
       "snowflakecomputing",
       "databricks",
       "confluent",
-      "hashicorp",
       "cockroachlabs",
       "planetscale",
       "supabase",
       "neon",
-      "vercel",
       "netlify",
       "digitalocean",
       "linode",
@@ -251,12 +268,20 @@
       "clickup",
       "notionhq",
       "codaio",
-      "airtable",
-      "figma",
-      "miro",
       "lucid",
       "whimsical",
-      "linearapp"
+      "linearapp",
+      "doist",
+      "docker",
+      "redhat",
+      "elasticco",
+      "basecamp",
+      "deel",
+      "andela",
+      "crossover",
+      "turing",
+      "gunio",
+      "lemonio"
     ],
     "lever_companies": [
       "netflix",

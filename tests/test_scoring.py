@@ -93,11 +93,10 @@ def test_reject_override_forces_reject_regardless_of_score(candidate_profile, pr
 
 
 def test_compute_decision_thresholds_directly(prefs):
-    assert compute_decision(85, False, prefs) == "SEND"
-    assert compute_decision(84, False, prefs) == "DIGEST"
-    assert compute_decision(70, False, prefs) == "DIGEST"
-    assert compute_decision(65, False, prefs) == "DIGEST"
-    assert compute_decision(64, False, prefs) == "REJECT"
+    assert compute_decision(80, False, prefs) == "SEND"
+    assert compute_decision(79, False, prefs) == "DIGEST"
+    assert compute_decision(60, False, prefs) == "DIGEST"
+    assert compute_decision(59, False, prefs) == "REJECT"
     assert compute_decision(99, True, prefs) == "REJECT"
 
 

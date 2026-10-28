@@ -201,6 +201,8 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
                 "gaps": evaluation.gaps,
                 "confidence": evaluation.confidence,
                 "reasoning_summary": evaluation.reasoning_summary,
+                "look_for_summary": evaluation.look_for_summary,
+                "requirements_summary": evaluation.requirements_summary,
                 "decision": evaluation.decision,
                 "scoring_error": evaluation.error,
             }

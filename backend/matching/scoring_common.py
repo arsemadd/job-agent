@@ -34,6 +34,14 @@ RESULT_JSON_SCHEMA = {
             "type": "string",
             "description": "1-3 sentence summary of the overall verdict, in plain language.",
         },
+        "look_for_summary": {
+            "type": "string",
+            "description": "2-4 short phrases: what the employer is looking for (skills, domain, day-to-day focus). No fluff.",
+        },
+        "requirements_summary": {
+            "type": "string",
+            "description": "Compact requirements line covering years of experience, must-be-based / remote eligibility, and 2-4 hard requirements (tools, domain). Example: '3-5 years PM; fully remote worldwide; B2B SaaS; SQL nice-to-have'.",
+        },
         "recommend_reject_override": {
             "type": "boolean",
             "description": "True ONLY if you spot a disqualifying problem the deterministic pre-filters would have missed (e.g. the posting's actual text contradicts its location tier and clearly excludes the candidate, it reads as a scam/MLM, or it is unmistakably a senior/lead role mislabeled). Default false.",
@@ -92,6 +100,8 @@ class MatchEvaluation:
     gaps: list = field(default_factory=list)
     confidence: str = "medium"
     reasoning_summary: str = ""
+    look_for_summary: str = ""
+    requirements_summary: str = ""
     recommend_reject_override: bool = False
     override_reason: str = ""
     decision: str = "REJECT"          # computed, not from the model
@@ -111,8 +121,8 @@ def compute_decision(score: int, override: bool, prefs: dict) -> str:
     if override:
         return "REJECT"
     scoring_prefs = prefs.get("scoring", {})
-    send_at = scoring_prefs.get("min_score_to_send_immediate", 85)
-    digest_at = scoring_prefs.get("min_score_to_send_digest", 70)
+    send_at = scoring_prefs.get("min_score_to_send_immediate", 80)
+    digest_at = scoring_prefs.get("min_score_to_send_digest", 60)
     if score >= send_at:
         return "SEND"
     if score >= digest_at:
@@ -156,6 +166,8 @@ def evaluation_from_dict(data: dict) -> MatchEvaluation:
         gaps=clean_gaps,
         confidence=data.get("confidence", "medium"),
         reasoning_summary=reasoning,
+        look_for_summary=str(data.get("look_for_summary", "") or "").strip(),
+        requirements_summary=str(data.get("requirements_summary", "") or "").strip(),
         recommend_reject_override=override,
         override_reason=override_reason,
     )

@@ -133,8 +133,10 @@ def is_remote_from_anywhere(job: Job | dict) -> tuple[bool, str]:
         if pat.search(full_text):
             return False, f"Work authorization or residency restriction detected: {pat.pattern}"
 
-    # 3. Explicit Country/Region Rejections in location or text
-    country_rejects = [
+    # 3. Explicit Country/Region Rejections — check location fields first.
+    # Only scan description for strong restriction phrases (not bare city names —
+    # many worldwide JDs mention "office in London" without requiring it).
+    country_rejects_location = [
         "us only", "u.s. only", "usa only", "united states only", "canada only",
         "uk only", "united kingdom only", "eu only", "europe only", "latam only", "apac only",
         "(us)", "(usa)", "(u.s.)", "(canada)", "(uk)", "(united states)", "(north america)",
@@ -146,16 +148,30 @@ def is_remote_from_anywhere(job: Job | dict) -> tuple[bool, str]:
         "remote - canada", "remote (canada)", "remote, canada", "canada remote", "remote canada",
         "remote - north america", "north america remote", "us/canada", "canada/us", "us or canada", "canada or us",
         "remote - uk", "remote (uk)", "remote, uk", "uk remote", "remote uk",
-        "london, united kingdom", "london, uk", "london",
+        "london, united kingdom", "london, uk",
         "remote - europe", "remote (europe)", "remote, europe", "within europe", "within the eu",
         "remote - germany", "remote (germany)", "remote, germany", "berlin, germany",
         "remote - france", "remote, france", "remote - netherlands", "remote, netherlands",
         "remote - australia", "remote, australia", "remote - latam", "remote - apac",
-        "must be located in", "must reside in", "within the united states", "within canada"
+        "must be located in", "must reside in", "within the united states", "within canada",
     ]
-    for kw in country_rejects:
-        if kw in loc_combined or kw in full_text:
+    title_and_loc = f"{title.lower()} | {loc_combined}"
+    for kw in country_rejects_location:
+        if kw in title_and_loc:
             return False, f"Restricted to specific country/region: '{kw}'"
+
+    country_rejects_description = [
+        "us only", "usa only", "united states only", "canada only", "uk only",
+        "must be located in the united states", "must reside in the united states",
+        "must be based in the us", "must be based in the united states",
+        "authorized to work in the us", "no visa sponsorship",
+        "within the united states", "within canada", "within the uk", "within the eu",
+        "remote - us only", "us remote only", "candidates must be in the us",
+    ]
+    desc_lower = desc.lower()
+    for kw in country_rejects_description:
+        if kw in desc_lower:
+            return False, f"Restricted to specific country/region in description: '{kw}'"
 
     # 4. Check for explicit Worldwide / Anywhere in the World / Africa / EMEA signal
     worldwide_keywords = [

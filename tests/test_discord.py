@@ -28,6 +28,9 @@ def test_immediate_message_contains_key_fields():
     assert "SaaS experience" in msg
     assert "No direct fintech experience" in msg
     assert "wellfound" in msg
+    assert "WHAT THEY LOOK FOR" in msg
+    assert "REQUIREMENTS" in msg
+    assert "2-4 years" in msg
 
 
 def test_immediate_message_under_discord_limit():
