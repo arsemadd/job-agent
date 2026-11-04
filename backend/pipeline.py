@@ -25,6 +25,7 @@ from backend.collectors.aijobs import AIJobsCollector
 from backend.collectors.base import Collector
 from backend.collectors.fourdayweek import FourDayWeekCollector
 from backend.collectors.greenhouse import GreenhouseCollector
+from backend.collectors.hiring_search import HiringSearchCollector, score_hiring_lead
 from backend.collectors.himalayas import HimalayasCollector
 from backend.collectors.jobicy import JobicyCollector
 from backend.collectors.jobspresso import JobspressoCollector
@@ -97,6 +98,7 @@ def build_collectors(prefs: dict) -> list[Collector]:
         LeverCollector(companies),
         AshbyCollector(ashby_companies),
         RssBoardsCollector(rss_feeds),
+        HiringSearchCollector(prefs),
         WellfoundCollector(),
     ]
     for entry in manual_imports:
@@ -157,6 +159,46 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
             continue
         new_count += 1
 
+        # Hiring-signal leads (LinkedIn posts via Google) — keyword score, no AI cost
+        if (job.source or "").startswith("hiring_search"):
+            score, why, gaps = score_hiring_lead(job.title, job.description or "")
+            record = job.to_dict()
+            if len(record.get("description") or "") > 1500:
+                record["description"] = (record["description"] or "")[:1500]
+            decision = "REJECT"
+            status = "rejected"
+            if score >= 70:
+                decision, status = "SEND", "pending_immediate"
+            elif score >= 50:
+                decision, status = "DIGEST", "digest_pending"
+            record.update(
+                {
+                    "hard_filter_passed": decision != "REJECT",
+                    "hard_filter_reasons": [f"hiring_lead_score:{score}"],
+                    "location_tier": "C_UNCLEAR" if "Unclear" in (job.location_raw or "") else "A_WORLDWIDE",
+                    "years_required_display": "not stated (hiring post)",
+                    "score": score,
+                    "why_matches": why,
+                    "gaps": gaps,
+                    "confidence": "medium",
+                    "reasoning_summary": "Automated hiring-signal from Google → LinkedIn posts search.",
+                    "look_for_summary": "; ".join(why) if why else (job.title or "")[:200],
+                    "requirements_summary": f"Location: {job.location_raw or 'verify'} | Open post and confirm remote + years.",
+                    "decision": decision,
+                    "status": status,
+                    "is_hiring_lead": True,
+                }
+            )
+            if decision == "REJECT":
+                record["description"] = ""
+            store.upsert(key, record)
+            if status == "pending_immediate":
+                immediate_sent.append(key)
+                passed_filter_count += 1
+            elif status == "digest_pending":
+                passed_filter_count += 1
+            continue
+
         verdict = run_hard_filters(job, prefs)
         record = job.to_dict()
         # Truncate description early for rejects to keep the store small
@@ -184,6 +226,7 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
 
         if dry_run:
             record.update({"status": "dry_run_not_scored", "decision": None, "score": None})
+            store.upsert(key, record)
             continue
 
         max_score = int(os.environ.get("MAX_SCORE_PER_RUN", "0") or "0")
@@ -250,7 +293,10 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
             record = store.get(key)
             if not record:
                 continue
-            alert_ok, reason = eligible_for_alert(record, prefs)
+            if record.get("is_hiring_lead"):
+                alert_ok, reason = True, "hiring lead"
+            else:
+                alert_ok, reason = eligible_for_alert(record, prefs)
             if not alert_ok:
                 logger.info("Skipping Discord immediate alert for %s: %s", record.get("title"), reason)
                 store.upsert(key, {"status": "rejected_not_worldwide"})
@@ -269,7 +315,7 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
             r for r in store.all()
             if (r.get("status") in ("digest_pending",) or (
                 r.get("status") == "notify_failed" and r.get("decision") == "DIGEST"
-            )) and eligible_for_alert(r, prefs)[0]
+            )) and (r.get("is_hiring_lead") or eligible_for_alert(r, prefs)[0])
         ]
         if pending_digest:
             ok = discord.send_digest(pending_digest, webhook_url)
@@ -297,6 +343,10 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
         should_summary = notify_empty not in {"0", "false", "no"} or sent_immediate or digest_sent
         if should_summary:
             discord.send_run_summary(summary, webhook_url)
+        # Once per UTC day: post clickable LinkedIn/Google hiring-search pack
+        hs_prefs = prefs.get("hiring_search", {})
+        if hs_prefs.get("discord_search_pack", True):
+            discord.send_hiring_search_pack_if_due(prefs, webhook_url)
 
     store.save()
     logger.info("run summary: %s", json.dumps(summary))

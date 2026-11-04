@@ -78,7 +78,18 @@ GEMINI_MODEL=gemini-3.5-flash-lite
 DISCORD_FORUM=0
 DISCORD_NOTIFY_EMPTY_RUNS=1
 ENABLE_BACKGROUND_SCHEDULER=1
+# Optional — auto-fetch Google → LinkedIn hiring posts (serper.dev free tier works)
+SERPER_API_KEY=
 ```
+
+### Hiring-search automation (LinkedIn posts / people / founders)
+CareerOS does **not** scrape LinkedIn (blocked by ToS). Instead it:
+1. Posts a **daily Discord search pack** with your Google `site:linkedin.com/posts …` queries, LinkedIn Posts searches, and People searches (founders / HoP / TA).
+2. If `SERPER_API_KEY` is set, runs those Google queries live and alerts matching hiring signals as **HIRING SIGNAL** Discord messages.
+3. Exposes the same pack at `GET /api/hiring-search` and inside `/api/discovery`.
+
+Monitored industries (editable in `config/preferences.json` → `hiring_search`): B2B SaaS, AI product, ERP/business software, developer tools, healthtech, remote-first international startups.
+
 
 ### 3. Run CareerOS Dashboard
 ```bash

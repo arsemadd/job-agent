@@ -140,9 +140,12 @@ def build_search_links(roles: list[str], remote_only: bool = True, limit: int = 
     return links
 
 
-def build_discovery(roles: list[str], remote_only: bool = True) -> dict:
+def build_discovery(roles: list[str], remote_only: bool = True, prefs: dict | None = None) -> dict:
+    from backend.collectors.hiring_search import build_hiring_search_pack
+
     return {
         "linkedin": build_search_links(roles, remote_only=remote_only),
         "boards": BOARD_LINKS,
         "total_boards_count": len(BOARD_LINKS),
+        "hiring_search": build_hiring_search_pack(prefs),
     }

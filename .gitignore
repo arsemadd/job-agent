@@ -6,6 +6,7 @@ venv/
 *.egg-info/
 .pytest_cache/
 data/*.corrupt-*
+data/.hiring_search_pack_sent
 node_modules/
 .DS_Store
 *.db

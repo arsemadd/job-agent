@@ -852,7 +852,14 @@ def get_analytics():
 def get_discovery_links():
     prefs = load_prefs()
     roles = prefs.get("roles", {}).get("include", ["Product Manager", "Technical Product Manager"])
-    return build_discovery(roles, remote_only=True)
+    return build_discovery(roles, remote_only=True, prefs=prefs)
+
+
+@app.get("/api/hiring-search")
+def get_hiring_search_pack():
+    """Ready-to-run Google / LinkedIn Posts / People search pack for the daily routine."""
+    from backend.collectors.hiring_search import build_hiring_search_pack
+    return build_hiring_search_pack(load_prefs())
 
 
 # ---------------------------------------------------------------------------

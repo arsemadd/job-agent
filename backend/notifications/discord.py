@@ -63,13 +63,20 @@ def format_immediate_message(record: dict) -> str:
     emoji = _score_emoji(score)
     title = (record.get("title") or "").upper()
     bar = "━" * 20
+    is_lead = bool(record.get("is_hiring_lead"))
 
-    verdict = "Strong match — worth applying" if score >= 85 else "Good match — consider applying"
+    if is_lead:
+        verdict = "Hiring signal — open post, confirm remote, then apply / DM"
+        header = f"{emoji} {score}% HIRING SIGNAL — {title}"
+    else:
+        verdict = "Strong match — worth applying" if score >= 80 else "Good match — consider applying"
+        header = f"{emoji} {score}% MATCH — {title}"
+
     look_for = build_look_for_brief(record)
     requirements = build_requirements_brief(record)
 
     body = f"""{bar}
-{emoji} {score}% MATCH — {title}
+{header}
 {bar}
 
 Company: {record.get('company', 'Unknown')}
@@ -93,7 +100,7 @@ GAPS
 VERDICT
 {verdict}
 
-🔗 APPLY
+🔗 {'OPEN POST' if is_lead else 'APPLY'}
 {record.get('url', '')}
 
 Source: {record.get('source', 'unknown')}"""
@@ -267,3 +274,63 @@ def send_run_summary(summary: dict, webhook_url: str) -> bool:
     """Post a short heartbeat so quiet runs are still visible in-channel."""
     content = format_run_summary(summary)
     return _post(webhook_url, {"content": content}, thread_name="Job Matcher runs")
+
+
+def format_hiring_search_pack(prefs: dict) -> str:
+    from backend.collectors.hiring_search import build_hiring_search_pack
+
+    pack = build_hiring_search_pack(prefs)
+    lines = [
+        "🔎 **Daily hiring-search pack** (LinkedIn posts · people · formal jobs)",
+        f"Industries: {', '.join(pack.get('industries_monitored') or [])}",
+        "",
+        "**Google → LinkedIn posts (past week)**",
+    ]
+    for item in (pack.get("google_searches") or [])[:6]:
+        lines.append(f"• [{item['query'][:70]}]({item['url']})")
+    lines.append("")
+    lines.append("**LinkedIn Posts**")
+    for item in (pack.get("linkedin_post_searches") or [])[:5]:
+        lines.append(f"• [{item['query']}]({item['url']})")
+    lines.append("")
+    lines.append("**People (founders / HoP / TA)**")
+    for item in (pack.get("people_searches") or [])[:5]:
+        lines.append(f"• [{item['query']}]({item['url']})")
+    lines.append("")
+    auto = pack.get("automation") or {}
+    if auto.get("live_fetch"):
+        lines.append(f"_Live Google fetch ON ({auto.get('provider')}) — new hits also alert as HIRING SIGNAL._")
+    else:
+        lines.append(
+            "_Add GitHub secret `SERPER_API_KEY` (serper.dev free tier) to auto-fetch these into Discord._"
+        )
+    body = "\n".join(lines)
+    if len(body) > DISCORD_CONTENT_LIMIT:
+        body = body[: DISCORD_CONTENT_LIMIT - 20] + "\n...[truncated]"
+    return body
+
+
+def send_hiring_search_pack_if_due(prefs: dict, webhook_url: str) -> bool:
+    """Post the search pack at most once per UTC day (marker file in data/)."""
+    marker = os.path.join("data", ".hiring_search_pack_sent")
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    try:
+        if os.path.exists(marker):
+            with open(marker, encoding="utf-8") as f:
+                if f.read().strip() == today:
+                    return True
+    except OSError:
+        pass
+    ok = _post(
+        webhook_url,
+        {"content": format_hiring_search_pack(prefs)},
+        thread_name="Hiring search pack",
+    )
+    if ok:
+        try:
+            os.makedirs("data", exist_ok=True)
+            with open(marker, "w", encoding="utf-8") as f:
+                f.write(today)
+        except OSError as exc:
+            logger.warning("could not write hiring-search pack marker: %s", exc)
+    return ok

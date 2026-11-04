@@ -110,7 +110,8 @@
       "greenhouse",
       "lever",
       "ashby",
-      "rss_boards"
+      "rss_boards",
+      "hiring_search"
     ],
     "manual_imports": [
       {"name": "wellfound", "file": "data/wellfound_manual.json"},
@@ -281,7 +282,39 @@
       "crossover",
       "turing",
       "gunio",
-      "lemonio"
+      "lemonio",
+      "odoo",
+      "sap",
+      "workday",
+      "servicenow",
+      "epic",
+      "cerner",
+      "tempus",
+      "flatiron",
+      "oscar",
+      "ro",
+      "hims",
+      "gitlabhq",
+      "hashicorp",
+      "snyk",
+      "datadog",
+      "pagerduty",
+      "circleci",
+      "launchdarkly",
+      "splitsoftware",
+      "n8n",
+      "supabase",
+      "planetscale",
+      "neon",
+      "dbtlabs",
+      "fivetran",
+      "airbyte",
+      "segmentio",
+      "mixpanel",
+      "amplitude",
+      "pendo",
+      "productboard",
+      "aha"
     ],
     "lever_companies": [
       "netflix",
@@ -424,6 +457,58 @@
       "cypress"
     ],
     "note": "Live collectors need no setup. remoterocketship needs REMOTE_ROCKETSHIP_API_KEY (otherwise skips). rss_boards are config-driven public feeds. Greenhouse/Lever/Ashby tokens that 404 are skipped automatically. Manual boards read data/*_manual.json."
+  },
+
+  "hiring_search": {
+    "enabled": true,
+    "discord_search_pack": true,
+    "max_queries_per_run": 8,
+    "results_per_query": 6,
+    "industries": [
+      "B2B SaaS startups",
+      "AI product companies",
+      "ERP and business software companies",
+      "Developer tools companies",
+      "Healthcare technology startups",
+      "Remote-first startups hiring internationally"
+    ],
+    "google_queries": [
+      "site:linkedin.com/posts \"Product Manager\" \"hiring\" remote",
+      "site:linkedin.com/posts \"Technical Product Manager\" hiring",
+      "site:linkedin.com/posts \"Product Owner\" \"we are hiring\"",
+      "site:linkedin.com/posts \"fractional product manager\"",
+      "site:linkedin.com/posts \"Founder\" \"hiring Product Manager\"",
+      "site:linkedin.com/posts \"CEO\" \"looking for Product Manager\"",
+      "site:linkedin.com/posts \"CTO\" \"hiring\" \"remote\" \"Product Manager\"",
+      "site:linkedin.com/posts \"Startup\" \"hiring product team\"",
+      "site:linkedin.com/posts \"Looking for a freelance Product Manager\"",
+      "site:linkedin.com/posts \"we're hiring\" \"Product Manager\" \"remote\" -\"US only\""
+    ],
+    "linkedin_post_queries": [
+      "Founder hiring Product Manager",
+      "CEO looking for Product Manager",
+      "CTO hiring remote PM",
+      "Startup hiring product team",
+      "Looking for a freelance Product Manager",
+      "hiring Technical Product Manager remote",
+      "hiring Product Owner remote"
+    ],
+    "people_queries": [
+      "Startup founder hiring product",
+      "Head of Product",
+      "VP of Product",
+      "Talent Acquisition Manager product",
+      "Technical Recruiter Product Manager remote",
+      "Founder B2B SaaS",
+      "Founder AI product"
+    ],
+    "formal_vacancy_queries": [
+      "Product Manager remote",
+      "Technical Product Manager remote",
+      "Product Owner remote",
+      "QA Analyst remote"
+    ],
+    "note": "Automates your LinkedIn posts / people / Google site: searches. Live result fetch needs SERPER_API_KEY (serper.dev) or SERPAPI_KEY. Without a key, Discord still gets a daily clickable search pack. LinkedIn is never scraped directly."
   },
 
   "schedule": {

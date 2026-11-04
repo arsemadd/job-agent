@@ -46,6 +46,9 @@ jobs:
           DISCORD_FORUM: ${{ vars.DISCORD_FORUM || '0' }}
           DISCORD_NOTIFY_EMPTY_RUNS: ${{ vars.DISCORD_NOTIFY_EMPTY_RUNS || '1' }}
           REMOTE_ROCKETSHIP_API_KEY: ${{ secrets.REMOTE_ROCKETSHIP_API_KEY }}
+          # Optional: serper.dev (or SerpAPI) key to auto-fetch Google → LinkedIn hiring posts
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
         run: python -m backend.pipeline
 
       - name: Compact job store under GitHub 100MB limit
