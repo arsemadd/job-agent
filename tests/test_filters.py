@@ -79,6 +79,20 @@ def test_location_worldwide_tier_a(prefs):
     assert res.tier == TIER_A and res.passed is True
 
 
+def test_location_anywhere_in_world_not_killed_by_us_phrase_in_description(prefs):
+    # Regression: tier-D keyword "remote, us" used to match inside JD prose and
+    # reject true worldwide roles before scoring.
+    res = classify_location(
+        _job(
+            location_raw="Anywhere in the World",
+            description="We also hire remote, US contractors for a separate team. This role is worldwide.",
+        ),
+        prefs,
+    )
+    assert res.passed is True
+    assert res.tier == TIER_A
+
+
 def test_location_africa_tier_b(prefs):
     res = classify_location(_job(location_raw="Remote - Kenya, Nigeria, South Africa"), prefs)
     assert res.tier == TIER_B and res.passed is True

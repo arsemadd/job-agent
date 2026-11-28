@@ -250,6 +250,37 @@ def eligible_for_alert(job: Job | dict, prefs: dict) -> tuple[bool, str]:
     return False, f"Not in alert tiers {allowed}; {reason}"
 
 
+# Ambiguous short phrases that false-positive inside JD prose (e.g. "remote, us"
+# matching inside a worldwide posting). Only apply these to location fields.
+_LOCATION_FIELD_ONLY_D = {
+    "remote, us", "remote - us", "remote us", "us remote", "remote (us)",
+    "remote, usa", "remote - usa", "usa remote", "remote (usa)",
+    "remote, canada", "remote - canada", "canada remote", "remote canada",
+    "remote, uk", "remote - uk", "uk remote", "remote uk",
+    "remote, europe", "remote - europe", "europe only",
+    "remote - north america", "north america remote",
+    "us/canada", "us or canada", "canada/us", "canada or us",
+    "london, uk", "london, united kingdom",
+    "hybrid", "on-site", "onsite", "in-office", "office-based",
+}
+
+# Auth phrases that are only disqualifying when US/UK/Canada/EU context is nearby
+_REGION_CONTEXT = re.compile(
+    r"\b(?:us|u\.s\.|usa|united states|uk|united kingdom|canada|eu|european union|"
+    r"europe only|within the (?:us|u\.s\.|united states|uk|eu|canada))\b",
+    re.I,
+)
+
+
+def _auth_disqualifies(location_fields: str, description: str, match: re.Match[str]) -> bool:
+    """Visa/auth wording is common even on worldwide remotes — only reject with region context."""
+    if _REGION_CONTEXT.search(location_fields):
+        return True
+    start = max(0, match.start() - 100)
+    end = min(len(description), match.end() + 100)
+    return bool(_REGION_CONTEXT.search(description[start:end]))
+
+
 def classify_location(job: Job, prefs: dict) -> FilterResult:
     loc_prefs = prefs.get("location", {})
     tier_a_kw = loc_prefs.get("tier_a_worldwide_keywords", [])
@@ -260,12 +291,22 @@ def classify_location(job: Job, prefs: dict) -> FilterResult:
     reject_auth = loc_prefs.get("reject_work_authorization", True)
 
     explicit = (job.hires_remotely_from or "").strip()
-    combined = " | ".join(
-        filter(None, [job.location_raw, explicit, (job.description or "")[:5000]])
-    )
+    loc_fields = " | ".join(filter(None, [job.location_raw, explicit]))
+    description = (job.description or "")[:5000]
+    combined = " | ".join(filter(None, [loc_fields, description]))
 
+    # Clear worldwide / Africa signal on the location line wins early — don't let
+    # buried JD phrases like "remote, us" or "hybrid cloud" kill the posting.
+    a_hit_early = _any_keyword(loc_fields, tier_a_kw)
+    b_hit_early = _any_keyword(loc_fields, tier_b_kw)
+    location_is_clear_global = bool(a_hit_early or b_hit_early)
+
+    # Hybrid / onsite — always check location fields; only scan description when
+    # the location line is NOT already clearly worldwide/Africa remote.
     if reject_hybrid:
-        hybrid_hit = _first_regex(combined, HYBRID_PATTERNS)
+        hybrid_hit = _first_regex(loc_fields, HYBRID_PATTERNS)
+        if not hybrid_hit and not location_is_clear_global:
+            hybrid_hit = _first_regex(description, HYBRID_PATTERNS)
         if hybrid_hit:
             return FilterResult(
                 False,
@@ -275,16 +316,33 @@ def classify_location(job: Job, prefs: dict) -> FilterResult:
             )
 
     if reject_auth:
-        auth_hit = _first_regex(combined, AUTH_PATTERNS)
-        if auth_hit:
+        for pattern in AUTH_PATTERNS:
+            match = pattern.search(combined)
+            if not match:
+                continue
+            if location_is_clear_global and not _auth_disqualifies(loc_fields, description, match):
+                continue
+            if not location_is_clear_global and not _auth_disqualifies(loc_fields, description, match):
+                # Generic "no sponsorship" without region — still skip for unclear roles
+                # only when location fields themselves hint at a restricted region.
+                if not _REGION_CONTEXT.search(loc_fields):
+                    continue
+            snippet = re.sub(r"\s+", " ", match.group(0)).strip()
             return FilterResult(
                 False,
-                f"work authorization / visa restriction (matched '{auth_hit}')",
+                f"work authorization / visa restriction (matched '{snippet}')",
                 tier=TIER_D,
-                detail={"matched": auth_hit, "rule": "authorization"},
+                detail={"matched": snippet, "rule": "authorization"},
             )
 
-    d_hit = _any_keyword(combined, tier_d_kw)
+    # Tier-D keywords: ambiguous short ones only against location fields;
+    # stronger phrases may still hit description.
+    loc_only_kw = [kw for kw in tier_d_kw if kw.lower() in _LOCATION_FIELD_ONLY_D]
+    strong_kw = [kw for kw in tier_d_kw if kw.lower() not in _LOCATION_FIELD_ONLY_D]
+
+    d_hit = _any_keyword(loc_fields, tier_d_kw)
+    if not d_hit and not location_is_clear_global:
+        d_hit = _any_keyword(description, strong_kw)
     if d_hit:
         return FilterResult(
             False,
@@ -293,9 +351,7 @@ def classify_location(job: Job, prefs: dict) -> FilterResult:
             detail={"matched_keyword": d_hit, "source_field": "explicit" if explicit else "text"},
         )
 
-    # Check if location_raw has office hub or US state ties without worldwide clearance
-    is_worldwide = bool(_any_keyword(explicit or job.location_raw, tier_a_kw) or _any_keyword(explicit or job.location_raw, tier_b_kw))
-    if not is_worldwide and job.location_raw:
+    if not location_is_clear_global and job.location_raw:
         office_hit = _first_regex(job.location_raw, LOCATION_RAW_OFFICE_PATTERNS)
         if office_hit:
             return FilterResult(
@@ -305,13 +361,11 @@ def classify_location(job: Job, prefs: dict) -> FilterResult:
                 detail={"matched": office_hit, "rule": "office_hub"},
             )
 
-    a_hit = _any_keyword(explicit or job.location_raw, tier_a_kw)
-    if a_hit:
-        return FilterResult(True, f"worldwide-eligible (matched '{a_hit}')", tier=TIER_A)
+    if a_hit_early:
+        return FilterResult(True, f"worldwide-eligible (matched '{a_hit_early}')", tier=TIER_A)
 
-    b_hit = _any_keyword(explicit or job.location_raw, tier_b_kw)
-    if b_hit:
-        return FilterResult(True, f"Africa/EMEA-eligible (matched '{b_hit}')", tier=TIER_B)
+    if b_hit_early:
+        return FilterResult(True, f"Africa/EMEA-eligible (matched '{b_hit_early}')", tier=TIER_B)
 
     if explicit:
         looks_like_country_list = bool(re.search(r",", explicit)) or len(explicit.split()) <= 4

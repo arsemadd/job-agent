@@ -33,7 +33,7 @@
     "require_fully_remote": true,
     "reject_hybrid_onsite": true,
     "reject_work_authorization": true,
-    "tier_a_worldwide_keywords": ["remote - worldwide", "remote - anywhere", "remote - global", "fully remote", "100% remote", "work from anywhere", "location independent", "remote (global)", "worldwide", "anywhere", "global"],
+    "tier_a_worldwide_keywords": ["remote - worldwide", "remote - anywhere", "remote - global", "fully remote", "100% remote", "work from anywhere", "location independent", "remote (global)", "worldwide", "anywhere", "anywhere in the world", "global", "remote worldwide", "worldwide remote"],
     "tier_b_africa_emea_keywords": [
       "remote - africa", "remote - emea", "africa timezone", "emea timezone",
       "kenya", "nigeria", "south africa", "ethiopia", "ghana", "egypt", "rwanda", "uganda", "tanzania",
@@ -57,8 +57,8 @@
       "hybrid", "on-site", "onsite", "in-office", "office-based", "relocation required"
     ],
     "require_worldwide_for_alerts": false,
-    "alert_location_tiers": ["A_WORLDWIDE", "B_AFRICA_EMEA"],
-    "note": "Fully remote only. US/Canada/UK/EU-only and hybrid are hard-rejected. Discord alerts accept Worldwide AND Africa/EMEA remote (candidate is in Ethiopia) — still never US-only."
+    "alert_location_tiers": ["A_WORLDWIDE", "B_AFRICA_EMEA", "C_UNCLEAR"],
+    "note": "Fully remote only. US/Canada/UK/EU-only and hybrid are hard-rejected on the location line. C_UNCLEAR (Remote with unclear country) may alert after AI score — never US-only. Ambiguous phrases like 'remote, us' only match location fields, not buried JD prose."
   },
 
   "job_type": {

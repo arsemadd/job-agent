@@ -65,11 +65,29 @@ def load_prefs(path: str = PREFS_PATH) -> dict:
         return json.load(f)
 
 
+def _merge_ats_tokens(prefs: dict) -> tuple[list[str], list[str], list[str]]:
+    """Merge preferences ATS lists with the Worldwide tech watchlist from the PDF."""
+    sources = prefs.get("sources", {})
+    boards = list(sources.get("greenhouse_boards", []) or [])
+    lever = list(sources.get("lever_companies", []) or [])
+    ashby = list(sources.get("ashby_companies", []) or [])
+    watch_path = os.path.join("config", "remote_companies_watchlist.json")
+    if os.path.exists(watch_path):
+        try:
+            with open(watch_path, encoding="utf-8") as f:
+                watch = json.load(f)
+            ats = (watch or {}).get("ats_tokens") or {}
+            boards = sorted(set(boards) | set(ats.get("greenhouse") or []))
+            lever = sorted(set(lever) | set(ats.get("lever") or []))
+            ashby = sorted(set(ashby) | set(ats.get("ashby") or []))
+        except (OSError, json.JSONDecodeError) as exc:
+            logger.warning("could not load remote companies watchlist: %s", exc)
+    return boards, lever, ashby
+
+
 def build_collectors(prefs: dict) -> list[Collector]:
     enabled = set(prefs.get("sources", {}).get("enabled", []))
-    boards = prefs.get("sources", {}).get("greenhouse_boards", [])
-    companies = prefs.get("sources", {}).get("lever_companies", [])
-    ashby_companies = prefs.get("sources", {}).get("ashby_companies", [])
+    boards, companies, ashby_companies = _merge_ats_tokens(prefs)
     rss_feeds = prefs.get("sources", {}).get("rss_boards", [])
     manual_imports = prefs.get("sources", {}).get("manual_imports") or [
         {"name": "wellfound", "file": "data/wellfound_manual.json"},
@@ -252,7 +270,27 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
         )
 
         if evaluation.error:
-            record["status"] = "scoring_error"
+            # Gemini quota/errors used to silently drop clear PM remotes. Fall back
+            # to a keyword score so Discord still gets a digest when the title is an
+            # included role and location already passed hard filters.
+            from backend.filters.role import check_role
+            role_ok = check_role(job.title, prefs).passed
+            if role_ok and verdict.location_tier in ("A_WORLDWIDE", "B_AFRICA_EMEA", "C_UNCLEAR"):
+                record.update(
+                    {
+                        "score": 62,
+                        "decision": "DIGEST",
+                        "status": "digest_pending",
+                        "why_matches": ["Title matches target role; AI scoring unavailable this run"],
+                        "gaps": [f"Scoring error: {evaluation.error}"],
+                        "reasoning_summary": "Fallback digest — verify remote eligibility on the posting.",
+                        "look_for_summary": job.title,
+                        "requirements_summary": f"Location: {job.location_raw or 'Remote'} | Confirm years + remote policy on apply page",
+                        "scoring_error": evaluation.error,
+                    }
+                )
+            else:
+                record["status"] = "scoring_error"
         elif evaluation.decision == "SEND":
             alert_ok, reason = eligible_for_alert(record, prefs)
             if alert_ok:

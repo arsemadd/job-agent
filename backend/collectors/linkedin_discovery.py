@@ -141,11 +141,29 @@ def build_search_links(roles: list[str], remote_only: bool = True, limit: int = 
 
 
 def build_discovery(roles: list[str], remote_only: bool = True, prefs: dict | None = None) -> dict:
+    import json
+    import os
+
     from backend.collectors.hiring_search import build_hiring_search_pack
+
+    watchlist = []
+    watch_path = os.path.join("config", "remote_companies_watchlist.json")
+    if os.path.exists(watch_path):
+        try:
+            with open(watch_path, encoding="utf-8") as f:
+                data = json.load(f)
+            watchlist = (data or {}).get("companies") or []
+        except (OSError, json.JSONDecodeError):
+            watchlist = []
 
     return {
         "linkedin": build_search_links(roles, remote_only=remote_only),
         "boards": BOARD_LINKS,
         "total_boards_count": len(BOARD_LINKS),
         "hiring_search": build_hiring_search_pack(prefs),
+        "remote_companies_watchlist": {
+            "count": len(watchlist),
+            "companies": watchlist[:100],  # cap payload; full file in config/
+            "note": "Worldwide tech companies from your PDF — ATS tokens polled live; rest are outreach targets",
+        },
     }
