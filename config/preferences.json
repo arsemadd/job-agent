@@ -464,6 +464,8 @@
     "discord_search_pack": true,
     "max_queries_per_run": 8,
     "results_per_query": 6,
+    "max_years": 5,
+    "hard_reject_years": 7,
     "industries": [
       "B2B SaaS startups",
       "AI product companies",
@@ -472,43 +474,23 @@
       "Healthcare technology startups",
       "Remote-first startups hiring internationally"
     ],
-    "google_queries": [
-      "site:linkedin.com/posts \"Product Manager\" \"hiring\" remote",
-      "site:linkedin.com/posts \"Technical Product Manager\" hiring",
-      "site:linkedin.com/posts \"Product Owner\" \"we are hiring\"",
-      "site:linkedin.com/posts \"fractional product manager\"",
-      "site:linkedin.com/posts \"Founder\" \"hiring Product Manager\"",
-      "site:linkedin.com/posts \"CEO\" \"looking for Product Manager\"",
-      "site:linkedin.com/posts \"CTO\" \"hiring\" \"remote\" \"Product Manager\"",
-      "site:linkedin.com/posts \"Startup\" \"hiring product team\"",
-      "site:linkedin.com/posts \"Looking for a freelance Product Manager\"",
-      "site:linkedin.com/posts \"we're hiring\" \"Product Manager\" \"remote\" -\"US only\""
-    ],
-    "linkedin_post_queries": [
-      "Founder hiring Product Manager",
-      "CEO looking for Product Manager",
-      "CTO hiring remote PM",
-      "Startup hiring product team",
-      "Looking for a freelance Product Manager",
-      "hiring Technical Product Manager remote",
-      "hiring Product Owner remote"
-    ],
+    "google_queries": [],
+    "linkedin_post_queries": [],
     "people_queries": [
-      "Startup founder hiring product",
-      "Head of Product",
-      "VP of Product",
-      "Talent Acquisition Manager product",
-      "Technical Recruiter Product Manager remote",
-      "Founder B2B SaaS",
-      "Founder AI product"
+      "Startup founder hiring product remote worldwide",
+      "Head of Product remote-first",
+      "Talent Acquisition Manager Product Manager remote worldwide",
+      "Technical Recruiter Product Manager worldwide",
+      "Founder B2B SaaS remote",
+      "Founder AI product remote worldwide"
     ],
     "formal_vacancy_queries": [
-      "Product Manager remote",
-      "Technical Product Manager remote",
-      "Product Owner remote",
-      "QA Analyst remote"
+      "Product Manager remote worldwide",
+      "Technical Product Manager remote worldwide",
+      "Product Owner remote worldwide",
+      "QA Analyst remote worldwide"
     ],
-    "note": "Automates your LinkedIn posts / people / Google site: searches. Live result fetch needs SERPER_API_KEY (serper.dev) or SERPAPI_KEY. Without a key, Discord still gets a daily clickable search pack. LinkedIn is never scraped directly."
+    "note": "LinkedIn hiring posts must be worldwide remote (not US/UK/Canada-only). Experience: prefer ≤5 years; reject 7–10+ / Senior. Empty google_queries/linkedin_post_queries use built-in worldwide defaults. Needs SERPER_API_KEY for live fetch."
   },
 
   "schedule": {

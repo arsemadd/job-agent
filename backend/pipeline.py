@@ -179,7 +179,13 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
 
         # Hiring-signal leads (LinkedIn posts via Google) — keyword score, no AI cost
         if (job.source or "").startswith("hiring_search"):
-            score, why, gaps = score_hiring_lead(job.title, job.description or "")
+            hs = prefs.get("hiring_search", {})
+            score, why, gaps = score_hiring_lead(
+                job.title,
+                job.description or "",
+                max_years=int(hs.get("max_years", 5) or 5),
+                hard_reject_years=int(hs.get("hard_reject_years", 7) or 7),
+            )
             record = job.to_dict()
             if len(record.get("description") or "") > 1500:
                 record["description"] = (record["description"] or "")[:1500]
@@ -189,19 +195,31 @@ def run(dry_run: bool = False, skip_notify: bool = False, store_path: str | None
                 decision, status = "SEND", "pending_immediate"
             elif score >= 50:
                 decision, status = "DIGEST", "digest_pending"
+            years_display = "not stated (hiring post)"
+            for g in gaps:
+                if "years" in g.lower():
+                    years_display = g
+                    break
+            for w in why:
+                if "Experience stated" in w:
+                    years_display = w
+                    break
             record.update(
                 {
                     "hard_filter_passed": decision != "REJECT",
-                    "hard_filter_reasons": [f"hiring_lead_score:{score}"],
-                    "location_tier": "C_UNCLEAR" if "Unclear" in (job.location_raw or "") else "A_WORLDWIDE",
-                    "years_required_display": "not stated (hiring post)",
+                    "hard_filter_reasons": [f"hiring_lead_score:{score}"] + (gaps[:2] if score == 0 else []),
+                    "location_tier": "A_WORLDWIDE",
+                    "years_required_display": years_display,
                     "score": score,
                     "why_matches": why,
                     "gaps": gaps,
                     "confidence": "medium",
-                    "reasoning_summary": "Automated hiring-signal from Google → LinkedIn posts search.",
+                    "reasoning_summary": "Hiring signal — worldwide remote only; ≤5 years preferred (not 10-year senior).",
                     "look_for_summary": "; ".join(why) if why else (job.title or "")[:200],
-                    "requirements_summary": f"Location: {job.location_raw or 'verify'} | Open post and confirm remote + years.",
+                    "requirements_summary": (
+                        f"Location: Remote worldwide | Experience: prefer ≤5 years, reject 7–10+ | "
+                        f"Confirm on post before applying."
+                    ),
                     "decision": decision,
                     "status": status,
                     "is_hiring_lead": True,

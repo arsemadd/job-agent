@@ -27,29 +27,33 @@ from backend.models import Job
 # Default search packs (overridable via preferences.json → hiring_search)
 # ---------------------------------------------------------------------------
 
+# Prefer worldwide / work-from-anywhere; exclude US-only and senior/10yr noise in the query.
+_EXCLUDE = (
+    '-"US only" -"USA only" -"United States only" -"remote US" -"US remote" '
+    '-"UK only" -"Canada only" -"EU only" -"10+ years" -"10 years" -"Senior Product Manager"'
+)
+
 DEFAULT_GOOGLE_QUERIES = [
-    'site:linkedin.com/posts "Product Manager" "hiring" remote',
-    'site:linkedin.com/posts "Technical Product Manager" hiring',
-    'site:linkedin.com/posts "Product Owner" "we are hiring"',
-    'site:linkedin.com/posts "fractional product manager"',
-    'site:linkedin.com/posts "Founder" "hiring Product Manager"',
-    'site:linkedin.com/posts "CEO" "looking for Product Manager"',
-    'site:linkedin.com/posts "CTO" "hiring" "remote" "Product Manager"',
-    'site:linkedin.com/posts "Startup" "hiring product team"',
-    'site:linkedin.com/posts "Looking for a freelance Product Manager"',
-    'site:linkedin.com/posts "QA" OR "Product Analyst" "hiring" remote',
-    'site:linkedin.com/posts "Head of Product" "hiring" remote',
-    'site:linkedin.com/posts "we\'re hiring" "Product Manager" "remote" -"US only" -"United States only"',
+    f'site:linkedin.com/posts "Product Manager" hiring (worldwide OR "work from anywhere" OR "remote worldwide") {_EXCLUDE}',
+    f'site:linkedin.com/posts "Technical Product Manager" hiring (remote OR worldwide) {_EXCLUDE}',
+    f'site:linkedin.com/posts "Product Owner" ("we are hiring" OR hiring) (remote OR worldwide) {_EXCLUDE}',
+    f'site:linkedin.com/posts "Founder" "hiring Product Manager" (remote OR worldwide) {_EXCLUDE}',
+    f'site:linkedin.com/posts "CEO" "Product Manager" (hiring OR "looking for") (remote OR worldwide) {_EXCLUDE}',
+    f'site:linkedin.com/posts "CTO" "Product Manager" hiring remote {_EXCLUDE}',
+    f'site:linkedin.com/posts "Startup" "hiring" "Product Manager" worldwide {_EXCLUDE}',
+    f'site:linkedin.com/posts "freelance Product Manager" OR "fractional product manager" {_EXCLUDE}',
+    f'site:linkedin.com/posts ("QA Analyst" OR "Product Analyst") hiring remote {_EXCLUDE}',
+    f'site:linkedin.com/posts "we\'re hiring" "Product Manager" ("worldwide" OR "work from anywhere") {_EXCLUDE}',
 ]
 
 DEFAULT_LINKEDIN_POST_QUERIES = [
-    "Founder hiring Product Manager",
-    "CEO looking for Product Manager",
-    "CTO hiring remote PM",
-    "Startup hiring product team",
-    "Looking for a freelance Product Manager",
-    "hiring Technical Product Manager remote",
-    "hiring Product Owner remote",
+    "Founder hiring Product Manager worldwide remote",
+    "CEO looking for Product Manager work from anywhere",
+    "CTO hiring remote Product Manager worldwide",
+    "Startup hiring Product Manager remote worldwide",
+    "Looking for a freelance Product Manager remote worldwide",
+    "hiring Technical Product Manager remote worldwide",
+    "hiring Product Owner remote worldwide",
     "we're hiring Product Manager worldwide",
 ]
 
@@ -72,12 +76,40 @@ DEFAULT_INDUSTRIES = [
     "Remote-first startups hiring internationally",
 ]
 
-US_ONLY_RE = re.compile(
-    r"\b(?:us only|u\.s\. only|usa only|united states only|must be (?:in|based in) the (?:us|u\.s\.|united states))\b",
+COUNTRY_RESTRICT_RE = re.compile(
+    r"\b(?:"
+    r"us only|u\.s\. only|usa only|united states only|"
+    r"remote[- ](?:us|usa|u\.s\.|united states|uk|canada|eu|europe|latam|apac|india)|"
+    r"(?:us|usa|u\.s\.|uk|canada|eu|europe)[- ]remote|"
+    r"uk only|canada only|eu only|europe only|latam only|apac only|"
+    r"must be (?:in|based in|located in) the (?:us|u\.s\.|united states|uk|canada)|"
+    r"based in the (?:us|u\.s\.|united states|uk|canada)|"
+    r"us/canada|canada/us|us or canada|"
+    r"authorized to work in the (?:us|u\.s\.|united states|uk)|"
+    r"no visa sponsorship"
+    r")\b",
     re.I,
 )
 HYBRID_RE = re.compile(r"\b(?:hybrid|on[- ]?site|in[- ]office)\b", re.I)
+# Strict worldwide signal — plain "remote" alone is not enough for LinkedIn leads
+WORLDWIDE_RE = re.compile(
+    r"\b(?:"
+    r"worldwide|work from anywhere|anywhere in the world|remote worldwide|"
+    r"worldwide remote|global remote|remote[- ]global|location independent|"
+    r"100%\s*remote(?:\s+worldwide)?|hire(?:s)?\s+anywhere|open (?:to )?all countries|"
+    r"remote[- ]anywhere|from anywhere"
+    r")\b",
+    re.I,
+)
 REMOTE_RE = re.compile(r"\b(?:remote|worldwide|work from anywhere|distributed|global)\b", re.I)
+YEARS_RE = re.compile(
+    r"(\d+)\s*[+\-]?\s*(?:to\s*)?(\d+)?\s*\+?\s*years?(?:\s+of)?(?:\s+(?:experience|exp))?",
+    re.I,
+)
+SENIOR_RE = re.compile(
+    r"\b(?:senior|sr\.?|staff|principal|director|vp|head of|10\+|10 years|eight years|nine years)\b",
+    re.I,
+)
 PM_RE = re.compile(
     r"\b(?:product manager|technical product manager|product owner|tpm|product analyst|"
     r"qa (?:analyst|engineer)|scrum master|program manager)\b",
@@ -87,6 +119,10 @@ HIRING_RE = re.compile(
     r"\b(?:hiring|we(?:'re| are) hiring|looking for|join (?:our|my) team|open role|now hiring)\b",
     re.I,
 )
+
+# Prefer mid-level: reject posts asking for more than this many years (default 5)
+DEFAULT_MAX_YEARS = 5
+DEFAULT_HARD_REJECT_YEARS = 7
 
 
 def google_search_url(query: str) -> str:
@@ -164,32 +200,67 @@ def build_hiring_search_pack(prefs: dict | None = None) -> dict[str, Any]:
     }
 
 
-def score_hiring_lead(title: str, snippet: str) -> tuple[int, list[str], list[str]]:
-    """Cheap keyword score for hiring posts (no AI). Returns score, why, gaps."""
+def _extract_min_years(text: str) -> int | None:
+    """Best-effort years ask from snippet. Uses high end when range is clearly senior (8+)."""
+    found: list[int] = []
+    for match in YEARS_RE.finditer(text or ""):
+        lo = int(match.group(1))
+        hi = int(match.group(2)) if match.group(2) else lo
+        found.append(max(lo, hi) if hi >= 8 else lo)
+    return max(found) if found else None
+
+
+def score_hiring_lead(
+    title: str,
+    snippet: str,
+    *,
+    max_years: int = DEFAULT_MAX_YEARS,
+    hard_reject_years: int = DEFAULT_HARD_REJECT_YEARS,
+) -> tuple[int, list[str], list[str]]:
+    """Score LinkedIn hiring posts. Worldwide remote only; reject ~10yr / senior asks."""
     text = f"{title}\n{snippet}"
     why: list[str] = []
     gaps: list[str] = []
+
+    if HYBRID_RE.search(text):
+        return 0, [], ["Hybrid / on-site — skip"]
+    if COUNTRY_RESTRICT_RE.search(text):
+        return 0, [], ["Country-restricted remote (US/UK/Canada/EU/etc.) — need worldwide"]
+
+    if SENIOR_RE.search(title) and not re.search(r"\bsenior qa\b", title, re.I):
+        return 0, [], ["Senior / staff / 10-year signal in title — skip"]
+
+    years = _extract_min_years(text)
+    if years is not None and years >= hard_reject_years:
+        return 0, [], [f"Asks for {years}+ years (cap is under {hard_reject_years}; prefer ≤{max_years})"]
+    if years is not None and years > max_years:
+        return 0, [], [f"Asks for {years}+ years — prefer ≤{max_years} years, not 10-year senior roles"]
+
+    # Must look worldwide — plain "remote" without global signal is not enough
+    if not WORLDWIDE_RE.search(text):
+        if REMOTE_RE.search(text):
+            return 0, [], ["Says remote but not worldwide/global — skip US/region remote"]
+        return 0, [], ["No worldwide / work-from-anywhere signal — skip"]
+
     score = 0
-
-    if HYBRID_RE.search(text) or US_ONLY_RE.search(text):
-        return 0, [], ["Hybrid or country-restricted — skip"]
-
     if PM_RE.search(text):
         score += 40
         why.append("Mentions a PM / Product / QA-style role")
     if HIRING_RE.search(text):
         score += 25
         why.append("Hiring / looking-for language")
-    if REMOTE_RE.search(text):
-        score += 20
-        why.append("Remote / global signal")
-    else:
-        gaps.append("Remote eligibility not clear from snippet — verify before applying")
-        score += 5
+    score += 25
+    why.append("Worldwide / work-from-anywhere remote")
 
-    if re.search(r"\b(?:founder|ceo|cto|head of product|vp of product)\b", text, re.I):
-        score += 10
-        why.append("Posted by / mentions founder or product leadership")
+    if years is not None:
+        why.append(f"Experience stated around {years} years (≤{max_years} ok)")
+        score += 5
+    else:
+        gaps.append("Years not stated in snippet — confirm ≤5 years on the post")
+
+    if re.search(r"\b(?:founder|ceo|cto)\b", text, re.I):
+        score += 5
+        why.append("Posted by / mentions founder or exec")
 
     score = min(100, score)
     if not why:
@@ -239,8 +310,19 @@ def _row_to_job(row: dict, query: str) -> Job | None:
     if m:
         company = m.group(1).strip()
 
+    blob = f"{title} {snippet}"
+    # Drop country-restricted / non-worldwide posts before they enter the store
+    if COUNTRY_RESTRICT_RE.search(blob) or HYBRID_RE.search(blob):
+        return None
+    if not WORLDWIDE_RE.search(blob):
+        return None
+    years = _extract_min_years(blob)
+    if years is not None and years > DEFAULT_MAX_YEARS:
+        return None
+    if SENIOR_RE.search(title) and not re.search(r"\bsenior qa\b", title, re.I):
+        return None
+
     external_id = hashlib.sha256(link.encode("utf-8")).hexdigest()[:16]
-    loc = "Remote" if REMOTE_RE.search(f"{title} {snippet}") else "Unclear — verify"
     return Job(
         source="hiring_search",
         external_id=external_id,
@@ -248,8 +330,8 @@ def _row_to_job(row: dict, query: str) -> Job | None:
         company=company[:80],
         url=link,
         description=f"Search query: {query}\n\n{snippet}",
-        location_raw=loc,
-        tags=["hiring_signal", "linkedin_post"],
+        location_raw="Remote - Worldwide",
+        tags=["hiring_signal", "linkedin_post", "worldwide"],
     )
 
 
